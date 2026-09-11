@@ -93,8 +93,10 @@ cannot exist without an established chain, and an Isrā'īliyyah by definition h
 Two independent paths with different failure behaviour.
 
 **Narration** — pre-generated MP3s **committed to the repo**. Works offline and from
-`file://`. Three voice slots, only two generated for now: `classic` (حامد, default),
-`story` (سلمى), and `warm` (عبدالله) declared but not generated until asked.
+`file://`. Three voice slots, only two generated for now: **`shakir` (شاكر, `ar-EG-ShakirNeural`,
+the default narrator)** and `story` (سلمى, `ar-EG-SalmaNeural`) — both Egyptian, so the
+app's register stays consistent. `classic` (حامد, `ar-SA-HamedNeural`) is declared but not
+generated until asked.
 
 **Recitation** — streamed from everyayah.com, parsed from `ayahRefEn`. **Default reciter:
 al-Husary**, with a picker. Not committed; needs network. If the network drops, narration
