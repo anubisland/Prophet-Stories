@@ -126,8 +126,18 @@ still works and recitation goes silent.
 
 ### Map sync
 
-`gen_tts.py` uses `comm.stream()` (not `comm.save()`) to capture edge-tts `WordBoundary`
-events, recording when narration crosses each beat boundary. Output is
+`gen_tts.py` uses `comm.stream()` (not `comm.save()`) to capture edge-tts boundary events.
+
+**Verified on edge-tts 7.2.8 (2026-09-11): `WordBoundary` is never emitted** — not for
+Arabic, not for English (tested Shakir, Salma, Hamed, Brian). What comes back is
+**`SentenceBoundary`**, one event per sentence carrying `offset`, `duration`, and `text`.
+That is more precise for our purpose than word events would be.
+
+**Consequence: every beat must be whole sentences**, ending in `.` `؟` `!` or `:`. The
+generator maps events to beats by counting each beat's sentences in order; a beat's cue is
+its first sentence's `offset`. `check_release.py` verifies each beat's sentence count
+matches its events — a mismatch means the prose does not align to sentence boundaries and
+is rejected. Output is
 `audio/<slot>/<prophet>_<phase>_<lang>.cues.js` — a **JS file**, because `.json` dies on
 `file://`. At runtime `timeupdate` compares `currentTime` against those cues and moves the
 map focus. Cues are generated per voice, so differing voice durations break nothing.
