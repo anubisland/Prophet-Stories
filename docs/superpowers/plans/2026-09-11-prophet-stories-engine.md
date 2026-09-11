@@ -14,7 +14,8 @@ Copied verbatim from [the spec](../specs/2026-09-11-prophet-stories-design.md). 
 
 - **No build step, no framework, no runtime npm dependency.** Must work from `file://` and any static host.
 - **No `fetch`, no `<script type="module">`** — blocked on `file://` by CORS. Dynamic loading injects a classic `<script>` tag. Every data and timing file is `.js` assigning to a global, never `.json`.
-- **Single state object** in `app/state.js`: `{ SCREEN, PROPHET, PHASE, LANG, VOICE, RECITER }`. Nothing else writes it directly. No new globals beyond `window.PROPHETS`, `window.PROPHET_INDEX`, `window.INTRO`, `window.CUES`.
+- **Single state object** in `app/state.js`: `{ SCREEN, PROPHET, PHASE, LANG, VOICE, RECITER }`. Nothing else writes it directly. **"No new globals" means no new mutable *state* globals** — scattered state is the thing being forbidden. With no module system (blocked on `file://`), attaching functions to `window` is how this codebase exports; each module namespaces its own and owns them. The only global *data* objects are `window.PROPHETS`, `window.PROPHET_INDEX`, `window.INTRO`, `window.CUES`, and the only global mutable state is `window.APP_STATE`.
+- **`VERSION` in `app/loader.js` must equal `package.json`'s version.** The gate checks this — a drifted value silently requests stale data and cue files that the `index.html` cache-bust check cannot see.
 - **Inline SVG only** for maps — never raster.
 - **Arabic first.** `*En` fields exist in every structure and stay `""`. Every UI string carries both `data-ar` and `data-en`; the two counts must match.
 - **Voice slots:** `shakir` = `ar-EG-ShakirNeural` (default), `story` = `ar-EG-SalmaNeural`. Both generated. `classic` = `ar-SA-HamedNeural` declared, not generated.
@@ -103,6 +104,21 @@ def check_bilingual_balance():
         problems.append(f"I18N    data-ar {ar} != data-en {en}")
 
 
+def check_loader_version():
+    """app/loader.js injects data and cue files with its own hardcoded VERSION.
+    index.html's cache-bust check cannot see those, so drift here serves stale
+    data silently."""
+    ver = re.search(r'"version"\s*:\s*"([^"]+)"', read("package.json")).group(1)
+    path = os.path.join(ROOT, "app", "loader.js")
+    if not os.path.exists(path):
+        return
+    m = re.search(r'VERSION\s*=\s*"([^"]+)"', read("app/loader.js"))
+    if not m:
+        problems.append("CACHE   app/loader.js defines no VERSION")
+    elif m.group(1) != ver:
+        problems.append(f"CACHE   app/loader.js VERSION={m.group(1)}, package.json={ver}")
+
+
 def check_cache_bust():
     """Every local app/ data/ .js and style.css referenced from index.html must
     carry ?v=<package version>. Stale-cache regressions shipped repeatedly."""
@@ -119,6 +135,7 @@ def main():
     check_section_balance()
     check_bilingual_balance()
     check_cache_bust()
+    check_loader_version()
     if problems:
         print(f"\n{len(problems)} problem(s):\n")
         for p in problems:
