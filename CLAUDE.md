@@ -77,8 +77,26 @@ cannot exist without an established chain, and an Isrā'īliyyah by definition h
 
 `tools/check_sources.py`, strongest layer first:
 
-1. **Every `beat` has non-empty `srcRefs`** pointing at valid `srcs` entries. An unsourced
-   beat fails. No orphan narration.
+1. **Every `narr` beat has non-empty `srcRefs`** pointing at valid `srcs` entries. An
+   unsourced beat fails. No orphan narration.
+
+   **The one exception is `kind: "link"`** — a purely grammatical connective, exempt from
+   sourcing. `kind` defaults to `narr`, so forgetting it demands a source: the oversight
+   fails safe.
+
+   "It's just a linking sentence" is exactly the cover any Isra'iliyyah would wear, so the
+   guarantee is not trusting the label but **making the opening too narrow for a report to
+   fit**. Five mechanical constraints on a `link` beat:
+
+   - **≤ 80 characters** — a paragraph cannot hide in a connective.
+   - **No digits** (Arabic or Arabic-Indic) — a number is always a report: a date, an age, a count.
+   - **No `focus`, no `pin`** — a connective does not move the listener; geography is a report.
+   - **No two adjacent `link` beats** — prevents chaining them into continuous narration.
+   - **Never the first or last beat** — a phase opens and closes on sourced material.
+
+   This does open a small door, with no claim that it is shut. But what fits through is not
+   a report: «وهنا يبدأ الابتلاء» is a connective; «فركب معه ثمانون رجلاً» fails on digits;
+   «فانطلق إلى أرض بابل» fails on place. Layers 2–4 below apply to every beat regardless.
 2. **Only `classAr: "ثابت"` is accepted.** Any other value fails. No override flag.
 3. **Blacklist of books and transmitters** — al-Thalabi, al-Kisa'i, Ara'is al-Majalis,
    and the known Isrā'īliyyāt transmitters **Ka'b al-Ahbar and Wahb ibn Munabbih**, plus
