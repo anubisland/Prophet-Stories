@@ -20,13 +20,13 @@
     --accent-son:#8B4A3C;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{height:100%;}
+  html,body{min-height:100%;}
   body{
     font-family:'Cairo', sans-serif;
     background:var(--bg);
     color:var(--text);
     line-height:1.85;
-    padding-bottom:90px;
+    padding-bottom:calc(114px + env(safe-area-inset-bottom, 0px));
   }
 
   /* Persistent head: topbar + hero + map, always visible */
@@ -145,7 +145,7 @@
   .control-bar{
     position:fixed; bottom:0; left:0; right:0; z-index:20;
     background:#0C1712; border-top:1px solid var(--panel-border);
-    padding:10px 14px 8px;
+    padding:10px 14px calc(8px + env(safe-area-inset-bottom, 0px));
   }
   .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px;}
   .ctrl{
@@ -510,6 +510,22 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+
+/* يُبقي نهاية البطاقة (الدرس المستفاد والمصادر) فوق شريط التحكم دائمًا.
+   ارتفاع الشريط يتغيّر حسب عرض الشاشة لأن دوائر المراحل تلتفّ في سطرين
+   على الشاشات الضيقة، فلا تكفي قيمة ثابتة — تُقاس وقت التشغيل. */
+function syncBottomPadding(){
+  const bar = document.querySelector('.control-bar');
+  if(!bar) return;
+  document.body.style.paddingBottom = (bar.offsetHeight + 24) + 'px';
+}
+syncBottomPadding();
+window.addEventListener('resize', syncBottomPadding);
+window.addEventListener('orientationchange', syncBottomPadding);
+window.addEventListener('load', syncBottomPadding);
+/* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
+   الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
 </script>
 
 </body>

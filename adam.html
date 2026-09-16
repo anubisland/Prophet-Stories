@@ -12,8 +12,8 @@
     --gold:#D9A73B; --gold-soft:#E8C874; --text:#ECE8DC; --text-muted:#9C9686; --green-deep:#0B3324;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  html,body{height:100%;}
-  body{font-family:'Cairo', sans-serif; background:var(--bg); color:var(--text); line-height:1.85; padding-bottom:90px;}
+  html,body{min-height:100%;}
+  body{font-family:'Cairo', sans-serif; background:var(--bg); color:var(--text); line-height:1.85; padding-bottom:calc(114px + env(safe-area-inset-bottom, 0px));}
   .sticky-head{position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--panel-border);}
   .topbar{display:flex; align-items:center; justify-content:space-between; padding:10px 18px;}
   .pill{font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);}
@@ -47,7 +47,7 @@
   .lesson-box p{font-size:13px;}
   .sources-row{display:flex; flex-wrap:wrap; gap:8px;}
   .source-chip{font-size:11px; color:var(--text-muted); background:var(--panel-2); border:1px solid var(--panel-border); border-radius:999px; padding:5px 12px;}
-  .control-bar{position:fixed; bottom:0; left:0; right:0; z-index:20; background:#0C1712; border-top:1px solid var(--panel-border); padding:10px 14px 8px;}
+  .control-bar{position:fixed; bottom:0; left:0; right:0; z-index:20; background:#0C1712; border-top:1px solid var(--panel-border); padding:10px 14px calc(8px + env(safe-area-inset-bottom, 0px));}
   .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px;}
   .ctrl{background:var(--panel); border:1px solid var(--panel-border); color:var(--text); border-radius:999px; padding:8px 14px; font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer;}
   .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:9px 20px;}
@@ -364,6 +364,22 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+
+/* يُبقي نهاية البطاقة (الدرس المستفاد والمصادر) فوق شريط التحكم دائمًا.
+   ارتفاع الشريط يتغيّر حسب عرض الشاشة لأن دوائر المراحل تلتفّ في سطرين
+   على الشاشات الضيقة، فلا تكفي قيمة ثابتة — تُقاس وقت التشغيل. */
+function syncBottomPadding(){
+  const bar = document.querySelector('.control-bar');
+  if(!bar) return;
+  document.body.style.paddingBottom = (bar.offsetHeight + 24) + 'px';
+}
+syncBottomPadding();
+window.addEventListener('resize', syncBottomPadding);
+window.addEventListener('orientationchange', syncBottomPadding);
+window.addEventListener('load', syncBottomPadding);
+/* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
+   الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
 </script>
 
 </body>
