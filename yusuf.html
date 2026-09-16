@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص الأنبياء — يوسف عليه السلام</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D0A;
+    --panel:#0F231A;
+    --panel-2:#0C1A13;
+    --panel-border:rgba(217,167,59,.28);
+    --gold:#D9A73B;
+    --gold-soft:#E8C874;
+    --text:#ECE8DC;
+    --text-muted:#9C9686;
+    --green-deep:#0B3324;
+    --accent-son:#8B4A3C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{min-height:100%;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.85;
+    padding-bottom:calc(114px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Persistent head: topbar + hero + map, always visible */
+  .sticky-head{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--panel-border);
+  }
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 18px;
+  }
+  .pill{
+    font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px;
+    border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);
+  }
+  .pill.gold{background:var(--gold-soft); color:#1A1405; border:none;}
+
+  .hero{text-align:center; padding:6px 20px 4px;}
+  .hero h1{
+    font-size:clamp(20px,6vw,28px); font-weight:800; color:var(--gold-soft);
+    text-shadow:0 0 14px rgba(217,167,59,.25);
+  }
+  .hero .sub{font-size:12px; color:var(--text-muted); margin-top:2px;}
+
+  .map-card{
+    position:relative;
+    background:var(--panel);
+    padding:10px 14px 12px;
+  }
+  .map-card .map-top{
+    display:flex; justify-content:flex-start; align-items:center; margin-bottom:6px;
+    font-size:12.5px; color:var(--gold-soft); font-weight:700;
+  }
+  .map-card svg{display:block; width:100%; height:auto;}
+  .marker{opacity:.4; transition:opacity .35s ease;}
+  .marker.hot{opacity:1; animation:blinkMarker 1.3s ease-in-out infinite;}
+  @keyframes blinkMarker{
+    0%,100%{opacity:1;}
+    50%{opacity:.35;}
+  }
+  .marker.hot circle, .marker.hot rect{filter:drop-shadow(0 0 6px rgba(217,167,59,.9));}
+  .stage-overlay-badge{
+    position:absolute; top:38px; left:20px;
+    background:rgba(12,26,19,.85); border:1px solid var(--panel-border); border-radius:8px;
+    padding:5px 10px; font-size:11px; color:var(--text-muted); font-weight:700;
+  }
+
+  main{max-width:760px; margin:0 auto; padding:16px 16px 10px;}
+
+  /* Stage */
+  .stage{display:none;}
+  .stage.shown{display:block;}
+  .stage-card{
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:14px;
+    padding:18px 16px;
+  }
+  .stage-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .stage-badge{
+    font-size:11px; font-weight:700; color:#1A1405; background:var(--gold-soft);
+    padding:4px 12px; border-radius:999px;
+  }
+  .stage-card h3{font-size:17px; font-weight:800; color:var(--text); margin-bottom:10px;}
+  .narrative{font-size:14.5px; color:var(--text); opacity:.92; margin-bottom:14px;}
+  .narrative b{color:var(--gold-soft); font-weight:700;}
+
+  .ayah-box{
+    position:relative;
+    background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px;
+    padding:36px 16px 16px; text-align:center; margin-bottom:14px;
+  }
+  .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
+  .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-listen{
+    position:absolute; top:8px; left:10px;
+    background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
+    border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700;
+    font-family:inherit; cursor:pointer;
+  }
+
+  .dialogue{display:flex; flex-direction:column; gap:8px; margin-bottom:14px;}
+  .dialogue .line{font-size:13.5px; padding:10px 12px; border-radius:8px; max-width:88%;}
+  .dialogue .son{background:rgba(139,74,60,.18); border:1px solid rgba(139,74,60,.4); align-self:flex-start;}
+  .dialogue .ib{background:rgba(217,167,59,.1); border:1px solid var(--panel-border); align-self:flex-end;}
+  .dialogue .who{display:block; font-size:11px; color:var(--text-muted); margin-bottom:4px; font-weight:700;}
+
+  .chars-line{font-size:12px; color:var(--text-muted); margin-bottom:14px; line-height:1.7;}
+  .chars-line b{color:var(--gold-soft); font-weight:700;}
+
+  .lesson-box{
+    background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold);
+    border-radius:8px; padding:12px 14px; margin-bottom:12px;
+  }
+  .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
+  .lesson-box p{font-size:13px;}
+
+  .sources-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .source-chip{
+    font-size:11px; color:var(--text-muted); background:var(--panel-2);
+    border:1px solid var(--panel-border); border-radius:999px; padding:5px 12px;
+  }
+
+
+  /* ——— حدّ الخريطة: نسبة من الشاشة وسقف مطلق معًا ———
+     34vh وحدها تعني ٢٩٢ بكسل على شاشة ٨٦٠ — فتبتلع الشاشة.
+     min() تجعلها تتبع الشاشة على الصغير وتتوقف عن النمو على الكبير. */
+  .map-card svg{max-height:clamp(175px, 38vh, 340px);
+                max-width:calc(clamp(175px, 38vh, 340px) * 2.7);
+                margin-inline:auto;}
+  @media (max-height: 820px){
+    .hero{padding:3px 20px 2px;}
+    .hero h1{font-size:clamp(17px,4.6vw,23px);}
+    .hero .sub{font-size:11px;}
+    .map-card{padding:6px 14px 8px;}
+    .map-card svg{max-height:clamp(165px, 34vh, 300px); max-width:calc(clamp(165px, 34vh, 300px) * 2.7);}
+  }
+  @media (max-height: 640px){
+    .topbar{padding:6px 14px;}
+    .pill{padding:5px 11px; font-size:11px;}
+    .hero .sub{display:none;}
+    .map-card svg{max-height:clamp(150px, 30vh, 240px); max-width:calc(clamp(150px, 30vh, 240px) * 2.7);}
+    .stage-overlay-badge{top:30px;}
+  }
+  @media (max-height: 500px){
+    .hero h1{font-size:16px;}
+    .map-card svg{max-height:clamp(120px, 28vh, 190px); max-width:calc(clamp(120px, 28vh, 190px) * 2.7);}
+    .map-card .map-top{font-size:11px; margin-bottom:3px;}
+  }
+
+  .control-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:20;
+    background:#0C1712; border-top:1px solid var(--panel-border);
+    padding:5px 12px calc(5px + env(safe-area-inset-bottom, 0px));
+  }
+  .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:4px;}
+  .ctrl{
+    background:var(--panel); border:1px solid var(--panel-border); color:var(--text);
+    border-radius:999px; padding:6px 13px; font-family:inherit; font-size:12px; line-height:1.15;
+    font-weight:700; cursor:pointer;
+  }
+  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:7px 19px;}
+  .stage-dots{display:flex; justify-content:center; gap:5px; flex-wrap:wrap;}
+  .dot{
+    width:18px; height:18px; border-radius:50%; line-height:1; border:1px solid var(--panel-border);
+    background:var(--panel-2); color:var(--text-muted); font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .dot.active{background:var(--gold-soft); color:#1A1405; border:none;}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+  <div class="topbar">
+    <span class="pill gold">English</span>
+    <a class="pill" href="index.html" style="text-decoration:none;">→ يوسف عليه السلام ← الرئيسية</a>
+  </div>
+  <div class="hero">
+    <h1>قصة يوسف عليه السلام</h1>
+    <p class="sub">أحسن القصص — من غيابة الجُبّ إلى خزائن الأرض</p>
+  </div>
+  <div class="map-card">
+    <div class="map-top"><span>خريطة رحلة يوسف عليه السلام 🗺️</span></div>
+    <span class="stage-overlay-badge" id="stageBadge">المرحلة ١ من ٨</span>
+    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgmap" cx="50%" cy="35%" r="80%">
+          <stop offset="0%" stop-color="#211a10"/>
+          <stop offset="100%" stop-color="#0D0A06"/>
+        </radialGradient>
+      </defs>
+      <rect width="700" height="260" fill="url(#bgmap)"/>
+
+      <!-- زخارف زاوية: معينات -->
+      <path d="M22 40 L32 55 L22 70 L12 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+      <path d="M22 78 L30 90 L22 102 L14 90 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".3"/>
+      <path d="M678 40 L688 55 L678 70 L668 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+
+      <!-- هلال ونجمة: أسفل اليسار -->
+      <g opacity=".55">
+        <path d="M30 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M52 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+      <!-- هلال ونجمة: أسفل اليمين -->
+      <g opacity=".55">
+        <path d="M670 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M648 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+
+      <!-- مسار الرحلة: كنعان ← الجُبّ ← مصر -->
+      <path d="M598 86 Q520 100 452 110" stroke="#8B4A3C" stroke-width="1.5" stroke-dasharray="4 4" opacity=".55"/>
+      <path d="M414 118 Q320 150 240 164" stroke="#D9A73B" stroke-width="1.5" stroke-dasharray="4 4" opacity=".5"/>
+      <path d="M118 56 Q152 130 126 224" stroke="#2E6E8E" stroke-width="3" fill="none" opacity=".26"/>
+
+      <g class="marker" id="mk-canaan">
+        <circle cx="614" cy="82" r="8" fill="#D9A73B"/>
+        <text x="614" y="64" text-anchor="middle" font-size="13" fill="#E8C874" font-family="Cairo" font-weight="700">أرض كنعان</text>
+        <text x="614" y="110" text-anchor="middle" font-size="10.5" fill="#9C9686" font-family="Cairo">بيت يعقوب والرؤيا</text>
+      </g>
+
+      <g class="marker" id="mk-jub">
+        <rect x="414" y="100" width="34" height="30" rx="3" fill="none" stroke="#8B4A3C" stroke-width="2"/>
+        <path d="M418 110 L444 110 M418 120 L444 120" stroke="#8B4A3C" stroke-width="1" opacity=".7"/>
+        <text x="431" y="92" text-anchor="middle" font-size="12.5" fill="#C48A78" font-family="Cairo" font-weight="700">غيابة الجُبّ</text>
+      </g>
+
+      <g class="marker" id="mk-aziz">
+        <rect x="258" y="146" width="48" height="34" rx="2" fill="none" stroke="#E8C874" stroke-width="2"/>
+        <path d="M258 158 L306 158" stroke="#E8C874" stroke-width="1.2" opacity=".7"/>
+        <text x="282" y="138" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">بيت العزيز</text>
+        <text x="282" y="196" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo">مصر</text>
+      </g>
+
+      <g class="marker" id="mk-sijn">
+        <rect x="148" y="144" width="42" height="38" rx="2" fill="none" stroke="#7A8A80" stroke-width="2"/>
+        <path d="M158 144 L158 182 M169 144 L169 182 M180 144 L180 182" stroke="#7A8A80" stroke-width="1.4"/>
+        <text x="169" y="136" text-anchor="middle" font-size="12.5" fill="#A8B5AC" font-family="Cairo" font-weight="700">السجن</text>
+      </g>
+
+      <g class="marker" id="mk-khazain">
+        <path d="M206 238 L224 208 L242 238 Z" fill="#0F5132" opacity=".75" stroke="#E8C874" stroke-width="1"/>
+        <path d="M248 238 L266 208 L284 238 Z" fill="#0F5132" opacity=".6" stroke="#E8C874" stroke-width="1"/>
+        <text x="245" y="252" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">خزائن الأرض</text>
+      </g>
+
+      <circle cx="655" cy="35" r="16" fill="#0F231A" stroke="#D9A73B" stroke-width="1"/>
+      <text x="655" y="40" text-anchor="middle" font-size="11" fill="#E8C874" font-family="Cairo" font-weight="700">ش</text>
+    </svg>
+  </div>
+</div>
+
+<main>
+
+  <!-- Stage 1 -->
+  <div class="stage" id="stage-1" data-map="canaan">
+    <div class="stage-card">
+      <div class="stage-top"><h3>الرؤيا وتحذير الأب</h3><span class="stage-badge">١ / ٨</span></div>
+      <p class="narrative">رَأَى يُوسُفُ عَلَيْهِ السَّلَامُ وَهُوَ غُلَامٌ صَغِيرٌ أَحَدَ عَشَرَ كَوْكَبًا وَالشَّمْسَ وَالْقَمَرَ سَاجِدِينَ لَهُ، فَقَصَّهَا عَلَى أَبِيهِ يَعْقُوبَ. فَعَرَفَ يَعْقُوبُ بِنُورِ النُّبُوَّةِ أَنَّهَا بِشَارَةُ شَأْنٍ عَظِيمٍ، وَأَنَّ إِخْوَتَهُ إِنْ سَمِعُوهَا حَسَدُوهُ، فَأَمَرَهُ أَنْ يَكْتُمَهَا.</p>
+      <div class="dialogue">
+        <div class="line son"><span class="who">يُوسُفُ لِأَبِيهِ</span>يَا أَبَتِ إِنِّي رَأَيْتُ أَحَدَ عَشَرَ كَوْكَبًا وَالشَّمْسَ وَالْقَمَرَ رَأَيْتُهُمْ لِي سَاجِدِينَ</div>
+        <div class="line ib"><span class="who">رَدُّ يَعْقُوبَ</span>يَا بُنَيَّ لَا تَقْصُصْ رُؤْيَاكَ عَلَى إِخْوَتِكَ فَيَكِيدُوا لَكَ كَيْدًا</div>
+      </div>
+      <div class="ayah-box" data-surah="12" data-ayah-start="4" data-ayah-end="5">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">إِذْ قَالَ يُوسُفُ لِأَبِيهِ يَا أَبَتِ إِنِّي رَأَيْتُ أَحَدَ عَشَرَ كَوْكَبًا وَالشَّمْسَ وَالْقَمَرَ رَأَيْتُهُمْ لِي سَاجِدِينَ ۝ قَالَ يَا بُنَيَّ لَا تَقْصُصْ رُؤْيَاكَ عَلَىٰ إِخْوَتِكَ فَيَكِيدُوا لَكَ كَيْدًا ۖ إِنَّ الشَّيْطَانَ لِلْإِنسَانِ عَدُوٌّ مُّبِينٌ</div>
+        <div class="ref">سورة يوسف — الآيتان ٤-٥</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا تَعْرِضْ نِعْمَةَ اللَّهِ عَلَيْكَ أَمَامَ مَنْ تَخَافُ حَسَدَهُ؛ وَكِتْمَانُ الْخَيْرِ حَتَّى يَتِمَّ بَابٌ مِنْ أَبْوَابِ حِفْظِهِ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage" id="stage-2" data-map="jub">
+    <div class="stage-card">
+      <div class="stage-top"><h3>كيد الإخوة وغيابة الجُبّ</h3><span class="stage-badge">٢ / ٨</span></div>
+      <p class="narrative">حَمَلَ الْحَسَدُ إِخْوَتَهُ عَلَى أَنْ يَحْتَالُوا عَلَى أَبِيهِمْ حَتَّى يُرْسِلَهُ مَعَهُمْ، ثُمَّ أَجْمَعُوا أَمْرَهُمْ فَأَلْقَوْهُ فِي قَعْرِ الْبِئْرِ. وَفِي تِلْكَ اللَّحْظَةِ الَّتِي بَلَغَ فِيهَا الْكَرْبُ مُنْتَهَاهُ، أَوْحَى اللَّهُ إِلَى الْغُلَامِ أَنَّهُ سَيَأْتِي يَوْمٌ يُخْبِرُهُمْ فِيهِ بِصَنِيعِهِمْ وَهُمْ لَا يَعْرِفُونَهُ. <b>فَبَدَأَ الْفَرَجُ مِنْ دَاخِلِ الْمِحْنَةِ لَا بَعْدَهَا.</b></p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="15" data-ayah-end="15">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">فَلَمَّا ذَهَبُوا بِهِ وَأَجْمَعُوا أَن يَجْعَلُوهُ فِي غَيَابَتِ الْجُبِّ ۚ وَأَوْحَيْنَا إِلَيْهِ لَتُنَبِّئَنَّهُم بِأَمْرِهِمْ هَٰذَا وَهُمْ لَا يَشْعُرُونَ</div>
+        <div class="ref">سورة يوسف — الآية ١٥</div>
+      </div>
+      <div class="chars-line">👥 <b>إخوة يوسف</b> — حملهم الحسد على الكيد ثم ندموا وتابوا · <b>السيّارة</b> — قافلة أخرجته من البئر</div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَضْيَقُ الْمَوَاضِعِ قَدْ يَكُونُ أَوَّلَ الطَّرِيقِ لَا آخِرَهُ؛ فَالْبِشَارَةُ جَاءَتْهُ وَهُوَ فِي قَعْرِ الْبِئْرِ لَا بَعْدَ خُرُوجِهِ مِنْهَا</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage" id="stage-3" data-map="aziz">
+    <div class="stage-card">
+      <div class="stage-top"><h3>في بيت العزيز بمصر</h3><span class="stage-badge">٣ / ٨</span></div>
+      <p class="narrative">بِيعَ يُوسُفُ بِثَمَنٍ بَخْسٍ، فَاشْتَرَاهُ عَزِيزُ مِصْرَ وَأَوْصَى امْرَأَتَهُ بِإِكْرَامِهِ. وَهَكَذَا صَارَ الْبَيْعُ الَّذِي أُرِيدَ بِهِ إِذْلَالُهُ سَبَبًا لِدُخُولِهِ بَيْتَ أَعْظَمِ رَجُلٍ فِي مِصْرَ، وَبِهِ <b>مَكَّنَ اللَّهُ لَهُ فِي الْأَرْضِ وَعَلَّمَهُ تَأْوِيلَ الْأَحَادِيثِ</b>. <b>وَلَمْ يُسَمِّ الْقُرْآنُ وَلَا السُّنَّةُ الصَّحِيحَةُ الْعَزِيزَ وَلَا امْرَأَتَهُ</b>، وَمَا يُشْتَهَرُ مِنْ أَسْمَاءٍ مَصْدَرُهُ كُتُبٌ مُتَأَخِّرَةٌ لَا تَثْبُتُ.</p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="21" data-ayah-end="21">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَقَالَ الَّذِي اشْتَرَاهُ مِن مِّصْرَ لِامْرَأَتِهِ أَكْرِمِي مَثْوَاهُ عَسَىٰ أَن يَنفَعَنَا أَوْ نَتَّخِذَهُ وَلَدًا ۚ وَكَذَٰلِكَ مَكَّنَّا لِيُوسُفَ فِي الْأَرْضِ وَلِنُعَلِّمَهُ مِن تَأْوِيلِ الْأَحَادِيثِ ۚ وَاللَّهُ غَالِبٌ عَلَىٰ أَمْرِهِ وَلَٰكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ</div>
+        <div class="ref">سورة يوسف — الآية ٢١</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مَا يَبْدُو نُزُولًا فِي الظَّاهِرِ قَدْ يَكُونُ رَفْعًا فِي الْحَقِيقَةِ؛ فَاللَّهُ غَالِبٌ عَلَى أَمْرِهِ وَإِنْ خَفِيَ التَّدْبِيرُ عَلَى النَّاسِ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span>
+        <span class="source-chip">⚠️ لا تسمية ثابتة للعزيز وامرأته</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage" id="stage-4" data-map="aziz">
+    <div class="stage-card">
+      <div class="stage-top"><h3>المراودة والعصمة</h3><span class="stage-badge">٤ / ٨</span></div>
+      <p class="narrative">رَاوَدَتْهُ الَّتِي هُوَ فِي بَيْتِهَا عَنْ نَفْسِهِ وَغَلَّقَتِ الْأَبْوَابَ، فَاجْتَمَعَ عَلَيْهِ الشَّبَابُ وَالْغُرْبَةُ وَالْخَلْوَةُ وَالدَّعْوَةُ، وَلَيْسَ مَعَهُ مَنْ يَرَاهُ. فَلَمْ يَكُنْ جَوَابُهُ تَرَدُّدًا وَلَا مُسَاوَمَةً، بَلْ لَجَأَ إِلَى اللَّهِ أَوَّلًا ثُمَّ ذَكَرَ حَقَّ مَنْ أَكْرَمَ مَثْوَاهُ.</p>
+      <div class="dialogue">
+        <div class="line son"><span class="who">قَوْلُهَا</span>هَيْتَ لَكَ</div>
+        <div class="line ib"><span class="who">جَوَابُ يُوسُفَ</span>مَعَاذَ اللَّهِ، إِنَّهُ رَبِّي أَحْسَنَ مَثْوَايَ، إِنَّهُ لَا يُفْلِحُ الظَّالِمُونَ</div>
+      </div>
+      <p class="narrative"><b>وَأَمَّا قَوْلُهُ تَعَالَى وَهَمَّ بِهَا فَجَوَابُ لَوْلَا فِيهِ مَحْذُوفٌ</b>، وَالْمَعْنَى عِنْدَ الْمُحَقِّقِينَ وَمِنْهُمُ ابْنُ كَثِيرٍ: لَوْلَا أَنْ رَأَى بُرْهَانَ رَبِّهِ لَهَمَّ — فَالْهَمُّ لَمْ يَقَعْ، وَالْآيَةُ سِيقَتْ فِي مَقَامِ الثَّنَاءِ عَلَيْهِ لَا الذَّمِّ. <b>وَمَا يُذْكَرُ فِي بَعْضِ الْكُتُبِ مِنْ تَفَاصِيلَ فِي هَذَا الْمَوْضِعِ فَهُوَ مِنَ الْإِسْرَائِيلِيَّاتِ الْمَرْدُودَةِ</b>، وَالْأَنْبِيَاءُ مَعْصُومُونَ.</p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="23" data-ayah-end="23">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَرَاوَدَتْهُ الَّتِي هُوَ فِي بَيْتِهَا عَن نَّفْسِهِ وَغَلَّقَتِ الْأَبْوَابَ وَقَالَتْ هَيْتَ لَكَ ۚ قَالَ مَعَاذَ اللَّهِ ۖ إِنَّهُ رَبِّي أَحْسَنَ مَثْوَايَ ۖ إِنَّهُ لَا يُفْلِحُ الظَّالِمُونَ</div>
+        <div class="ref">سورة يوسف — الآية ٢٣</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَوَّلُ سِلَاحِكَ عِنْدَ الْفِتْنَةِ الِالْتِجَاءُ إِلَى اللَّهِ لَا قُوَّةُ نَفْسِكَ؛ قَالَ مَعَاذَ اللَّهِ قَبْلَ أَنْ يَذْكُرَ أَيَّ سَبَبٍ آخَرَ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة يوسف ٢٣-٢٤</span>
+        <span class="source-chip">⚠️ تفاصيل الهمّ إسرائيليات مردودة</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="stage" id="stage-5" data-map="sijn">
+    <div class="stage-card">
+      <div class="stage-top"><h3>السجن أحبّ إليّ</h3><span class="stage-badge">٥ / ٨</span></div>
+      <p class="narrative">لَمَّا ظَهَرَتْ بَرَاءَتُهُ وَلَمْ يَنْفَعْهُ ظُهُورُهَا، وَأَصْرَرْنَ عَلَى دَعْوَتِهِ إِلَى مَا يَكْرَهُ، اخْتَارَ السِّجْنَ عَلَى الْمَعْصِيَةِ اخْتِيَارًا صَرِيحًا. ثُمَّ لَمْ يَثِقْ بِنَفْسِهِ بَعْدَ اخْتِيَارِهِ، بَلْ سَأَلَ رَبَّهُ أَنْ يَصْرِفَ عَنْهُ كَيْدَهُنَّ، مُعْتَرِفًا بِأَنَّهُ إِنْ وُكِلَ إِلَى نَفْسِهِ طَرْفَةَ عَيْنٍ هَلَكَ.</p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="33" data-ayah-end="33">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">قَالَ رَبِّ السِّجْنُ أَحَبُّ إِلَيَّ مِمَّا يَدْعُونَنِي إِلَيْهِ ۖ وَإِلَّا تَصْرِفْ عَنِّي كَيْدَهُنَّ أَصْبُ إِلَيْهِنَّ وَأَكُن مِّنَ الْجَاهِلِينَ</div>
+        <div class="ref">سورة يوسف — الآية ٣٣</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اخْتَرِ الضَّرَرَ الْأَدْنَى عَلَى الْمَعْصِيَةِ، ثُمَّ لَا تَثِقْ بِعَزْمِكَ وَحْدَهُ؛ فَبَعْدَ أَنِ اخْتَارَ السِّجْنَ سَأَلَ اللَّهَ أَنْ يَصْرِفَ عَنْهُ لَا أَنْ يُقَوِّيَهُ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 6 -->
+  <div class="stage" id="stage-6" data-map="sijn">
+    <div class="stage-card">
+      <div class="stage-top"><h3>الدعوة في السجن</h3><span class="stage-badge">٦ / ٨</span></div>
+      <p class="narrative">دَخَلَ مَعَهُ السِّجْنَ فَتَيَانِ، فَسَأَلَاهُ تَأْوِيلَ رُؤْيَيَيْهِمَا. فَلَمْ يُعَجِّلْ بِالْجَوَابِ، بَلِ اغْتَنَمَ إِقْبَالَهُمَا عَلَيْهِ فَدَعَاهُمَا إِلَى التَّوْحِيدِ أَوَّلًا، وَعَرَضَ عَلَيْهِمَا سُؤَالًا تَنْحَلُّ بِهِ الْمَسْأَلَةُ كُلُّهَا: أَآلِهَةٌ شَتَّى خَيْرٌ أَمْ إِلَهٌ وَاحِدٌ قَهَّارٌ؟ ثُمَّ بَيَّنَ أَنَّ آلِهَتَهُمْ أَسْمَاءٌ لَا حَقَائِقَ تَحْتَهَا.</p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="39" data-ayah-end="40">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">يَا صَاحِبَيِ السِّجْنِ أَأَرْبَابٌ مُّتَفَرِّقُونَ خَيْرٌ أَمِ اللَّهُ الْوَاحِدُ الْقَهَّارُ ۝ مَا تَعْبُدُونَ مِن دُونِهِ إِلَّا أَسْمَاءً سَمَّيْتُمُوهَا أَنتُمْ وَآبَاؤُكُم مَّا أَنزَلَ اللَّهُ بِهَا مِن سُلْطَانٍ ۚ إِنِ الْحُكْمُ إِلَّا لِلَّهِ ۚ أَمَرَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ ۚ ذَٰلِكَ الدِّينُ الْقَيِّمُ وَلَٰكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ</div>
+        <div class="ref">سورة يوسف — الآيتان ٣٩-٤٠</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا يَمْنَعُكَ ضِيقُ حَالِكَ أَنْ تَنْفَعَ مَنْ حَوْلَكَ؛ دَعَا إِلَى اللَّهِ وَهُوَ سَجِينٌ، وَاغْتَنَمَ حَاجَةَ النَّاسِ إِلَيْهِ لِهِدَايَتِهِمْ لَا لِمَنْفَعَتِهِ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 7 -->
+  <div class="stage" id="stage-7" data-map="khazain">
+    <div class="stage-card">
+      <div class="stage-top"><h3>على خزائن الأرض</h3><span class="stage-badge">٧ / ٨</span></div>
+      <p class="narrative">رَأَى الْمَلِكُ رُؤْيَا أَعْجَزَتْ أَهْلَ زَمَانِهِ، فَذُكِرَ لَهُ يُوسُفُ فَأَوَّلَهَا وَزَادَ عَلَى التَّأْوِيلِ خُطَّةَ عَمَلٍ لِسِنِي الْجَدْبِ. وَلَمْ يَخْرُجْ مِنَ السِّجْنِ حَتَّى تَثْبُتَ بَرَاءَتُهُ أَمَامَ النَّاسِ. ثُمَّ طَلَبَ الْوِلَايَةَ عَلَى الْخَزَائِنِ لَا طَلَبَ جَاهٍ، بَلْ لِأَنَّهُ يَعْلَمُ مِنْ نَفْسِهِ الْأَمَانَةَ وَالْكَفَاءَةَ: <b>حَفِيظٌ عَلِيمٌ</b>. <b>وَلَمْ يُسَمِّ الْقُرْآنُ الْمَلِكَ وَلَا حَدَّدَ مُدَّةَ سِجْنِهِ بِنَصٍّ صَحِيحٍ.</b></p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="55" data-ayah-end="55">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">قَالَ اجْعَلْنِي عَلَىٰ خَزَائِنِ الْأَرْضِ ۖ إِنِّي حَفِيظٌ عَلِيمٌ</div>
+        <div class="ref">سورة يوسف — الآية ٥٥</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا تَطْلُبِ الْمَنْصِبَ لِنَفْسِكَ، وَلَا تَقْعُدْ عَنْهُ وَأَنْتَ أَهْلُهُ وَالنَّاسُ مُحْتَاجُونَ؛ فَالْمِعْيَارُ أَمَانَةٌ وَعِلْمٌ لَا رَغْبَةٌ وَلَا زُهْدٌ فِي غَيْرِ مَوْضِعِهِ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span>
+        <span class="source-chip">⚠️ لا تسمية ثابتة للملك</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 8 -->
+  <div class="stage" id="stage-8" data-map="khazain">
+    <div class="stage-card">
+      <div class="stage-top"><h3>لا تثريب عليكم اليوم</h3><span class="stage-badge">٨ / ٨</span></div>
+      <p class="narrative">جَاءَ إِخْوَتُهُ وَهُمْ لَا يَعْرِفُونَهُ، حَتَّى إِذَا صَارَ الْأَمْرُ كُلُّهُ بِيَدِهِ وَاعْتَرَفُوا بِذَنْبِهِمْ، لَمْ يُعَاتِبْ وَلَمْ يُعَيِّرْ، بَلْ قَالَ كَلِمَتَهُ الَّتِي حَفِظَهَا النَّاسُ بَعْدَهُ: <b>لَا تَثْرِيبَ عَلَيْكُمُ الْيَوْمَ</b>. ثُمَّ جَمَعَ اللَّهُ لَهُ أَبَوَيْهِ وَإِخْوَتَهُ، فَرَفَعَ أَبَوَيْهِ عَلَى الْعَرْشِ، وَتَمَّتِ الرُّؤْيَا الَّتِي رَآهَا غُلَامًا. وَخَتَمَ دُعَاءَهُ لَا بِطَلَبِ مَزِيدٍ مِنَ الْمُلْكِ بَلْ بِسُؤَالِ حُسْنِ الْخَاتِمَةِ.</p>
+      <div class="ayah-box" data-surah="12" data-ayah-start="100" data-ayah-end="100">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَرَفَعَ أَبَوَيْهِ عَلَى الْعَرْشِ وَخَرُّوا لَهُ سُجَّدًا ۖ وَقَالَ يَا أَبَتِ هَٰذَا تَأْوِيلُ رُؤْيَايَ مِن قَبْلُ قَدْ جَعَلَهَا رَبِّي حَقًّا ۖ وَقَدْ أَحْسَنَ بِي إِذْ أَخْرَجَنِي مِنَ السِّجْنِ وَجَاءَ بِكُم مِّنَ الْبَدْوِ مِن بَعْدِ أَن نَّزَغَ الشَّيْطَانُ بَيْنِي وَبَيْنَ إِخْوَتِي ۚ إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ ۚ إِنَّهُ هُوَ الْعَلِيمُ الْحَكِيمُ</div>
+        <div class="ref">سورة يوسف — الآية ١٠٠</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَجْمَلُ مَا تَصْنَعُهُ بِقُدْرَتِكَ أَنْ تَعْفُوَ وَأَنْتَ قَادِرٌ؛ وَالْعَفْوُ عِنْدَ الْمَقْدِرَةِ أَثْقَلُ فِي الْمِيزَانِ مِنَ الِانْتِصَافِ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة يوسف</span>
+        <span class="source-chip">📖 ابن كثير — قصص الأنبياء</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<audio id="quranAudio" style="display:none"></audio>
+
+<div class="control-bar">
+  <div class="buttons">
+    <button class="ctrl" onclick="goto(1)">التالي ▶</button>
+    <button class="ctrl play" id="playBtn" onclick="toggleSpeak()">🔊 تشغيل السرد الكامل</button>
+    <button class="ctrl" onclick="goto(-1)">◀ السابق</button>
+  </div>
+  <div class="stage-dots" id="dots"></div>
+</div>
+
+<script>
+const total = 8;
+let current = 1;
+let playing = false;
+let stopRequested = false;
+const audioEl = document.getElementById('quranAudio');
+
+const dotsEl = document.getElementById('dots');
+for(let i=1;i<=total;i++){
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===1 ? ' active' : '');
+  d.textContent = i;
+  d.onclick = () => { stopPlayback(); setCurrent(i); };
+  dotsEl.appendChild(d);
+}
+
+function setCurrent(n){
+  current = Math.min(total, Math.max(1, n));
+  document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i+1===current));
+  document.querySelectorAll('.stage').forEach(s=> s.classList.remove('shown'));
+  const stageEl = document.getElementById('stage-'+current);
+  stageEl.classList.add('shown');
+  document.getElementById('stageBadge').textContent = 'المرحلة ' + toArabicNum(current) + ' من ' + toArabicNum(total);
+  document.querySelectorAll('.marker').forEach(m=> m.classList.remove('hot'));
+  const mk = document.getElementById('mk-'+stageEl.dataset.map);
+  if(mk) mk.classList.add('hot');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function toArabicNum(n){
+  const map=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return String(n).split('').map(d=>map[+d]).join('');
+}
+
+function goto(delta){
+  stopPlayback();
+  setCurrent(current+delta);
+}
+
+function pad(n,len){ return String(n).padStart(len,'0'); }
+function ayahUrl(surah,ayah){ return `https://everyayah.com/data/Husary_128kbps/${pad(surah,3)}${pad(ayah,3)}.mp3`; }
+
+/* تصفية الرموز التعبيرية قبل النطق — وإلا نطق المحرك اسم الرمز */
+function stripEmoji(text){
+  return text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}]/gu, '');
+}
+
+function speakText(text){
+  return new Promise(resolve=>{
+    if(!('speechSynthesis' in window)){ resolve(); return; }
+    const clean = stripEmoji(text).trim();
+    if(!clean){ resolve(); return; }
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang='ar-SA'; u.rate=0.92;
+    const voices = speechSynthesis.getVoices();
+    const v = voices.find(v=> v.lang && v.lang.startsWith('ar'));
+    if(v) u.voice=v;
+    u.onend=resolve; u.onerror=resolve;
+    speechSynthesis.speak(u);
+  });
+}
+
+function playUrl(url){
+  return new Promise(resolve=>{
+    audioEl.src=url;
+    audioEl.onended=resolve;
+    audioEl.onerror=resolve;
+    audioEl.play().catch(()=>resolve());
+  });
+}
+
+async function playAyahRange(surah,start,end){
+  for(let a=start; a<=end && !stopRequested; a++){
+    await playUrl(ayahUrl(surah,a));
+  }
+}
+
+function playAyahBox(btn){
+  stopPlayback();
+  const box = btn.closest('.ayah-box');
+  const s = parseInt(box.dataset.surah);
+  const a1 = parseInt(box.dataset.ayahStart);
+  const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
+  playAyahRange(s,a1,a2);
+}
+
+function buildStageSequence(stageEl){
+  const items=[];
+  stageEl.querySelectorAll('.narrative, .dialogue, .ayah-box, .lesson-box').forEach(el=>{
+    if(el.classList.contains('narrative')){
+      items.push({type:'tts', text: el.innerText});
+    } else if(el.classList.contains('dialogue')){
+      el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
+    } else if(el.classList.contains('ayah-box')){
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+    } else if(el.classList.contains('lesson-box')){
+      items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
+    }
+  });
+  return items;
+}
+
+async function playFrom(n){
+  stopRequested=false;
+  playing=true;
+  document.getElementById('playBtn').textContent='⏸ إيقاف';
+  for(let stageNum=n; stageNum<=total; stageNum++){
+    if(stopRequested) break;
+    setCurrent(stageNum);
+    const seq = buildStageSequence(document.getElementById('stage-'+stageNum));
+    for(const item of seq){
+      if(stopRequested) break;
+      if(item.type==='tts') await speakText(item.text);
+      else await playAyahRange(item.surah,item.start,item.end);
+    }
+  }
+  playing=false;
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function stopPlayback(){
+  stopRequested=true;
+  playing=false;
+  speechSynthesis.cancel();
+  audioEl.pause();
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function toggleSpeak(){
+  if(playing){ stopPlayback(); }
+  else { playFrom(current); }
+}
+
+setCurrent(1);
+
+/* يُبقي نهاية البطاقة (الدرس المستفاد والمصادر) فوق شريط التحكم دائمًا.
+   ارتفاع الشريط يتغيّر حسب عرض الشاشة لأن دوائر المراحل تلتفّ في سطرين
+   على الشاشات الضيقة، فلا تكفي قيمة ثابتة — تُقاس وقت التشغيل. */
+function syncBottomPadding(){
+  const bar = document.querySelector('.control-bar');
+  if(!bar) return;
+  document.body.style.paddingBottom = (bar.offsetHeight + 24) + 'px';
+}
+syncBottomPadding();
+window.addEventListener('resize', syncBottomPadding);
+window.addEventListener('orientationchange', syncBottomPadding);
+window.addEventListener('load', syncBottomPadding);
+/* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
+   الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+</script>
+
+</body>
+</html>
