@@ -76,33 +76,35 @@
   /* ——— حدّ الخريطة: نسبة من الشاشة وسقف مطلق معًا ———
      34vh وحدها تعني ٢٩٢ بكسل على شاشة ٨٦٠ — فتبتلع الشاشة.
      min() تجعلها تتبع الشاشة على الصغير وتتوقف عن النمو على الكبير. */
-  .map-card svg{max-height:min(20vh, 172px);}
+  .map-card svg{max-height:clamp(175px, 38vh, 340px);
+                max-width:calc(clamp(175px, 38vh, 340px) * 2.7);
+                margin-inline:auto;}
   @media (max-height: 820px){
     .hero{padding:3px 20px 2px;}
     .hero h1{font-size:clamp(17px,4.6vw,23px);}
     .hero .sub{font-size:11px;}
     .map-card{padding:6px 14px 8px;}
-    .map-card svg{max-height:19vh;}
+    .map-card svg{max-height:clamp(165px, 34vh, 300px); max-width:calc(clamp(165px, 34vh, 300px) * 2.7);}
   }
   @media (max-height: 640px){
     .topbar{padding:6px 14px;}
     .pill{padding:5px 11px; font-size:11px;}
     .hero .sub{display:none;}
-    .map-card svg{max-height:17vh;}
+    .map-card svg{max-height:clamp(150px, 30vh, 240px); max-width:calc(clamp(150px, 30vh, 240px) * 2.7);}
     .stage-overlay-badge{top:30px;}
   }
   @media (max-height: 500px){
     .hero h1{font-size:16px;}
-    .map-card svg{max-height:14vh;}
+    .map-card svg{max-height:clamp(120px, 28vh, 190px); max-width:calc(clamp(120px, 28vh, 190px) * 2.7);}
     .map-card .map-top{font-size:11px; margin-bottom:3px;}
   }
 
-  .control-bar{position:fixed; bottom:0; left:0; right:0; z-index:20; background:#0C1712; border-top:1px solid var(--panel-border); padding:7px 12px calc(6px + env(safe-area-inset-bottom, 0px));}
-  .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:6px;}
-  .ctrl{background:var(--panel); border:1px solid var(--panel-border); color:var(--text); border-radius:999px; padding:6px 12px; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer;}
-  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:7px 17px;}
+  .control-bar{position:fixed; bottom:0; left:0; right:0; z-index:20; background:#0C1712; border-top:1px solid var(--panel-border); padding:5px 12px calc(5px + env(safe-area-inset-bottom, 0px));}
+  .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:4px;}
+  .ctrl{background:var(--panel); border:1px solid var(--panel-border); color:var(--text); border-radius:999px; padding:6px 13px; font-family:inherit; font-size:12px; line-height:1.15; font-weight:700; cursor:pointer;}
+  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:7px 19px;}
   .stage-dots{display:flex; justify-content:center; gap:5px; flex-wrap:wrap;}
-  .dot{width:19px; height:19px; border-radius:50%; border:1px solid var(--panel-border); background:var(--panel-2); color:var(--text-muted); font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .dot{width:18px; height:18px; border-radius:50%; line-height:1; border:1px solid var(--panel-border); background:var(--panel-2); color:var(--text-muted); font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;}
   .dot.active{background:var(--gold-soft); color:#1A1405; border:none;}
 </style>
 </head>
