@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص الأنبياء — لوط عليه السلام</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D0A; --panel:#0F231A; --panel-2:#0C1A13; --panel-border:rgba(217,167,59,.28);
+    --gold:#D9A73B; --gold-soft:#E8C874; --text:#ECE8DC; --text-muted:#9C9686; --green-deep:#0B3324;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{font-family:'Cairo', sans-serif; background:var(--bg); color:var(--text); line-height:1.85; padding-bottom:90px;}
+  .sticky-head{position:sticky; top:0; z-index:20; background:var(--bg); border-bottom:1px solid var(--panel-border);}
+  .topbar{display:flex; align-items:center; justify-content:space-between; padding:10px 18px;}
+  .pill{font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);}
+  .pill.gold{background:var(--gold-soft); color:#1A1405; border:none;}
+  .hero{text-align:center; padding:6px 20px 4px;}
+  .hero h1{font-size:clamp(20px,6vw,28px); font-weight:800; color:var(--gold-soft); text-shadow:0 0 14px rgba(217,167,59,.25);}
+  .hero .sub{font-size:12px; color:var(--text-muted); margin-top:2px;}
+  .map-card{position:relative; background:var(--panel); padding:10px 14px 12px;}
+  .map-card .map-top{display:flex; justify-content:flex-start; align-items:center; margin-bottom:6px; font-size:12.5px; color:var(--gold-soft); font-weight:700;}
+  .map-card svg{display:block; width:100%; height:auto; max-height:34vh;}
+  .marker{opacity:.4; transition:opacity .35s ease;}
+  .marker.hot{opacity:1; animation:blinkMarker 1.3s ease-in-out infinite;}
+  @keyframes blinkMarker{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  .marker.hot circle, .marker.hot rect, .marker.hot path{filter:drop-shadow(0 0 6px rgba(217,167,59,.9));}
+  .stage-overlay-badge{position:absolute; top:38px; left:20px; background:rgba(12,26,19,.85); border:1px solid var(--panel-border); border-radius:8px; padding:5px 10px; font-size:11px; color:var(--text-muted); font-weight:700;}
+  main{max-width:760px; margin:0 auto; padding:16px 16px 10px;}
+  .stage{display:none;}
+  .stage.shown{display:block;}
+  .stage-card{background:var(--panel); border:1px solid var(--panel-border); border-radius:14px; padding:18px 16px;}
+  .stage-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .stage-badge{font-size:11px; font-weight:700; color:#1A1405; background:var(--gold-soft); padding:4px 12px; border-radius:999px;}
+  .stage-card h3{font-size:17px; font-weight:800; color:var(--text); margin-bottom:10px;}
+  .narrative{font-size:14.5px; color:var(--text); opacity:.92; margin-bottom:14px;}
+  .narrative b{color:var(--gold-soft); font-weight:700;}
+  .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
+  .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
+  .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
+  .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
+  .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
+  .lesson-box p{font-size:13px;}
+  .sources-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .source-chip{font-size:11px; color:var(--text-muted); background:var(--panel-2); border:1px solid var(--panel-border); border-radius:999px; padding:5px 12px;}
+  .control-bar{position:fixed; bottom:0; left:0; right:0; z-index:20; background:#0C1712; border-top:1px solid var(--panel-border); padding:10px 14px 8px;}
+  .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px;}
+  .ctrl{background:var(--panel); border:1px solid var(--panel-border); color:var(--text); border-radius:999px; padding:8px 14px; font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer;}
+  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:9px 20px;}
+  .stage-dots{display:flex; justify-content:center; gap:6px; flex-wrap:wrap;}
+  .dot{width:22px; height:22px; border-radius:50%; border:1px solid var(--panel-border); background:var(--panel-2); color:var(--text-muted); font-size:10.5px; font-weight:700; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+  .dot.active{background:var(--gold-soft); color:#1A1405; border:none;}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+  <div class="topbar">
+    <span class="pill gold">English</span>
+    <a class="pill" href="index.html" style="text-decoration:none;">→ لوط عليه السلام ← الرئيسية</a>
+  </div>
+  <div class="hero">
+    <h1>قصة لوط عليه السلام</h1>
+    <p class="sub">سدوم — حين تصبح الفاحشة عُرفًا علنيًا</p>
+  </div>
+  <div class="map-card">
+    <div class="map-top"><span>خريطة رحلة لوط عليه السلام 🗺️</span></div>
+    <span class="stage-overlay-badge" id="stageBadge">المرحلة ١ من ٦</span>
+    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgmap" cx="50%" cy="35%" r="80%">
+          <stop offset="0%" stop-color="#211a10"/>
+          <stop offset="100%" stop-color="#0D0A06"/>
+        </radialGradient>
+      </defs>
+      <rect width="700" height="260" fill="url(#bgmap)"/>
+      <path d="M22 40 L32 55 L22 70 L12 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+      <path d="M22 78 L30 90 L22 102 L14 90 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".3"/>
+      <path d="M678 40 L688 55 L678 70 L668 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+      <g opacity=".55">
+        <path d="M30 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M52 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+      <g opacity=".55">
+        <path d="M670 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M648 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+
+      <ellipse cx="360" cy="180" rx="180" ry="20" fill="#1E4A5C" opacity=".35"/>
+
+      <g class="marker" id="mk-village">
+        <rect x="270" y="150" width="20" height="20" fill="#D9A73B" opacity=".85"/>
+        <rect x="300" y="145" width="20" height="25" fill="#D9A73B" opacity=".85"/>
+        <rect x="330" y="152" width="18" height="18" fill="#D9A73B" opacity=".85"/>
+        <text x="310" y="195" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">سَدُوم</text>
+        <text x="310" y="209" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo">غور الأردن</text>
+      </g>
+
+      <g class="marker" id="mk-house">
+        <path d="M440 168 L455 150 L470 168 Z" fill="none" stroke="#E8C874" stroke-width="2"/>
+        <rect x="447" y="168" width="16" height="14" fill="none" stroke="#E8C874" stroke-width="1.5"/>
+        <text x="455" y="196" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">بيت لوط</text>
+        <text x="455" y="210" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo">نزول الضيوف</text>
+      </g>
+
+      <g class="marker" id="mk-ruins">
+        <path d="M540 190 L560 155 L580 190 Z" fill="#5A3A2A" opacity=".6"/>
+        <line x1="548" y1="182" x2="565" y2="163" stroke="#0D0A06" stroke-width="2"/>
+        <path d="M575 195 L598 158 L615 195 Z" fill="#5A3A2A" opacity=".6"/>
+        <line x1="582" y1="188" x2="600" y2="170" stroke="#0D0A06" stroke-width="2"/>
+        <text x="577" y="215" text-anchor="middle" font-size="12.5" fill="#7FA8BD" font-family="Cairo" font-weight="700">القرية المقلوبة</text>
+      </g>
+
+      <circle cx="655" cy="35" r="16" fill="#0F231A" stroke="#D9A73B" stroke-width="1"/>
+      <text x="655" y="40" text-anchor="middle" font-size="11" fill="#E8C874" font-family="Cairo" font-weight="700">ش</text>
+    </svg>
+  </div>
+</div>
+
+<main>
+
+  <div class="stage" id="stage-1" data-map="village">
+    <div class="stage-card">
+      <div class="stage-top"><h3>النشأة والإرسال</h3><span class="stage-badge">١ / ٦</span></div>
+      <p class="narrative">كَانَ لُوطٌ عَلَيْهِ السَّلَامُ ابْنَ أَخِي إِبْرَاهِيمَ، آمَنَ بِهِ وَهَاجَرَ مَعَهُ، ثُمَّ أَرْسَلَهُ اللَّهُ إِلَى أَهْلِ سَدُومَ فِي غَوْرِ الْأُرْدُنِّ، وَكَانُوا أَوَّلَ مَنِ ابْتَدَعَ فَاحِشَةَ إِتْيَانِ الرِّجَالِ دُونَ النِّسَاءِ.</p>
+      <div class="ayah-box" data-surah="7" data-ayah-start="80" data-ayah-end="80">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَلُوطًا إِذْ قَالَ لِقَوْمِهِ أَتَأْتُونَ الْفَاحِشَةَ مَا سَبَقَكُم بِهَا مِنْ أَحَدٍ مِّنَ الْعَالَمِينَ</div>
+        <div class="ref">سورة الأعراف — الآية ٨٠</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اِبْتِدَاعُ الْفَاحِشَةِ جَرِيمَةٌ تَحْمِلُ صَاحِبَهَا وِزْرَهَا وَوِزْرَ مَنِ اقْتَدَى بِهِ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الأعراف</span></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-2" data-map="village">
+    <div class="stage-card">
+      <div class="stage-top"><h3>إنذارهم وتماديهم</h3><span class="stage-badge">٢ / ٦</span></div>
+      <p class="narrative">وَبَّخَهُمْ لُوطٌ عَلَى فِعْلَتِهِمُ الشَّنِيعَةِ، وَعَلَى قَطْعِهِمُ الطَّرِيقَ عَلَى الْمُسَافِرِينَ، وَارْتِكَابِهِمُ الْمُنْكَرَ عَلَانِيَةً فِي مَجَالِسِهِمْ، فَلَمْ يَكُنْ جَوَابُهُمْ إِلَّا الِاسْتِهْزَاءَ وَطَلَبَ تَعْجِيلِ الْعَذَابِ.</p>
+      <div class="ayah-box" data-surah="29" data-ayah-start="29" data-ayah-end="29">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">أَئِنَّكُمْ لَتَأْتُونَ الرِّجَالَ وَتَقْطَعُونَ السَّبِيلَ وَتَأْتُونَ فِي نَادِيكُمُ الْمُنكَرَ ۖ فَمَا كَانَ جَوَابَ قَوْمِهِ إِلَّا أَن قَالُوا ائْتِنَا بِعَذَابِ اللَّهِ إِن كُنتَ مِنَ الصَّادِقِينَ</div>
+        <div class="ref">سورة العنكبوت — الآية ٢٩</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اِسْتِعْجَالُ الْمُكَذِّبِينَ لِلْعَذَابِ دَلِيلٌ عَلَى خَتْمِ قُلُوبِهِمْ لَا عَلَى قُوَّةِ حُجَّتِهِمْ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة العنكبوت</span></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-3" data-map="village">
+    <div class="stage-card">
+      <div class="stage-top"><h3>تهديدهم بإخراجه</h3><span class="stage-badge">٣ / ٦</span></div>
+      <p class="narrative">لَمْ يَكْتَفُوا بِالتَّكْذِيبِ، بَلْ هَدَّدُوا لُوطًا وَأَهْلَهُ وَمَنْ آمَنَ مَعَهُ بِالطَّرْدِ مِنْ قَرْيَتِهِمْ، سَاخِرِينَ مِنْ طَهَارَتِهِ وَطَهَارَةِ أَهْلِهِ، وَجَاعِلِينَ الْعِفَّةَ عَيْبًا يَسْتَحِقُّ الْعِقَابَ عَلَيْهِ.</p>
+      <div class="ayah-box" data-surah="27" data-ayah-start="56" data-ayah-end="56">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">فَمَا كَانَ جَوَابَ قَوْمِهِ إِلَّا أَن قَالُوا أَخْرِجُوا آلَ لُوطٍ مِّن قَرْيَتِكُمْ ۖ إِنَّهُمْ أُنَاسٌ يَتَطَهَّرُونَ</div>
+        <div class="ref">سورة النمل — الآية ٥٦</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>قَدْ يُعَيَّرُ أَهْلُ الصَّلَاحِ بِصَلَاحِهِمْ عِنْدَ أَهْلِ الْفَسَادِ، وَهَذَا شَرَفٌ لَا عَارٌ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة النمل</span></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-4" data-map="house">
+    <div class="stage-card">
+      <div class="stage-top"><h3>مجيء الملائكة أضيافًا</h3><span class="stage-badge">٤ / ٦</span></div>
+      <p class="narrative">نَزَلَ عَلَيْهِ ضُيُوفٌ مِنَ الْمَلَائِكَةِ فِي صُورَةِ شَبَابٍ حِسَانٍ، فَضَاقَ بِهِمْ لُوطٌ ذَرْعًا خَشْيَةَ أَنْ يَقْصِدَهُمْ قَوْمُهُ بِالسُّوءِ، وَهَمَّ قَوْمُهُ فِعْلًا بِمُرَاوَدَتِهِمْ عَنْ ضَيْفِهِ، فَتَمَنَّى لَوْ أَنَّ لَهُ بِهِمْ قُوَّةً يَدْفَعُهُمْ بِهَا.</p>
+      <div class="ayah-box" data-surah="11" data-ayah-start="80" data-ayah-end="80">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">قَالَ لَوْ أَنَّ لِي بِكُمْ قُوَّةً أَوْ آوِي إِلَىٰ رُكْنٍ شَدِيدٍ</div>
+        <div class="ref">سورة هود — الآية ٨٠</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>حِرْصُ الْمُؤْمِنِ عَلَى حِمَايَةِ ضَيْفِهِ وَحُرْمَتِهِ حَتَّى فِي أَضْعَفِ حَالَاتِهِ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة هود</span></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-5" data-map="house">
+    <div class="stage-card">
+      <div class="stage-top"><h3>إنجاؤه وأهله إلا امرأته</h3><span class="stage-badge">٥ / ٦</span></div>
+      <p class="narrative">كَشَفَ الْمَلَائِكَةُ لِلُوطٍ حَقِيقَتَهُمْ، وَطَمْأَنُوهُ أَنَّ قَوْمَهُ لَنْ يَصِلُوا إِلَيْهِ، وَأَمَرُوهُ أَنْ يَخْرُجَ بِأَهْلِهِ فِي جَوْفِ اللَّيْلِ دُونَ أَنْ يَلْتَفِتَ مِنْهُمْ أَحَدٌ، إِلَّا امْرَأَتَهُ فَإِنَّهَا سَتُصِيبُهَا عُقُوبَةُ قَوْمِهَا لِأَنَّهَا كَانَتْ تُظَاهِرُهُمْ عَلَيْهِ بِإِفْشَاءِ سِرِّهِ لَا بِفَاحِشَةٍ مِنْهَا.</p>
+      <div class="ayah-box" data-surah="11" data-ayah-start="81" data-ayah-end="81">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">قَالُوا يَا لُوطُ إِنَّا رُسُلُ رَبِّكَ لَن يَصِلُوا إِلَيْكَ ۖ فَأَسْرِ بِأَهْلِكَ بِقِطْعٍ مِّنَ اللَّيْلِ وَلَا يَلْتَفِتْ مِنكُمْ أَحَدٌ إِلَّا امْرَأَتَكَ ۖ إِنَّهُ مُصِيبُهَا مَا أَصَابَهُمْ ۚ إِنَّ مَوْعِدَهُمُ الصُّبْحُ ۚ أَلَيْسَ الصُّبْحُ بِقَرِيبٍ</div>
+        <div class="ref">سورة هود — الآية ٨١</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>خِيَانَةُ الزَّوْجَةِ أَوِ الزَّوْجِ لِدِينِهِمَا أَشَدُّ خَطَرًا مِنْ خِيَانَتِهِمَا بِالْفَاحِشَةِ نَفْسِهَا</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة هود، وسورة التحريم</span></div>
+    </div>
+  </div>
+
+  <div class="stage" id="stage-6" data-map="ruins">
+    <div class="stage-card">
+      <div class="stage-top"><h3>الهلاك وختام القصة</h3><span class="stage-badge">٦ / ٦</span></div>
+      <p class="narrative">لَمَّا جَاءَ أَمْرُ اللَّهِ جَعَلَ اللَّهُ قَرْيَتَهُمْ عَالِيَهَا سَافِلَهَا، فَقَلَبَهَا رَأْسًا عَلَى عَقِبٍ، وَأَمْطَرَ عَلَيْهَا حِجَارَةً مِنْ طِينٍ مُتَتَابِعَةً، فَكَانَتْ عَاقِبَتُهُمْ عِبْرَةً لِمَنْ يَعْتَبِرُ.</p>
+      <div class="ayah-box" data-surah="11" data-ayah-start="82" data-ayah-end="82">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">فَلَمَّا جَاءَ أَمْرُنَا جَعَلْنَا عَالِيَهَا سَافِلَهَا وَأَمْطَرْنَا عَلَيْهَا حِجَارَةً مِّن سِجِّيلٍ مَّنضُودٍ</div>
+        <div class="ref">سورة هود — الآية ٨٢</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>عُقُوبَةُ الْفَاحِشَةِ الْجَمَاعِيَّةِ قَدْ تَكُونُ عُقُوبَةً جَمَاعِيَّةً شَامِلَةً، لَا فَرْدِيَّةً فَقَطْ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة هود</span></div>
+    </div>
+  </div>
+
+</main>
+
+<audio id="quranAudio" style="display:none"></audio>
+
+<div class="control-bar">
+  <div class="buttons">
+    <button class="ctrl" onclick="goto(1)">التالي ▶</button>
+    <button class="ctrl play" id="playBtn" onclick="toggleSpeak()">🔊 تشغيل السرد الكامل</button>
+    <button class="ctrl" onclick="goto(-1)">◀ السابق</button>
+  </div>
+  <div class="stage-dots" id="dots"></div>
+</div>
+
+<script>
+const total = 6;
+let current = 1;
+let playing = false;
+let stopRequested = false;
+const audioEl = document.getElementById('quranAudio');
+
+const dotsEl = document.getElementById('dots');
+for(let i=1;i<=total;i++){
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===1 ? ' active' : '');
+  d.textContent = i;
+  d.onclick = () => { stopPlayback(); setCurrent(i); };
+  dotsEl.appendChild(d);
+}
+
+function setCurrent(n){
+  current = Math.min(total, Math.max(1, n));
+  document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i+1===current));
+  document.querySelectorAll('.stage').forEach(s=> s.classList.remove('shown'));
+  const stageEl = document.getElementById('stage-'+current);
+  stageEl.classList.add('shown');
+  document.getElementById('stageBadge').textContent = 'المرحلة ' + toArabicNum(current) + ' من ' + toArabicNum(total);
+  document.querySelectorAll('.marker').forEach(m=> m.classList.remove('hot'));
+  const mk = document.getElementById('mk-'+stageEl.dataset.map);
+  if(mk) mk.classList.add('hot');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function toArabicNum(n){
+  const map=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return String(n).split('').map(d=>map[+d]).join('');
+}
+
+function goto(delta){ stopPlayback(); setCurrent(current+delta); }
+
+function pad(n,len){ return String(n).padStart(len,'0'); }
+function ayahUrl(surah,ayah){ return `https://everyayah.com/data/Husary_128kbps/${pad(surah,3)}${pad(ayah,3)}.mp3`; }
+
+function speakText(text){
+  return new Promise(resolve=>{
+    if(!('speechSynthesis' in window)){ resolve(); return; }
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang='ar-SA'; u.rate=0.92;
+    const voices = speechSynthesis.getVoices();
+    const v = voices.find(v=> v.lang && v.lang.startsWith('ar'));
+    if(v) u.voice=v;
+    u.onend=resolve; u.onerror=resolve;
+    speechSynthesis.speak(u);
+  });
+}
+
+function playUrl(url){
+  return new Promise(resolve=>{
+    audioEl.src=url;
+    audioEl.onended=resolve;
+    audioEl.onerror=resolve;
+    audioEl.play().catch(()=>resolve());
+  });
+}
+
+async function playAyahRange(surah,start,end){
+  for(let a=start; a<=end && !stopRequested; a++){
+    await playUrl(ayahUrl(surah,a));
+  }
+}
+
+function playAyahBox(btn){
+  stopPlayback();
+  const box = btn.closest('.ayah-box');
+  const s = parseInt(box.dataset.surah);
+  const a1 = parseInt(box.dataset.ayahStart);
+  const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
+  playAyahRange(s,a1,a2);
+}
+
+function buildStageSequence(stageEl){
+  const items=[];
+  stageEl.querySelectorAll('.narrative, .dialogue, .ayah-box, .lesson-box').forEach(el=>{
+    if(el.classList.contains('narrative')){
+      items.push({type:'tts', text: el.innerText});
+    } else if(el.classList.contains('dialogue')){
+      el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
+    } else if(el.classList.contains('ayah-box')){
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+    } else if(el.classList.contains('lesson-box')){
+      items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
+    }
+  });
+  return items;
+}
+
+async function playFrom(n){
+  stopRequested=false;
+  playing=true;
+  document.getElementById('playBtn').textContent='⏸ إيقاف';
+  for(let stageNum=n; stageNum<=total; stageNum++){
+    if(stopRequested) break;
+    setCurrent(stageNum);
+    const seq = buildStageSequence(document.getElementById('stage-'+stageNum));
+    for(const item of seq){
+      if(stopRequested) break;
+      if(item.type==='tts') await speakText(item.text);
+      else await playAyahRange(item.surah,item.start,item.end);
+    }
+  }
+  playing=false;
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function stopPlayback(){
+  stopRequested=true;
+  playing=false;
+  speechSynthesis.cancel();
+  audioEl.pause();
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function toggleSpeak(){
+  if(playing){ stopPlayback(); }
+  else { playFrom(current); }
+}
+
+setCurrent(1);
+</script>
+
+</body>
+</html>

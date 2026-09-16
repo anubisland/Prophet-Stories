@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص الأنبياء — المقدمة</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D0A; --panel:#0F231A; --panel-2:#0C1A13; --panel-border:rgba(217,167,59,.28);
+    --gold:#D9A73B; --gold-soft:#E8C874; --text:#ECE8DC; --text-muted:#9C9686;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Cairo', sans-serif; background:var(--bg); color:var(--text); line-height:1.85; padding-bottom:80px;}
+  .topbar{display:flex; align-items:center; justify-content:space-between; padding:12px 18px; border-bottom:1px solid var(--panel-border);}
+  .pill{font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);}
+  .pill.gold{background:var(--gold-soft); color:#1A1405; border:none;}
+
+  .hero{text-align:center; padding:40px 24px 30px; position:relative; overflow:hidden;}
+  .hero::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 20%, rgba(217,167,59,.12), transparent 60%);
+  }
+  .hero .eyebrow{font-size:13px; color:var(--gold-soft); font-weight:700; margin-bottom:10px;}
+  .hero h1{font-size:clamp(28px,8vw,42px); font-weight:800; color:var(--gold-soft); text-shadow:0 0 20px rgba(217,167,59,.3); margin-bottom:12px;}
+  .hero p.tag{max-width:480px; margin:0 auto; font-size:14.5px; color:var(--text-muted);}
+  .divider{width:70px; height:2px; background:var(--gold-soft); margin:18px auto;}
+
+  main{max-width:720px; margin:0 auto; padding:0 18px;}
+
+  .card{background:var(--panel); border:1px solid var(--panel-border); border-radius:16px; padding:22px 20px; margin-bottom:18px;}
+  .card h2{font-size:17px; font-weight:800; color:var(--gold-soft); margin-bottom:12px; display:flex; align-items:center; gap:8px;}
+  .card p{font-size:14px; color:var(--text); opacity:.92; margin-bottom:10px;}
+  .card p:last-child{margin-bottom:0;}
+
+  .sources-grid{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+  .src-chip{font-size:12px; color:var(--text); background:var(--panel-2); border:1px solid var(--panel-border); border-radius:999px; padding:6px 14px;}
+  .src-chip.avoid{color:#D98B6B; border-color:rgba(217,139,107,.4);}
+
+  .cta{text-align:center; padding:20px 0 10px;}
+  .cta a{
+    display:inline-block; background:var(--gold-soft); color:#1A1405; font-weight:800;
+    font-size:16px; padding:14px 40px; border-radius:999px; text-decoration:none;
+  }
+  .cta p{font-size:12px; color:var(--text-muted); margin-top:10px;}
+
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+
+  .control-bar{position:fixed; bottom:0; left:0; right:0; z-index:20; background:#0C1712; border-top:1px solid var(--panel-border); padding:12px 14px; text-align:center;}
+  .ctrl{background:var(--panel); border:1px solid var(--panel-border); color:var(--text); border-radius:999px; padding:8px 14px; font-family:inherit; font-size:12.5px; font-weight:700; cursor:pointer;}
+  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:10px 26px; font-size:13px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span class="pill gold">English</span>
+  <a class="pill" href="index.html" style="text-decoration:none;">← الرئيسية</a>
+</div>
+
+<div class="hero">
+  <div class="eyebrow">سلسلة قصص الأنبياء والرسل عليهم السلام</div>
+  <h1>قصص الأنبياء</h1>
+  <div class="divider"></div>
+  <p class="tag" id="p-tag">رِحْلَةٌ مُوَثَّقَةٌ عَبْرَ حَيَاةِ الْأَنْبِيَاءِ وَالرُّسُلِ، بِالْآيَاتِ الْقُرْآنِيَّةِ وَالْخَرَائِطِ وَالسَّرْدِ الصَّوْتِيِّ، لِتَكُونَ قُدْوَةً حَيَّةً لِكُلِّ جِيلٍ</p>
+</div>
+
+<main>
+
+  <div class="card">
+    <h2 id="h-1">🎯 لِمَاذَا هَذَا التَّطْبِيقُ؟</h2>
+    <p id="p-1a">يَعِيشُ أَطْفَالُنَا وَفِتْيَانُنَا وَشَبَابُنَا الْيَوْمَ وَسْطَ زِحَامٍ مِنَ الْقُدُوَاتِ الْمُتَغَيِّرَةِ وَالْمُتَضَارِبَةِ، وَأَحْوَجُ مَا يَكُونُونَ إِلَيْهِ هُوَ نَمَاذِجُ ثَابِتَةٌ رَاسِخَةٌ يَقْتَدُونَ بِهَا فِي الصَّبْرِ وَالصِّدْقِ وَالثَّبَاتِ عَلَى الْحَقِّ.</p>
+    <p id="p-1b">قِصَصُ الْأَنْبِيَاءِ لَيْسَتْ حِكَايَاتٍ تُرْوَى لِلتَّسْلِيَةِ، بَلْ سِيَرٌ وَاقِعِيَّةٌ اخْتَارَهَا اللَّهُ بِنَفْسِهِ لِيَقُصَّهَا عَلَيْنَا، وَفِيهَا مِنَ الْعِبَرِ مَا يَبْنِي الشَّخْصِيَّةَ وَيُرَسِّخُ الْقِيَمَ فِي نُفُوسِ الصِّغَارِ قَبْلَ الْكِبَارِ.</p>
+    <p id="p-1c">هَذَا التَّطْبِيقُ يُقَدِّمُ كُلَّ قِصَّةٍ فِي هَيْئَةِ رِحْلَةٍ تَفَاعُلِيَّةٍ: مَرَاحِلُ وَاضِحَةٌ، خَرَائِطُ تُبَيِّنُ الْحَرَكَةَ وَالْمَكَانَ، سَرْدٌ صَوْتِيٌّ يُقَرِّبُ الْأَحْدَاثَ، وَآيَاتٌ قُرْآنِيَّةٌ أَصِيلَةٌ تُلَازِمُ كُلَّ مَرْحَلَةٍ، لِيَعِيشَ الْمُسْتَخْدِمُ الْقِصَّةَ لَا أَنْ يَقْرَأَهَا فَقَطْ.</p>
+  </div>
+
+  <div class="card">
+    <h2 id="h-2">📚 مَنْهَجُنَا فِي التَّوْثِيقِ</h2>
+    <p id="p-2a">كُلُّ حَرْفٍ فِي هَذَا التَّطْبِيقِ يُبْنَى عَلَى مَصَادِرَ مُوَثَّقَةٍ مِنْ تُرَاثِ أَهْلِ السُّنَّةِ وَالْجَمَاعَةِ حَصْرًا، دُونَ أَيِّ رِوَايَةٍ غَيْرِ مُسْنَدَةٍ:</p>
+    <div class="sources-grid">
+      <span class="src-chip">القرآن الكريم</span>
+      <span class="src-chip">الأحاديث الصحيحة</span>
+      <span class="src-chip">تفسير ابن كثير</span>
+      <span class="src-chip">قصص الأنبياء لابن كثير</span>
+      <span class="src-chip">موقع الدرر السنية للتحقق من الأحاديث</span>
+    </div>
+    <p id="p-2b-speak" class="sr-only">الْمَصَادِرُ الْمُعْتَمَدَةُ: الْقُرْآنُ الْكَرِيمُ، وَالْأَحَادِيثُ الصَّحِيحَةُ، وَتَفْسِيرُ ابْنِ كَثِيرٍ، وَقَصَصُ الْأَنْبِيَاءِ لِابْنِ كَثِيرٍ، وَمَوْقِعُ الدُّرَرِ السُّنِّيَّةِ لِلتَّحَقُّقِ مِنَ الْأَحَادِيثِ.</p>
+    <p style="margin-top:14px;" id="p-2c">وَنَتَجَنَّبُ تَمَامًا:</p>
+    <div class="sources-grid">
+      <span class="src-chip avoid">الإسرائيليات غير المسندة</span>
+      <span class="src-chip avoid">الروايات الضعيفة والموضوعة</span>
+    </div>
+    <p id="p-2d-speak" class="sr-only">وَنَتَجَنَّبُ تَمَامًا: الْإِسْرَائِيلِيَّاتِ غَيْرَ الْمُسْنَدَةِ، وَالرِّوَايَاتِ الضَّعِيفَةَ وَالْمَوْضُوعَةَ.</p>
+    <p style="margin-top:14px;" id="p-2e">وَحِينَ لَا يَرِدُ فِي الْقُرْآنِ أَوِ السُّنَّةِ الصَّحِيحَةِ تَفْصِيلٌ مُعَيَّنٌ (كَاسْمٍ أَوْ رَقْمٍ أَوْ حَجْمٍ)، نُنَبِّهُ إِلَى ذَلِكَ صَرَاحَةً بَدَلَ اخْتِلَاقِهِ أَوْ نَقْلِهِ عَنْ مَصْدَرٍ غَيْرِ مَوْثُوقٍ.</p>
+  </div>
+
+  <div class="cta">
+    <a href="index.html">استكشف القصص ←</a>
+    <p>اختر من الشاشة الرئيسية القصة التي تريد البدء بها — آدم، أو أي نبي أو رسول آخر</p>
+  </div>
+
+</main>
+
+<div class="control-bar">
+  <button class="ctrl play" id="playBtn" onclick="toggleSpeak()">🔊 تشغيل السرد الكامل</button>
+</div>
+
+<script>
+let playing=false, stopRequested=false;
+
+function speakText(text){
+  const clean = text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}]/gu, '').trim();
+  return new Promise(resolve=>{
+    if(!('speechSynthesis' in window)){ resolve(); return; }
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang='ar-SA'; u.rate=0.92;
+    const voices = speechSynthesis.getVoices();
+    const v = voices.find(v=> v.lang && v.lang.startsWith('ar'));
+    if(v) u.voice=v;
+    u.onend=resolve; u.onerror=resolve;
+    speechSynthesis.speak(u);
+  });
+}
+
+async function playIntro(){
+  stopRequested=false; playing=true;
+  document.getElementById('playBtn').textContent='⏸ إيقاف';
+  const ids=['p-tag','h-1','p-1a','p-1b','p-1c','h-2','p-2a','p-2b-speak','p-2c','p-2d-speak','p-2e'];
+  for(const id of ids){
+    if(stopRequested) break;
+    const el = document.getElementById(id);
+    if(el) await speakText(el.innerText);
+  }
+  playing=false;
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function toggleSpeak(){
+  if(playing){
+    stopRequested=true;
+    speechSynthesis.cancel();
+    playing=false;
+    document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+  } else {
+    playIntro();
+  }
+}
+</script>
+
+</body>
+</html>
