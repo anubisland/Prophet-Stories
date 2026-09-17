@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص الأنبياء — موسى والخضر (العبد الصالح)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D0A;
+    --panel:#0F231A;
+    --panel-2:#0C1A13;
+    --panel-border:rgba(217,167,59,.28);
+    --gold:#D9A73B;
+    --gold-soft:#E8C874;
+    --text:#ECE8DC;
+    --text-muted:#9C9686;
+    --green-deep:#0B3324;
+    --accent-son:#8B4A3C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{min-height:100%;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.85;
+    padding-bottom:calc(114px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Persistent head: topbar + hero + map, always visible */
+  .sticky-head{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--panel-border);
+  }
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 18px;
+  }
+  .pill{
+    font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px;
+    border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);
+  }
+  .pill.gold{background:var(--gold-soft); color:#1A1405; border:none;}
+
+  .hero{text-align:center; padding:6px 20px 4px;}
+  .hero h1{
+    font-size:clamp(20px,6vw,28px); font-weight:800; color:var(--gold-soft);
+    text-shadow:0 0 14px rgba(217,167,59,.25);
+  }
+  .hero .sub{font-size:12px; color:var(--text-muted); margin-top:2px;}
+
+  .map-card{
+    position:relative;
+    background:var(--panel);
+    padding:10px 14px 12px;
+  }
+  .map-card .map-top{
+    display:flex; justify-content:flex-start; align-items:center; margin-bottom:6px;
+    font-size:12.5px; color:var(--gold-soft); font-weight:700;
+  }
+  .map-card svg{display:block; width:100%; height:auto;}
+  .marker{opacity:.4; transition:opacity .35s ease;}
+  .marker.hot{opacity:1; animation:blinkMarker 1.3s ease-in-out infinite;}
+  @keyframes blinkMarker{
+    0%,100%{opacity:1;}
+    50%{opacity:.35;}
+  }
+  .marker.hot circle, .marker.hot rect{filter:drop-shadow(0 0 6px rgba(217,167,59,.9));}
+  .stage-overlay-badge{
+    position:absolute; top:38px; left:20px;
+    background:rgba(12,26,19,.85); border:1px solid var(--panel-border); border-radius:8px;
+    padding:5px 10px; font-size:11px; color:var(--text-muted); font-weight:700;
+  }
+
+  main{max-width:760px; margin:0 auto; padding:16px 16px 10px;}
+
+  /* Stage */
+  .stage{display:none;}
+  .stage.shown{display:block;}
+  .stage-card{
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:14px;
+    padding:18px 16px;
+  }
+  .stage-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .stage-badge{
+    font-size:11px; font-weight:700; color:#1A1405; background:var(--gold-soft);
+    padding:4px 12px; border-radius:999px;
+  }
+  .stage-card h3{font-size:17px; font-weight:800; color:var(--text); margin-bottom:10px;}
+  .narrative{font-size:14.5px; color:var(--text); opacity:.92; margin-bottom:14px;}
+  .narrative b{color:var(--gold-soft); font-weight:700;}
+
+  .ayah-box{
+    position:relative;
+    background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px;
+    padding:36px 16px 16px; text-align:center; margin-bottom:14px;
+  }
+  .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
+  .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-listen{
+    position:absolute; top:8px; left:10px;
+    background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
+    border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700;
+    font-family:inherit; cursor:pointer;
+  }
+
+  .dialogue{display:flex; flex-direction:column; gap:8px; margin-bottom:14px;}
+  .dialogue .line{font-size:13.5px; padding:10px 12px; border-radius:8px; max-width:88%;}
+  .dialogue .son{background:rgba(139,74,60,.18); border:1px solid rgba(139,74,60,.4); align-self:flex-start;}
+  .dialogue .ib{background:rgba(217,167,59,.1); border:1px solid var(--panel-border); align-self:flex-end;}
+  .dialogue .who{display:block; font-size:11px; color:var(--text-muted); margin-bottom:4px; font-weight:700;}
+
+  .chars-line{font-size:12px; color:var(--text-muted); margin-bottom:14px; line-height:1.7;}
+  .chars-line b{color:var(--gold-soft); font-weight:700;}
+
+  .lesson-box{
+    background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold);
+    border-radius:8px; padding:12px 14px; margin-bottom:12px;
+  }
+  .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
+  .lesson-box p{font-size:13px;}
+
+  .sources-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .source-chip{
+    font-size:11px; color:var(--text-muted); background:var(--panel-2);
+    border:1px solid var(--panel-border); border-radius:999px; padding:5px 12px;
+  }
+
+
+  /* ——— حدّ الخريطة: نسبة من الشاشة وسقف مطلق معًا ———
+     34vh وحدها تعني ٢٩٢ بكسل على شاشة ٨٦٠ — فتبتلع الشاشة.
+     min() تجعلها تتبع الشاشة على الصغير وتتوقف عن النمو على الكبير. */
+  .map-card svg{max-height:clamp(175px, 38vh, 340px);
+                max-width:calc(clamp(175px, 38vh, 340px) * 2.7);
+                margin-inline:auto;}
+  @media (max-height: 820px){
+    .hero{padding:3px 20px 2px;}
+    .hero h1{font-size:clamp(17px,4.6vw,23px);}
+    .hero .sub{font-size:11px;}
+    .map-card{padding:6px 14px 8px;}
+    .map-card svg{max-height:clamp(165px, 34vh, 300px); max-width:calc(clamp(165px, 34vh, 300px) * 2.7);}
+  }
+  @media (max-height: 640px){
+    .topbar{padding:6px 14px;}
+    .pill{padding:5px 11px; font-size:11px;}
+    .hero .sub{display:none;}
+    .map-card svg{max-height:clamp(150px, 30vh, 240px); max-width:calc(clamp(150px, 30vh, 240px) * 2.7);}
+    .stage-overlay-badge{top:30px;}
+  }
+  @media (max-height: 500px){
+    .hero h1{font-size:16px;}
+    .map-card svg{max-height:clamp(120px, 28vh, 190px); max-width:calc(clamp(120px, 28vh, 190px) * 2.7);}
+    .map-card .map-top{font-size:11px; margin-bottom:3px;}
+  }
+
+  .control-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:20;
+    background:#0C1712; border-top:1px solid var(--panel-border);
+    padding:5px 12px calc(5px + env(safe-area-inset-bottom, 0px));
+  }
+  .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:4px;}
+  .ctrl{
+    background:var(--panel); border:1px solid var(--panel-border); color:var(--text);
+    border-radius:999px; padding:6px 13px; font-family:inherit; font-size:12px; line-height:1.15;
+    font-weight:700; cursor:pointer;
+  }
+  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:7px 19px;}
+  .stage-dots{display:flex; justify-content:center; gap:5px; flex-wrap:wrap;}
+  .dot{
+    width:18px; height:18px; border-radius:50%; line-height:1; border:1px solid var(--panel-border);
+    background:var(--panel-2); color:var(--text-muted); font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .dot.active{background:var(--gold-soft); color:#1A1405; border:none;}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+  <div class="topbar">
+    <span class="pill gold">English</span>
+    <a class="pill" href="index.html" style="text-decoration:none;">→ موسى والخضر ← الرئيسية</a>
+  </div>
+  <div class="hero">
+    <h1>موسى والخضر — العبد الصالح</h1>
+    <p class="sub">فوق كل ذي علمٍ عليم — رحلةٌ في طلب العلم</p>
+  </div>
+  <div class="map-card">
+    <div class="map-top"><span>مجمع البحرين — خريطة تخطيطية 🌿</span></div>
+    <span class="stage-overlay-badge" id="stageBadge">المرحلة ١ من ٦</span>
+    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgmap" cx="50%" cy="35%" r="80%">
+          <stop offset="0%" stop-color="#211a10"/>
+          <stop offset="100%" stop-color="#0D0A06"/>
+        </radialGradient>
+      </defs>
+      <rect width="700" height="260" fill="url(#bgmap)"/>
+
+      <!-- زخارف زاوية: معينات -->
+      <path d="M22 40 L32 55 L22 70 L12 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+      <path d="M22 78 L30 90 L22 102 L14 90 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".3"/>
+      <path d="M678 40 L688 55 L678 70 L668 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+
+      <!-- هلال ونجمة: أسفل اليسار -->
+      <g opacity=".55">
+        <path d="M30 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M52 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+      <!-- هلال ونجمة: أسفل اليمين -->
+      <g opacity=".55">
+        <path d="M670 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M648 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+
+      <!-- خريطة تخطيطية: لم يثبت موضع مجمع البحرين بنص صحيح -->
+      <path d="M110 118 Q210 96 300 126" stroke="#2E6E8E" stroke-width="2.6" fill="none" opacity=".55"/>
+      <path d="M110 150 Q210 178 300 148" stroke="#2E6E8E" stroke-width="2.6" fill="none" opacity=".55"/>
+      <path d="M312 136 Q420 150 520 168" stroke="#D9A73B" stroke-width="1.5" stroke-dasharray="5 4" opacity=".5"/>
+
+      <g class="marker" id="mk-sakhra">
+        <path d="M262 122 q22 -14 42 4 q14 16 -6 26 q-26 10 -40 -8 z" fill="#3A3428" stroke="#E8C874" stroke-width="1.6"/>
+        <path d="M196 140 q10 -7 20 0 t20 0" stroke="#7FA8BD" stroke-width="1.8" fill="none"/>
+        <text x="258" y="96" text-anchor="middle" font-size="13" fill="#E8C874" font-family="Cairo" font-weight="700">مجمع البحرين</text>
+        <text x="258" y="176" text-anchor="middle" font-size="10.5" fill="#9C9686" font-family="Cairo">الصخرة وآية الحوت</text>
+      </g>
+
+      <g class="marker" id="mk-safina">
+        <path d="M382 168 L462 168 L446 190 L398 190 Z" fill="none" stroke="#E8C874" stroke-width="1.8"/>
+        <path d="M422 168 L422 138" stroke="#E8C874" stroke-width="1.6"/>
+        <path d="M424 140 L450 154 L424 158 Z" fill="#E8C874" opacity=".8"/>
+        <path d="M412 176 l8 10 l8 -10" fill="none" stroke="#8B4A3C" stroke-width="2"/>
+        <text x="422" y="212" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">السفينة</text>
+      </g>
+
+      <g class="marker" id="mk-jidar">
+        <rect x="528" y="150" width="76" height="46" fill="none" stroke="#E8C874" stroke-width="1.8"/>
+        <path d="M528 166 L604 166 M528 182 L604 182 M552 150 L552 166 M580 166 L580 182 M552 182 L552 196" stroke="#E8C874" stroke-width="1.2" opacity=".8"/>
+        <circle cx="566" cy="212" r="6" fill="none" stroke="#D9A73B" stroke-width="1.6"/>
+        <text x="566" y="138" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">الجدار والكنز</text>
+      </g>
+
+      <circle cx="655" cy="35" r="16" fill="#0F231A" stroke="#D9A73B" stroke-width="1"/>
+      <text x="655" y="40" text-anchor="middle" font-size="11" fill="#E8C874" font-family="Cairo" font-weight="700">ش</text>
+    </svg>
+  </div>
+</div>
+
+<main>
+
+  <!-- Stage 1 -->
+  <div class="stage" id="stage-1" data-map="sakhra">
+    <div class="stage-card">
+      <div class="stage-top"><h3>سبب الرحلة: «أنا»</h3><span class="stage-badge">١ / ٦</span></div>
+      <p class="narrative">قَامَ مُوسَى عَلَيْهِ السَّلَامُ خَطِيبًا فِي بَنِي إِسْرَائِيلَ، فَسُئِلَ: أَيُّ النَّاسِ أَعْلَمُ؟ فَقَالَ: <b>أَنَا</b>. فَعَتَبَ اللَّهُ عَلَيْهِ إِذْ لَمْ يَرُدَّ الْعِلْمَ إِلَيْهِ سُبْحَانَهُ، وَأَوْحَى إِلَيْهِ أَنَّ لَهُ عَبْدًا عِنْدَ مَجْمَعِ الْبَحْرَيْنِ هُوَ أَعْلَمُ مِنْهُ. فَسَأَلَ مُوسَى السَّبِيلَ إِلَيْهِ، وَخَرَجَ يَطْلُبُهُ — <b>وَهُوَ نَبِيٌّ مُكَلَّمٌ مِنْ أُولِي الْعَزْمِ</b> — وَعَزَمَ أَلَّا يَرْجِعَ وَلَوْ مَضَتْ بِهِ الْأَحْقَابُ.</p>
+      <div class="ayah-box" data-surah="18" data-ayah-start="60" data-ayah-end="60">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَإِذْ قَالَ مُوسَىٰ لِفَتَاهُ لَا أَبْرَحُ حَتَّىٰ أَبْلُغَ مَجْمَعَ الْبَحْرَيْنِ أَوْ أَمْضِيَ حُقُبًا</div>
+        <div class="ref">سورة الكهف — الآية ٦٠</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>رُدَّ الْعِلْمَ إِلَى اللَّهِ وَلَا تَقُلْ «أَنَا»؛ فَأَعْلَمُ أَهْلِ زَمَانِهِ عُوتِبَ عَلَى كَلِمَةٍ، وَأُمِرَ أَنْ يَرْحَلَ لِيَتَعَلَّمَ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 صحيح البخاري — حديث أُبيّ بن كعب</span>
+        <span class="source-chip">📖 تفسير ابن كثير — سورة الكهف</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage" id="stage-2" data-map="sakhra">
+    <div class="stage-card">
+      <div class="stage-top"><h3>آية الحوت</h3><span class="stage-badge">٢ / ٦</span></div>
+      <p class="narrative">جُعِلَتْ لَهُ عَلَامَةٌ: حُوتٌ يَحْمِلُهُ فِي مِكْتَلٍ، فَحَيْثُ فَقَدَهُ فَثَمَّ الرَّجُلُ. فَلَمَّا بَلَغَا الصَّخْرَةَ نَامَا، وَاتَّخَذَ الْحُوتُ سَبِيلَهُ فِي الْبَحْرِ عَجَبًا. ثُمَّ مَضَيَا حَتَّى نَصِبَا مِنَ السَّفَرِ، فَذَكَرَ الْفَتَى مَا كَانَ. <b>فَلَمْ يَتَأَفَّفْ مُوسَى مِنَ الرُّجُوعِ، بَلْ قَالَ: ذَلِكَ مَا كُنَّا نَبْغِ</b>، فَعَادَا يَقُصَّانِ أَثَرَهُمَا قَصَصًا حَتَّى بَلَغَا الصَّخْرَةَ.</p>
+      <div class="ayah-box" data-surah="18" data-ayah-start="63" data-ayah-end="64">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">قَالَ أَرَأَيْتَ إِذْ أَوَيْنَا إِلَى الصَّخْرَةِ فَإِنِّي نَسِيتُ الْحُوتَ وَمَا أَنسَانِيهُ إِلَّا الشَّيْطَانُ أَنْ أَذْكُرَهُ ۚ وَاتَّخَذَ سَبِيلَهُ فِي الْبَحْرِ عَجَبًا ۝ قَالَ ذَٰلِكَ مَا كُنَّا نَبْغِ ۚ فَارْتَدَّا عَلَىٰ آثَارِهِمَا قَصَصًا</div>
+        <div class="ref">سورة الكهف — الآيتان ٦٣-٦٤</div>
+      </div>
+      <div class="chars-line">👥 <b>فتى موسى</b> — رافقه في الرحلة، وجاء في الصحيح أنه يوشع بن نون</div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا تَأْنَفْ أَنْ تَرْجِعَ لِتُصَحِّحَ الطَّرِيقَ؛ فَالرُّجُوعُ إِلَى مَوْضِعِ الْعَلَامَةِ خَيْرٌ مِنَ الْمُضِيِّ فِي غَيْرِ هُدًى</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 صحيح البخاري — كتاب العلم</span>
+        <span class="source-chip">📖 تفسير ابن كثير — سورة الكهف</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage" id="stage-3" data-map="sakhra">
+    <div class="stage-card">
+      <div class="stage-top"><h3>أدب الطلب وشرط الصبر</h3><span class="stage-badge">٣ / ٦</span></div>
+      <p class="narrative">لَمَّا لَقِيَهُ خَاطَبَهُ مُوسَى بِأَدَبِ الْمُتَعَلِّمِ لَا بِلِسَانِ النَّبِيِّ الْمُرْسَلِ: اسْتَأْذَنَ فِي الِاتِّبَاعِ، وَسَأَلَ أَنْ يُعَلَّمَ <b>مِمَّا عُلِّمَ</b> — أَيْ بَعْضَ عِلْمِهِ لَا كُلَّهُ. فَبَيَّنَ لَهُ أَنَّ الْمَانِعَ لَيْسَ ضَعْفَ مُوسَى بَلْ <b>طَبِيعَةَ هَذَا الْعِلْمِ</b>: فَمَنْ لَمْ يُحِطْ بِالْحِكْمَةِ خُبْرًا لَا يَحْتَمِلُ ظَاهِرَ الْفِعْلِ.</p>
+      <div class="dialogue">
+        <div class="line ib"><span class="who">مُوسَى</span>هَلْ أَتَّبِعُكَ عَلَى أَنْ تُعَلِّمَنِ مِمَّا عُلِّمْتَ رُشْدًا؟</div>
+        <div class="line son"><span class="who">الْعَبْدُ الصَّالِحُ</span>إِنَّكَ لَنْ تَسْتَطِيعَ مَعِيَ صَبْرًا، وَكَيْفَ تَصْبِرُ عَلَى مَا لَمْ تُحِطْ بِهِ خُبْرًا؟</div>
+        <div class="line ib"><span class="who">مُوسَى</span>سَتَجِدُنِي إِنْ شَاءَ اللَّهُ صَابِرًا وَلَا أَعْصِي لَكَ أَمْرًا</div>
+      </div>
+      <div class="ayah-box" data-surah="18" data-ayah-start="66" data-ayah-end="70">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">قَالَ لَهُ مُوسَىٰ هَلْ أَتَّبِعُكَ عَلَىٰ أَن تُعَلِّمَنِ مِمَّا عُلِّمْتَ رُشْدًا ۝ قَالَ إِنَّكَ لَن تَسْتَطِيعَ مَعِيَ صَبْرًا ۝ وَكَيْفَ تَصْبِرُ عَلَىٰ مَا لَمْ تُحِطْ بِهِ خُبْرًا ۝ قَالَ سَتَجِدُنِي إِن شَاءَ اللَّهُ صَابِرًا وَلَا أَعْصِي لَكَ أَمْرًا ۝ قَالَ فَإِنِ اتَّبَعْتَنِي فَلَا تَسْأَلْنِي عَن شَيْءٍ حَتَّىٰ أُحْدِثَ لَكَ مِنْهُ ذِكْرًا</div>
+        <div class="ref">سورة الكهف — الآيات ٦٦-٧٠</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>تَوَاضَعْ لِمَنْ عِنْدَهُ مَا لَيْسَ عِنْدَكَ وَإِنْ كُنْتَ أَعْلَى مِنْهُ مَنْزِلَةً؛ وَاسْتَثْنِ بِمَشِيئَةِ اللَّهِ إِذَا وَعَدْتَ مِنْ نَفْسِكَ صَبْرًا</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الكهف</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage" id="stage-4" data-map="safina">
+    <div class="stage-card">
+      <div class="stage-top"><h3>ثلاثة مواقف ظاهرها منكر</h3><span class="stage-badge">٤ / ٦</span></div>
+      <p class="narrative">ثُمَّ جَرَتْ ثَلَاثَةُ أُمُورٍ ظَاهِرُهَا مُنْكَرٌ: <b>خَرَقَ السَّفِينَةَ</b> وَقَدْ حَمَلُوهُمَا بِغَيْرِ نَوْلٍ، <b>ثُمَّ قَتَلَ غُلَامًا</b> لَمْ يَجْنِ جِنَايَةً ظَاهِرَةً، <b>ثُمَّ أَقَامَ جِدَارًا</b> فِي قَرْيَةٍ أَبَى أَهْلُهَا أَنْ يُضَيِّفُوهُمَا وَلَمْ يَأْخُذْ عَلَيْهِ أَجْرًا. فَلَمْ يَمْلِكْ مُوسَى — وَهُوَ صَاحِبُ شَرِيعَةٍ وَغَيْرَةٍ عَلَى الْحَقِّ — أَنْ يَسْكُتَ، فَأَنْكَرَ فِي الْمَرَّاتِ الثَّلَاثِ. <b>وَإِنْكَارُهُ فِي ذَاتِهِ صَوَابٌ بِمُقْتَضَى الظَّاهِرِ</b>، وَإِنَّمَا خَالَفَ الشَّرْطَ الَّذِي الْتَزَمَهُ.</p>
+      <div class="ayah-box" data-surah="18" data-ayah-start="71" data-ayah-end="71">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">فَانطَلَقَا حَتَّىٰ إِذَا رَكِبَا فِي السَّفِينَةِ خَرَقَهَا ۖ قَالَ أَخَرَقْتَهَا لِتُغْرِقَ أَهْلَهَا لَقَدْ جِئْتَ شَيْئًا إِمْرًا</div>
+        <div class="ref">سورة الكهف — الآية ٧١</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْحُكْمُ عَلَى الظَّاهِرِ وَاجِبٌ، وَالْبَاطِنُ إِلَى اللَّهِ؛ فَإِنْكَارُ مُوسَى لَمْ يَكُنْ خَطَأً فِي ذَاتِهِ، وَإِنَّمَا كَانَ هَذَا الْمَقَامُ اسْتِثْنَاءً بِوَحْيٍ خَاصٍّ لَا قَاعِدَةً تُتَّبَعُ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة الكهف</span>
+        <span class="source-chip">📖 صحيح البخاري — تفسير سورة الكهف</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="stage" id="stage-5" data-map="jidar">
+    <div class="stage-card">
+      <div class="stage-top"><h3>التأويل: وما فعلته عن أمري</h3><span class="stage-badge">٥ / ٦</span></div>
+      <p class="narrative">عِنْدَ الْفِرَاقِ كَشَفَ لَهُ الْحِكْمَةَ: السَّفِينَةُ خُرِقَتْ لِتُعَابَ فَيَتْرُكَهَا مَلِكٌ يَأْخُذُ كُلَّ سَفِينَةٍ غَصْبًا — <b>فَعَيْبٌ يَسِيرٌ يَدْفَعُ ضَيَاعًا كَبِيرًا</b>. وَالْغُلَامُ خُشِيَ أَنْ يُرْهِقَ أَبَوَيْهِ طُغْيَانًا وَكُفْرًا. وَالْجِدَارُ تَحْتَهُ كَنْزٌ لِيَتِيمَيْنِ، وَكَانَ أَبُوهُمَا صَالِحًا فَحُفِظَا فِيهِ.</p>
+      <p class="narrative">ثُمَّ خَتَمَ بِالْكَلِمَةِ الْفَاصِلَةِ: <b>وَمَا فَعَلْتُهُ عَنْ أَمْرِي</b> — أَيْ لَمْ أَفْعَلْهُ بِرَأْيِي وَاجْتِهَادِي بَلْ بِأَمْرِ اللَّهِ. <b>وَهَذِهِ الْكَلِمَةُ هِيَ حُجَّةُ مَنْ قَالَ إِنَّهُ نَبِيٌّ</b>، إِذْ لَا يَجُوزُ لِوَلِيٍّ أَنْ يَقْتُلَ نَفْسًا بِاجْتِهَادِهِ.</p>
+      <div class="ayah-box" data-surah="18" data-ayah-start="82" data-ayah-end="82">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَأَمَّا الْجِدَارُ فَكَانَ لِغُلَامَيْنِ يَتِيمَيْنِ فِي الْمَدِينَةِ وَكَانَ تَحْتَهُ كَنزٌ لَّهُمَا وَكَانَ أَبُوهُمَا صَالِحًا فَأَرَادَ رَبُّكَ أَن يَبْلُغَا أَشُدَّهُمَا وَيَسْتَخْرِجَا كَنزَهُمَا رَحْمَةً مِّن رَّبِّكَ ۚ وَمَا فَعَلْتُهُ عَنْ أَمْرِي ۚ ذَٰلِكَ تَأْوِيلُ مَا لَمْ تَسْطِع عَّلَيْهِ صَبْرًا</div>
+        <div class="ref">سورة الكهف — الآية ٨٢</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>صَلَاحُ الْأَبِ يُحْفَظُ فِي وَلَدِهِ مِنْ بَعْدِهِ؛ حُفِظَ كَنْزُ الْيَتِيمَيْنِ لِأَنَّ أَبَاهُمَا كَانَ صَالِحًا، وَلَمْ يُذْكَرْ صَلَاحُهُمَا هُمَا</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الكهف</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 6 -->
+  <div class="stage" id="stage-6" data-map="sakhra">
+    <div class="stage-card">
+      <div class="stage-top"><h3>من هو العبد الصالح؟</h3><span class="stage-badge">٦ / ٦</span></div>
+      <p class="narrative"><b>لَمْ يُسَمِّهِ الْقُرْآنُ</b>، بَلْ وَصَفَهُ: ﴿عَبْدًا مِّنْ عِبَادِنَا﴾. <b>وَأَمَّا اسْمُهُ «الْخَضِرُ» فَثَابِتٌ فِي السُّنَّةِ الصَّحِيحَةِ</b>، رَوَاهُ الْبُخَارِيُّ، وَفِيهِ بَيَانُ سَبَبِ التَّسْمِيَةِ: أَنَّهُ جَلَسَ عَلَى فَرْوَةٍ بَيْضَاءَ فَإِذَا هِيَ تَهْتَزُّ مِنْ خَلْفِهِ خَضْرَاءَ. <b>فَاسْمُهُ لَيْسَ مِنَ الْإِسْرَائِيلِيَّاتِ</b>، وَإِنَّمَا لَمْ يَرِدْ فِي الْقُرْآنِ.</p>
+      <p class="narrative">وَفِي الصَّحِيحِ أَنَّ <b>نَوْفًا الْبِكَالِيَّ</b> زَعَمَ أَنَّ صَاحِبَ الْخَضِرِ لَيْسَ مُوسَى بَنِي إِسْرَائِيلَ، فَرَدَّ عَلَيْهِ ابْنُ عَبَّاسٍ بِحَدِيثِ أُبَيِّ بْنِ كَعْبٍ — فَثَبَتَ أَنَّهُ <b>مُوسَى بْنُ عِمْرَانَ</b> نَفْسُهُ.</p>
+      <p class="narrative"><b>وَهَلْ هُوَ نَبِيٌّ أَمْ وَلِيٌّ؟</b> الرَّاجِحُ عِنْدَ ابْنِ كَثِيرٍ وَجُمْهُورِ الْمُحَقِّقِينَ أَنَّهُ <b>نَبِيٌّ</b>، لِقَوْلِهِ ﴿وَمَا فَعَلْتُهُ عَنْ أَمْرِي﴾. <b>وَهَلْ هُوَ حَيٌّ إِلَى الْيَوْمِ؟ الرَّاجِحُ عِنْدَ ابْنِ كَثِيرٍ أَنَّهُ قَدْ مَاتَ</b>، وَرَدَّ الْقَوْلَ بِحَيَاتِهِ رَدًّا قَوِيًّا، وَمَا يُرْوَى فِي ذَلِكَ وَفِي لِقَاءِ النَّاسِ بِهِ لَا يَثْبُتُ.</p>
+      <div class="ayah-box" data-surah="18" data-ayah-start="65" data-ayah-end="65">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">فَوَجَدَا عَبْدًا مِّنْ عِبَادِنَا آتَيْنَاهُ رَحْمَةً مِّنْ عِندِنَا وَعَلَّمْنَاهُ مِن لَّدُنَّا عِلْمًا</div>
+        <div class="ref">سورة الكهف — الآية ٦٥</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>فَوْقَ كُلِّ ذِي عِلْمٍ عَلِيمٌ؛ وَكَمَا قَالَ الْعَبْدُ الصَّالِحُ فِي الصَّحِيحِ: مَا نَقَصَ عِلْمِي وَعِلْمُكَ مِنْ عِلْمِ اللَّهِ إِلَّا كَمَا نَقَصَ هَذَا الْعُصْفُورُ مِنْ هَذَا الْبَحْرِ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 صحيح البخاري — سبب تسمية الخضر</span>
+        <span class="source-chip">📖 ابن كثير — ترجيح نبوته وموته</span>
+        <span class="source-chip">⚠️ القول بحياته لا يثبت</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<audio id="quranAudio" style="display:none"></audio>
+
+<div class="control-bar">
+  <div class="buttons">
+    <button class="ctrl" onclick="goto(1)">التالي ▶</button>
+    <button class="ctrl play" id="playBtn" onclick="toggleSpeak()">🔊 تشغيل السرد الكامل</button>
+    <button class="ctrl" onclick="goto(-1)">◀ السابق</button>
+  </div>
+  <div class="stage-dots" id="dots"></div>
+</div>
+
+<script>
+const total = 6;
+let current = 1;
+let playing = false;
+let stopRequested = false;
+const audioEl = document.getElementById('quranAudio');
+
+const dotsEl = document.getElementById('dots');
+for(let i=1;i<=total;i++){
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===1 ? ' active' : '');
+  d.textContent = i;
+  d.onclick = () => { stopPlayback(); setCurrent(i); };
+  dotsEl.appendChild(d);
+}
+
+function setCurrent(n){
+  current = Math.min(total, Math.max(1, n));
+  document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i+1===current));
+  document.querySelectorAll('.stage').forEach(s=> s.classList.remove('shown'));
+  const stageEl = document.getElementById('stage-'+current);
+  stageEl.classList.add('shown');
+  document.getElementById('stageBadge').textContent = 'المرحلة ' + toArabicNum(current) + ' من ' + toArabicNum(total);
+  document.querySelectorAll('.marker').forEach(m=> m.classList.remove('hot'));
+  const mk = document.getElementById('mk-'+stageEl.dataset.map);
+  if(mk) mk.classList.add('hot');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function toArabicNum(n){
+  const map=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return String(n).split('').map(d=>map[+d]).join('');
+}
+
+function goto(delta){
+  stopPlayback();
+  setCurrent(current+delta);
+}
+
+function pad(n,len){ return String(n).padStart(len,'0'); }
+function ayahUrl(surah,ayah){ return `https://everyayah.com/data/Husary_128kbps/${pad(surah,3)}${pad(ayah,3)}.mp3`; }
+
+/* تصفية الرموز التعبيرية قبل النطق — وإلا نطق المحرك اسم الرمز */
+function stripEmoji(text){
+  return text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}]/gu, '');
+}
+
+function speakText(text){
+  return new Promise(resolve=>{
+    if(!('speechSynthesis' in window)){ resolve(); return; }
+    const clean = stripEmoji(text).trim();
+    if(!clean){ resolve(); return; }
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang='ar-SA'; u.rate=0.92;
+    const voices = speechSynthesis.getVoices();
+    const v = voices.find(v=> v.lang && v.lang.startsWith('ar'));
+    if(v) u.voice=v;
+    u.onend=resolve; u.onerror=resolve;
+    speechSynthesis.speak(u);
+  });
+}
+
+function playUrl(url){
+  return new Promise(resolve=>{
+    audioEl.src=url;
+    audioEl.onended=resolve;
+    audioEl.onerror=resolve;
+    audioEl.play().catch(()=>resolve());
+  });
+}
+
+async function playAyahRange(surah,start,end){
+  for(let a=start; a<=end && !stopRequested; a++){
+    await playUrl(ayahUrl(surah,a));
+  }
+}
+
+function playAyahBox(btn){
+  stopPlayback();
+  const box = btn.closest('.ayah-box');
+  const s = parseInt(box.dataset.surah);
+  const a1 = parseInt(box.dataset.ayahStart);
+  const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
+  playAyahRange(s,a1,a2);
+}
+
+function buildStageSequence(stageEl){
+  const items=[];
+  stageEl.querySelectorAll('.narrative, .dialogue, .ayah-box, .lesson-box').forEach(el=>{
+    if(el.classList.contains('narrative')){
+      items.push({type:'tts', text: el.innerText});
+    } else if(el.classList.contains('dialogue')){
+      el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
+    } else if(el.classList.contains('ayah-box')){
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+    } else if(el.classList.contains('lesson-box')){
+      items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
+    }
+  });
+  return items;
+}
+
+async function playFrom(n){
+  stopRequested=false;
+  playing=true;
+  document.getElementById('playBtn').textContent='⏸ إيقاف';
+  for(let stageNum=n; stageNum<=total; stageNum++){
+    if(stopRequested) break;
+    setCurrent(stageNum);
+    const seq = buildStageSequence(document.getElementById('stage-'+stageNum));
+    for(const item of seq){
+      if(stopRequested) break;
+      if(item.type==='tts') await speakText(item.text);
+      else await playAyahRange(item.surah,item.start,item.end);
+    }
+  }
+  playing=false;
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function stopPlayback(){
+  stopRequested=true;
+  playing=false;
+  speechSynthesis.cancel();
+  audioEl.pause();
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function toggleSpeak(){
+  if(playing){ stopPlayback(); }
+  else { playFrom(current); }
+}
+
+setCurrent(1);
+
+/* يُبقي نهاية البطاقة (الدرس المستفاد والمصادر) فوق شريط التحكم دائمًا.
+   ارتفاع الشريط يتغيّر حسب عرض الشاشة لأن دوائر المراحل تلتفّ في سطرين
+   على الشاشات الضيقة، فلا تكفي قيمة ثابتة — تُقاس وقت التشغيل. */
+function syncBottomPadding(){
+  const bar = document.querySelector('.control-bar');
+  if(!bar) return;
+  document.body.style.paddingBottom = (bar.offsetHeight + 24) + 'px';
+}
+syncBottomPadding();
+window.addEventListener('resize', syncBottomPadding);
+window.addEventListener('orientationchange', syncBottomPadding);
+window.addEventListener('load', syncBottomPadding);
+/* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
+   الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+</script>
+
+</body>
+</html>
