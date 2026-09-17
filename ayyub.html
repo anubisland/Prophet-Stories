@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>قصص الأنبياء — أيوب عليه السلام</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0D0A;
+    --panel:#0F231A;
+    --panel-2:#0C1A13;
+    --panel-border:rgba(217,167,59,.28);
+    --gold:#D9A73B;
+    --gold-soft:#E8C874;
+    --text:#ECE8DC;
+    --text-muted:#9C9686;
+    --green-deep:#0B3324;
+    --accent-son:#8B4A3C;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{min-height:100%;}
+  body{
+    font-family:'Cairo', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.85;
+    padding-bottom:calc(114px + env(safe-area-inset-bottom, 0px));
+  }
+
+  /* Persistent head: topbar + hero + map, always visible */
+  .sticky-head{
+    position:sticky; top:0; z-index:20;
+    background:var(--bg);
+    border-bottom:1px solid var(--panel-border);
+  }
+
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:10px 18px;
+  }
+  .pill{
+    font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px;
+    border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);
+  }
+  .pill.gold{background:var(--gold-soft); color:#1A1405; border:none;}
+
+  .hero{text-align:center; padding:6px 20px 4px;}
+  .hero h1{
+    font-size:clamp(20px,6vw,28px); font-weight:800; color:var(--gold-soft);
+    text-shadow:0 0 14px rgba(217,167,59,.25);
+  }
+  .hero .sub{font-size:12px; color:var(--text-muted); margin-top:2px;}
+
+  .map-card{
+    position:relative;
+    background:var(--panel);
+    padding:10px 14px 12px;
+  }
+  .map-card .map-top{
+    display:flex; justify-content:flex-start; align-items:center; margin-bottom:6px;
+    font-size:12.5px; color:var(--gold-soft); font-weight:700;
+  }
+  .map-card svg{display:block; width:100%; height:auto;}
+  .marker{opacity:.4; transition:opacity .35s ease;}
+  .marker.hot{opacity:1; animation:blinkMarker 1.3s ease-in-out infinite;}
+  @keyframes blinkMarker{
+    0%,100%{opacity:1;}
+    50%{opacity:.35;}
+  }
+  .marker.hot circle, .marker.hot rect{filter:drop-shadow(0 0 6px rgba(217,167,59,.9));}
+  .stage-overlay-badge{
+    position:absolute; top:38px; left:20px;
+    background:rgba(12,26,19,.85); border:1px solid var(--panel-border); border-radius:8px;
+    padding:5px 10px; font-size:11px; color:var(--text-muted); font-weight:700;
+  }
+
+  main{max-width:760px; margin:0 auto; padding:16px 16px 10px;}
+
+  /* Stage */
+  .stage{display:none;}
+  .stage.shown{display:block;}
+  .stage-card{
+    background:var(--panel); border:1px solid var(--panel-border); border-radius:14px;
+    padding:18px 16px;
+  }
+  .stage-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;}
+  .stage-badge{
+    font-size:11px; font-weight:700; color:#1A1405; background:var(--gold-soft);
+    padding:4px 12px; border-radius:999px;
+  }
+  .stage-card h3{font-size:17px; font-weight:800; color:var(--text); margin-bottom:10px;}
+  .narrative{font-size:14.5px; color:var(--text); opacity:.92; margin-bottom:14px;}
+  .narrative b{color:var(--gold-soft); font-weight:700;}
+
+  .ayah-box{
+    position:relative;
+    background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px;
+    padding:36px 16px 16px; text-align:center; margin-bottom:14px;
+  }
+  .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
+  .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-listen{
+    position:absolute; top:8px; left:10px;
+    background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
+    border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700;
+    font-family:inherit; cursor:pointer;
+  }
+
+  .dialogue{display:flex; flex-direction:column; gap:8px; margin-bottom:14px;}
+  .dialogue .line{font-size:13.5px; padding:10px 12px; border-radius:8px; max-width:88%;}
+  .dialogue .son{background:rgba(139,74,60,.18); border:1px solid rgba(139,74,60,.4); align-self:flex-start;}
+  .dialogue .ib{background:rgba(217,167,59,.1); border:1px solid var(--panel-border); align-self:flex-end;}
+  .dialogue .who{display:block; font-size:11px; color:var(--text-muted); margin-bottom:4px; font-weight:700;}
+
+  .chars-line{font-size:12px; color:var(--text-muted); margin-bottom:14px; line-height:1.7;}
+  .chars-line b{color:var(--gold-soft); font-weight:700;}
+
+  .lesson-box{
+    background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold);
+    border-radius:8px; padding:12px 14px; margin-bottom:12px;
+  }
+  .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
+  .lesson-box p{font-size:13px;}
+
+  .sources-row{display:flex; flex-wrap:wrap; gap:8px;}
+  .source-chip{
+    font-size:11px; color:var(--text-muted); background:var(--panel-2);
+    border:1px solid var(--panel-border); border-radius:999px; padding:5px 12px;
+  }
+
+
+  /* ——— حدّ الخريطة: نسبة من الشاشة وسقف مطلق معًا ———
+     34vh وحدها تعني ٢٩٢ بكسل على شاشة ٨٦٠ — فتبتلع الشاشة.
+     min() تجعلها تتبع الشاشة على الصغير وتتوقف عن النمو على الكبير. */
+  .map-card svg{max-height:clamp(175px, 38vh, 340px);
+                max-width:calc(clamp(175px, 38vh, 340px) * 2.7);
+                margin-inline:auto;}
+  @media (max-height: 820px){
+    .hero{padding:3px 20px 2px;}
+    .hero h1{font-size:clamp(17px,4.6vw,23px);}
+    .hero .sub{font-size:11px;}
+    .map-card{padding:6px 14px 8px;}
+    .map-card svg{max-height:clamp(165px, 34vh, 300px); max-width:calc(clamp(165px, 34vh, 300px) * 2.7);}
+  }
+  @media (max-height: 640px){
+    .topbar{padding:6px 14px;}
+    .pill{padding:5px 11px; font-size:11px;}
+    .hero .sub{display:none;}
+    .map-card svg{max-height:clamp(150px, 30vh, 240px); max-width:calc(clamp(150px, 30vh, 240px) * 2.7);}
+    .stage-overlay-badge{top:30px;}
+  }
+  @media (max-height: 500px){
+    .hero h1{font-size:16px;}
+    .map-card svg{max-height:clamp(120px, 28vh, 190px); max-width:calc(clamp(120px, 28vh, 190px) * 2.7);}
+    .map-card .map-top{font-size:11px; margin-bottom:3px;}
+  }
+
+  .control-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:20;
+    background:#0C1712; border-top:1px solid var(--panel-border);
+    padding:5px 12px calc(5px + env(safe-area-inset-bottom, 0px));
+  }
+  .control-bar .buttons{display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:4px;}
+  .ctrl{
+    background:var(--panel); border:1px solid var(--panel-border); color:var(--text);
+    border-radius:999px; padding:6px 13px; font-family:inherit; font-size:12px; line-height:1.15;
+    font-weight:700; cursor:pointer;
+  }
+  .ctrl.play{background:var(--gold-soft); color:#1A1405; border:none; padding:7px 19px;}
+  .stage-dots{display:flex; justify-content:center; gap:5px; flex-wrap:wrap;}
+  .dot{
+    width:18px; height:18px; border-radius:50%; line-height:1; border:1px solid var(--panel-border);
+    background:var(--panel-2); color:var(--text-muted); font-size:10px; font-weight:700;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .dot.active{background:var(--gold-soft); color:#1A1405; border:none;}
+</style>
+</head>
+<body>
+
+<div class="sticky-head">
+  <div class="topbar">
+    <span class="pill gold">English</span>
+    <a class="pill" href="index.html" style="text-decoration:none;">→ أيوب عليه السلام ← الرئيسية</a>
+  </div>
+  <div class="hero">
+    <h1>قصة أيوب عليه السلام</h1>
+    <p class="sub">نِعْمَ العبد إنه أوّاب — صبرٌ صار ذكرى للعابدين</p>
+  </div>
+  <div class="map-card">
+    <div class="map-top"><span>رحلة أيوب عليه السلام — خريطة رمزية 🕊️</span></div>
+    <span class="stage-overlay-badge" id="stageBadge">المرحلة ١ من ٦</span>
+    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="bgmap" cx="50%" cy="35%" r="80%">
+          <stop offset="0%" stop-color="#211a10"/>
+          <stop offset="100%" stop-color="#0D0A06"/>
+        </radialGradient>
+      </defs>
+      <rect width="700" height="260" fill="url(#bgmap)"/>
+
+      <!-- زخارف زاوية: معينات -->
+      <path d="M22 40 L32 55 L22 70 L12 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+      <path d="M22 78 L30 90 L22 102 L14 90 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".3"/>
+      <path d="M678 40 L688 55 L678 70 L668 55 Z" fill="none" stroke="#D9A73B" stroke-width="1" opacity=".45"/>
+
+      <!-- هلال ونجمة: أسفل اليسار -->
+      <g opacity=".55">
+        <path d="M30 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M52 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+      <!-- هلال ونجمة: أسفل اليمين -->
+      <g opacity=".55">
+        <path d="M670 232 a10 10 0 1 0 0.5 -0.3 a8 8 0 1 1 -0.5 0.3 Z" fill="#D9A73B"/>
+        <path d="M648 220 l2 5 l5 1 l-4 3.5 l1 5 l-4.5 -3 l-4.5 3 l1 -5 l-4 -3.5 l5 -1 Z" fill="#D9A73B"/>
+      </g>
+
+      <!-- خريطة رمزية لا جغرافية: لم يثبت موضع أيوب بنص صحيح (البند ٦-ب) -->
+      <path d="M96 168 L604 168" stroke="#4A4034" stroke-width="1.4" stroke-dasharray="6 6" opacity=".5"/>
+
+      <g class="marker" id="mk-niema">
+        <circle cx="584" cy="168" r="17" fill="none" stroke="#E8C874" stroke-width="2"/>
+        <circle cx="584" cy="168" r="6" fill="#E8C874"/>
+        <text x="584" y="132" text-anchor="middle" font-size="13" fill="#E8C874" font-family="Cairo" font-weight="700">نعمة</text>
+        <text x="584" y="204" text-anchor="middle" font-size="10.5" fill="#9C9686" font-family="Cairo">مال وأهل وصحة</text>
+      </g>
+
+      <g class="marker" id="mk-bala">
+        <circle cx="422" cy="168" r="17" fill="none" stroke="#8B4A3C" stroke-width="2" stroke-dasharray="5 5"/>
+        <path d="M412 158 L432 178 M432 158 L412 178" stroke="#8B4A3C" stroke-width="2"/>
+        <text x="422" y="132" text-anchor="middle" font-size="13" fill="#C48A78" font-family="Cairo" font-weight="700">بلاء</text>
+        <text x="422" y="204" text-anchor="middle" font-size="10.5" fill="#9C9686" font-family="Cairo">في الجسد والأهل والمال</text>
+      </g>
+
+      <g class="marker" id="mk-dua">
+        <path d="M248 180 Q260 150 272 180" fill="none" stroke="#E8C874" stroke-width="2" stroke-linecap="round"/>
+        <path d="M260 148 L260 128" stroke="#E8C874" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M252 136 L260 126 L268 136" fill="none" stroke="#E8C874" stroke-width="1.6" stroke-linecap="round"/>
+        <text x="260" y="204" text-anchor="middle" font-size="13" fill="#E8C874" font-family="Cairo" font-weight="700">دعاء</text>
+        <text x="260" y="220" text-anchor="middle" font-size="10.5" fill="#9C9686" font-family="Cairo">وأنت أرحم الراحمين</text>
+      </g>
+
+      <g class="marker" id="mk-faraj">
+        <path d="M100 176 Q116 164 132 176 T164 176" stroke="#2E6E8E" stroke-width="2.6" fill="none"/>
+        <path d="M100 186 Q116 174 132 186 T164 186" stroke="#7FA8BD" stroke-width="1.8" fill="none" opacity=".75"/>
+        <circle cx="132" cy="150" r="5" fill="#7FA8BD"/>
+        <text x="132" y="134" text-anchor="middle" font-size="13" fill="#7FA8BD" font-family="Cairo" font-weight="700">فرج</text>
+        <text x="132" y="208" text-anchor="middle" font-size="10.5" fill="#9C9686" font-family="Cairo">مغتسل بارد وشراب</text>
+      </g>
+
+      <circle cx="655" cy="35" r="16" fill="#0F231A" stroke="#D9A73B" stroke-width="1"/>
+      <text x="655" y="40" text-anchor="middle" font-size="11" fill="#E8C874" font-family="Cairo" font-weight="700">ش</text>
+    </svg>
+  </div>
+</div>
+
+<main>
+
+  <!-- Stage 1 -->
+  <div class="stage" id="stage-1" data-map="niema">
+    <div class="stage-card">
+      <div class="stage-top"><h3>عبدٌ محسنٌ في نعمة</h3><span class="stage-badge">١ / ٦</span></div>
+      <p class="narrative">كَانَ أَيُّوبُ عَلَيْهِ السَّلَامُ نَبِيًّا مِنْ ذُرِّيَّةِ إِبْرَاهِيمَ، عَدَّهُ اللَّهُ فِي الْمُهْتَدِينَ الْمُحْسِنِينَ مَعَ دَاوُدَ وَسُلَيْمَانَ وَيُوسُفَ وَمُوسَى وَهَارُونَ. وَكَانَ فِي سَعَةٍ مِنَ الْمَالِ وَالْأَهْلِ وَالصِّحَّةِ، يَشْكُرُ رَبَّهُ عَلَى نِعْمَتِهِ. <b>فَلَمْ يَكُنِ ابْتِلَاؤُهُ بَعْدَ ذَلِكَ عُقُوبَةً عَلَى ذَنْبٍ</b>، بَلْ كَانَ رَفْعًا لِدَرَجَتِهِ وَتَعْلِيمًا لِمَنْ بَعْدَهُ.</p>
+      <div class="ayah-box" data-surah="6" data-ayah-start="84" data-ayah-end="84">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَوَهَبْنَا لَهُ إِسْحَاقَ وَيَعْقُوبَ ۚ كُلًّا هَدَيْنَا ۚ وَنُوحًا هَدَيْنَا مِن قَبْلُ ۖ وَمِن ذُرِّيَّتِهِ دَاوُودَ وَسُلَيْمَانَ وَأَيُّوبَ وَيُوسُفَ وَمُوسَىٰ وَهَارُونَ ۚ وَكَذَٰلِكَ نَجْزِي الْمُحْسِنِينَ</div>
+        <div class="ref">سورة الأنعام — الآية ٨٤</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَيْسَ كُلُّ بَلَاءٍ عُقُوبَةً؛ فَأَشَدُّ النَّاسِ بَلَاءً الْأَنْبِيَاءُ، وَالِابْتِلَاءُ قَدْ يَكُونُ رَفْعَ دَرَجَةٍ لَا خَفْضَ مَنْزِلَةٍ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الأنعام</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 2 -->
+  <div class="stage" id="stage-2" data-map="bala">
+    <div class="stage-card">
+      <div class="stage-top"><h3>نزول البلاء</h3><span class="stage-badge">٢ / ٦</span></div>
+      <p class="narrative">ابْتُلِيَ أَيُّوبُ فِي جَسَدِهِ وَأَهْلِهِ وَمَالِهِ، حَتَّى ذَهَبَ عَنْهُ مَا كَانَ فِيهِ مِنْ سَعَةٍ. فَنَادَى رَبَّهُ وَنَسَبَ مَا أَصَابَهُ إِلَى الشَّيْطَانِ، <b>أَدَبًا مَعَ اللَّهِ أَنْ يَنْسُبَ الضُّرَّ إِلَيْهِ سُبْحَانَهُ</b>، وَإِنْ كَانَ كُلُّ شَيْءٍ بِقَدَرِهِ وَحْدَهُ. <b>وَلَمْ يَرِدْ فِي الْقُرْآنِ وَلَا فِي السُّنَّةِ الصَّحِيحَةِ تَحْدِيدُ مُدَّةِ بَلَائِهِ وَلَا وَصْفُ مَرَضِهِ</b>، وَمَا يُذْكَرُ مِنْ دُودٍ وَسِنِينَ مَعْدُودَةٍ فَمِنَ الْإِسْرَائِيلِيَّاتِ الَّتِي لَا تَثْبُتُ.</p>
+      <div class="ayah-box" data-surah="38" data-ayah-start="41" data-ayah-end="41">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَاذْكُرْ عَبْدَنَا أَيُّوبَ إِذْ نَادَىٰ رَبَّهُ أَنِّي مَسَّنِيَ الشَّيْطَانُ بِنُصْبٍ وَعَذَابٍ</div>
+        <div class="ref">سورة ص — الآية ٤١</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَدَبُ الْعَبْدِ أَنْ يَنْسُبَ الْخَيْرَ إِلَى اللَّهِ وَيَتَأَدَّبَ فِي نِسْبَةِ الضُّرِّ؛ فَذِكْرُ السَّبَبِ لَا يَنْقُضُ الْإِيمَانَ بِالْقَدَرِ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة ص</span>
+        <span class="source-chip">⚠️ لا تحديد لمدة البلاء ولا لوصف المرض</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stage 3 -->
+  <div class="stage" id="stage-3" data-map="dua">
+    <div class="stage-card">
+      <div class="stage-top"><h3>أدب الشكوى إلى الله</h3><span class="stage-badge">٣ / ٦</span></div>
+      <p class="narrative">هَذِهِ هِيَ الْكَلِمَةُ الَّتِي صَارَتْ مَثَلًا فِي أَدَبِ الدُّعَاءِ. لَمْ يَقُلْ: اكْشِفْ عَنِّي، وَلَمْ يَسْأَلْ عَافِيَةً صَرِيحَةً، وَلَمْ يَشْكُ طُولَ الْمُدَّةِ. إِنَّمَا عَرَضَ حَالَهُ عَرْضًا: <b>أَنِّي مَسَّنِيَ الضُّرُّ</b>، ثُمَّ ذَكَرَ صِفَةَ رَبِّهِ: <b>وَأَنْتَ أَرْحَمُ الرَّاحِمِينَ</b>، وَتَرَكَ الْأَمْرَ لِمَنْ يَعْلَمُ حَاجَتَهُ. فَجَمَعَ بَيْنَ إِظْهَارِ الِافْتِقَارِ وَحُسْنِ الظَّنِّ، وَلَمْ يَجْعَلْ فِي دُعَائِهِ اعْتِرَاضًا.</p>
+      <div class="ayah-box" data-surah="21" data-ayah-start="83" data-ayah-end="83">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَأَيُّوبَ إِذْ نَادَىٰ رَبَّهُ أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ</div>
+        <div class="ref">سورة الأنبياء — الآية ٨٣</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اعْرِضْ حَاجَتَكَ وَلَا تُمْلِ عَلَى رَبِّكَ؛ فَذِكْرُ الْحَالِ مَعَ الثَّنَاءِ عَلَى اللَّهِ أَبْلَغُ مِنْ إِلْحَاحٍ فِيهِ اعْتِرَاضٌ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الأنبياء</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 4 -->
+  <div class="stage" id="stage-4" data-map="faraj">
+    <div class="stage-card">
+      <div class="stage-top"><h3>الفرج: اركض برجلك</h3><span class="stage-badge">٤ / ٦</span></div>
+      <p class="narrative">جَاءَ الْجَوَابُ سَرِيعًا وَعَجِيبًا: أَنِ اضْرِبْ بِرِجْلِكَ الْأَرْضَ. فَانْفَجَرَتْ لَهُ عَيْنٌ بَارِدَةٌ يَغْتَسِلُ مِنْهَا وَيَشْرَبُ، فَذَهَبَ الدَّاءُ مِنْ ظَاهِرِهِ وَبَاطِنِهِ. <b>وَلَاحِظْ أَنَّ اللَّهَ لَمْ يَشْفِهِ وَهُوَ قَاعِدٌ، بَلْ أَمَرَهُ بِحَرَكَةٍ يَسِيرَةٍ يَقْدِرُ عَلَيْهَا</b> — كَمَا أَمَرَ مَرْيَمَ أَنْ تَهُزَّ جِذْعَ النَّخْلَةِ. فَالْأَخْذُ بِالسَّبَبِ لَا يُنَافِي التَّوَكُّلَ.</p>
+      <div class="ayah-box" data-surah="38" data-ayah-start="42" data-ayah-end="42">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">ارْكُضْ بِرِجْلِكَ ۖ هَٰذَا مُغْتَسَلٌ بَارِدٌ وَشَرَابٌ</div>
+        <div class="ref">سورة ص — الآية ٤٢</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>خُذْ بِالسَّبَبِ الَّذِي تَقْدِرُ عَلَيْهِ وَإِنْ صَغُرَ، وَاتْرُكِ النَّتِيجَةَ لِلَّهِ؛ فَالشِّفَاءُ جَاءَ بَعْدَ رَكْضَةٍ لَا بَعْدَ قُعُودٍ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة ص</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 5 -->
+  <div class="stage" id="stage-5" data-map="faraj">
+    <div class="stage-card">
+      <div class="stage-top"><h3>وآتيناه أهله ومثلهم معهم</h3><span class="stage-badge">٥ / ٦</span></div>
+      <p class="narrative">لَمْ يَقْتَصِرِ الْعَطَاءُ عَلَى رَفْعِ الضُّرِّ، بَلْ رَدَّ اللَّهُ عَلَيْهِ أَهْلَهُ <b>وَزَادَهُ مِثْلَهُمْ مَعَهُمْ</b>. وَبَيَّنَ سُبْحَانَهُ أَنَّ هَذَا لَمْ يَكُنْ لِأَيُّوبَ وَحْدَهُ، بَلْ جَعَلَهُ <b>رَحْمَةً مِنْ عِنْدِهِ وَذِكْرَى لِلْعَابِدِينَ</b> — أَيْ لِيَتَذَكَّرَ كُلُّ مُبْتَلًى بَعْدَهُ أَنَّ الْعَاقِبَةَ لِمَنْ صَبَرَ. فَصَارَ بَلَاؤُهُ رَحْمَةً لِلنَّاسِ كُلِّهِمْ إِلَى يَوْمِ الْقِيَامَةِ.</p>
+      <div class="ayah-box" data-surah="21" data-ayah-start="84" data-ayah-end="84">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">فَاسْتَجَبْنَا لَهُ فَكَشَفْنَا مَا بِهِ مِن ضُرٍّ ۖ وَآتَيْنَاهُ أَهْلَهُ وَمِثْلَهُم مَّعَهُمْ رَحْمَةً مِّنْ عِندِنَا وَذِكْرَىٰ لِلْعَابِدِينَ</div>
+        <div class="ref">سورة الأنبياء — الآية ٨٤</div>
+      </div>
+      <div class="chars-line">👥 <b>امرأة أيوب</b> — ثبتت معه في بلائه وخدمته، ولم يرد اسمها في نص صحيح</div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مَا يُؤْخَذُ مِنْكَ فِي الِابْتِلَاءِ يُرَدُّ إِلَيْكَ أَتَمَّ مِنْهُ؛ وَصَبْرُكَ لَا يَنْفَعُكَ وَحْدَكَ بَلْ يَصِيرُ ذِكْرَى لِمَنْ يَأْتِي بَعْدَكَ</p></div>
+      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الأنبياء</span></div>
+    </div>
+  </div>
+
+  <!-- Stage 6 -->
+  <div class="stage" id="stage-6" data-map="faraj">
+    <div class="stage-card">
+      <div class="stage-top"><h3>نِعْمَ العبد إنه أوّاب</h3><span class="stage-badge">٦ / ٦</span></div>
+      <p class="narrative">خَتَمَ اللَّهُ قِصَّتَهُ بِشَهَادَةٍ لَا يَنَالُهَا إِلَّا الْقَلِيلُ: <b>إِنَّا وَجَدْنَاهُ صَابِرًا، نِعْمَ الْعَبْدُ، إِنَّهُ أَوَّابٌ</b>. وَكَانَ قَدْ حَلَفَ فِي حَالِ بَلَائِهِ يَمِينًا، فَلَمَّا عُوفِيَ رَفَقَ اللَّهُ بِهِ فَأَمَرَهُ أَنْ يَأْخُذَ حُزْمَةً مِنْ عِيدَانٍ فَيَضْرِبَ بِهَا ضَرْبَةً وَاحِدَةً، فَيَبَرَّ بِيَمِينِهِ وَلَا يَحْنَثَ. <b>وَسَبَبُ الْيَمِينِ وَعَدَدُهَا مِمَّا يَذْكُرُهُ الْمُفَسِّرُونَ وَلَمْ يَرِدْ بِهِ نَصٌّ صَحِيحٌ صَرِيحٌ.</b></p>
+      <div class="ayah-box" data-surah="38" data-ayah-start="43" data-ayah-end="44">
+        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <div class="txt">وَوَهَبْنَا لَهُ أَهْلَهُ وَمِثْلَهُم مَّعَهُمْ رَحْمَةً مِّنَّا وَذِكْرَىٰ لِأُولِي الْأَلْبَابِ ۝ وَخُذْ بِيَدِكَ ضِغْثًا فَاضْرِب بِّهِ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَاهُ صَابِرًا ۚ نِّعْمَ الْعَبْدُ ۖ إِنَّهُ أَوَّابٌ</div>
+        <div class="ref">سورة ص — الآيتان ٤٣-٤٤</div>
+      </div>
+      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصَّبْرُ لَيْسَ كَتْمَ الْأَلَمِ بَلْ دَوَامُ الرُّجُوعِ إِلَى اللَّهِ؛ وُصِفَ بِالصَّبْرِ ثُمَّ بِأَنَّهُ أَوَّابٌ، فَالْأَوْبَةُ هِيَ سِرُّ الصَّبْرِ لَا الْجَلَدُ وَحْدَهُ</p></div>
+      <div class="sources-row">
+        <span class="source-chip">📖 تفسير ابن كثير — سورة ص</span>
+        <span class="source-chip">⚠️ سبب اليمين من كلام المفسرين</span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<audio id="quranAudio" style="display:none"></audio>
+
+<div class="control-bar">
+  <div class="buttons">
+    <button class="ctrl" onclick="goto(1)">التالي ▶</button>
+    <button class="ctrl play" id="playBtn" onclick="toggleSpeak()">🔊 تشغيل السرد الكامل</button>
+    <button class="ctrl" onclick="goto(-1)">◀ السابق</button>
+  </div>
+  <div class="stage-dots" id="dots"></div>
+</div>
+
+<script>
+const total = 6;
+let current = 1;
+let playing = false;
+let stopRequested = false;
+const audioEl = document.getElementById('quranAudio');
+
+const dotsEl = document.getElementById('dots');
+for(let i=1;i<=total;i++){
+  const d = document.createElement('div');
+  d.className = 'dot' + (i===1 ? ' active' : '');
+  d.textContent = i;
+  d.onclick = () => { stopPlayback(); setCurrent(i); };
+  dotsEl.appendChild(d);
+}
+
+function setCurrent(n){
+  current = Math.min(total, Math.max(1, n));
+  document.querySelectorAll('.dot').forEach((d,i)=> d.classList.toggle('active', i+1===current));
+  document.querySelectorAll('.stage').forEach(s=> s.classList.remove('shown'));
+  const stageEl = document.getElementById('stage-'+current);
+  stageEl.classList.add('shown');
+  document.getElementById('stageBadge').textContent = 'المرحلة ' + toArabicNum(current) + ' من ' + toArabicNum(total);
+  document.querySelectorAll('.marker').forEach(m=> m.classList.remove('hot'));
+  const mk = document.getElementById('mk-'+stageEl.dataset.map);
+  if(mk) mk.classList.add('hot');
+  window.scrollTo({top:0, behavior:'instant'});
+}
+
+function toArabicNum(n){
+  const map=['٠','١','٢','٣','٤','٥','٦','٧','٨','٩'];
+  return String(n).split('').map(d=>map[+d]).join('');
+}
+
+function goto(delta){
+  stopPlayback();
+  setCurrent(current+delta);
+}
+
+function pad(n,len){ return String(n).padStart(len,'0'); }
+function ayahUrl(surah,ayah){ return `https://everyayah.com/data/Husary_128kbps/${pad(surah,3)}${pad(ayah,3)}.mp3`; }
+
+/* تصفية الرموز التعبيرية قبل النطق — وإلا نطق المحرك اسم الرمز */
+function stripEmoji(text){
+  return text.replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}]/gu, '');
+}
+
+function speakText(text){
+  return new Promise(resolve=>{
+    if(!('speechSynthesis' in window)){ resolve(); return; }
+    const clean = stripEmoji(text).trim();
+    if(!clean){ resolve(); return; }
+    const u = new SpeechSynthesisUtterance(clean);
+    u.lang='ar-SA'; u.rate=0.92;
+    const voices = speechSynthesis.getVoices();
+    const v = voices.find(v=> v.lang && v.lang.startsWith('ar'));
+    if(v) u.voice=v;
+    u.onend=resolve; u.onerror=resolve;
+    speechSynthesis.speak(u);
+  });
+}
+
+function playUrl(url){
+  return new Promise(resolve=>{
+    audioEl.src=url;
+    audioEl.onended=resolve;
+    audioEl.onerror=resolve;
+    audioEl.play().catch(()=>resolve());
+  });
+}
+
+async function playAyahRange(surah,start,end){
+  for(let a=start; a<=end && !stopRequested; a++){
+    await playUrl(ayahUrl(surah,a));
+  }
+}
+
+function playAyahBox(btn){
+  stopPlayback();
+  const box = btn.closest('.ayah-box');
+  const s = parseInt(box.dataset.surah);
+  const a1 = parseInt(box.dataset.ayahStart);
+  const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
+  playAyahRange(s,a1,a2);
+}
+
+function buildStageSequence(stageEl){
+  const items=[];
+  stageEl.querySelectorAll('.narrative, .dialogue, .ayah-box, .lesson-box').forEach(el=>{
+    if(el.classList.contains('narrative')){
+      items.push({type:'tts', text: el.innerText});
+    } else if(el.classList.contains('dialogue')){
+      el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
+    } else if(el.classList.contains('ayah-box')){
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+    } else if(el.classList.contains('lesson-box')){
+      items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
+    }
+  });
+  return items;
+}
+
+async function playFrom(n){
+  stopRequested=false;
+  playing=true;
+  document.getElementById('playBtn').textContent='⏸ إيقاف';
+  for(let stageNum=n; stageNum<=total; stageNum++){
+    if(stopRequested) break;
+    setCurrent(stageNum);
+    const seq = buildStageSequence(document.getElementById('stage-'+stageNum));
+    for(const item of seq){
+      if(stopRequested) break;
+      if(item.type==='tts') await speakText(item.text);
+      else await playAyahRange(item.surah,item.start,item.end);
+    }
+  }
+  playing=false;
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function stopPlayback(){
+  stopRequested=true;
+  playing=false;
+  speechSynthesis.cancel();
+  audioEl.pause();
+  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+}
+
+function toggleSpeak(){
+  if(playing){ stopPlayback(); }
+  else { playFrom(current); }
+}
+
+setCurrent(1);
+
+/* يُبقي نهاية البطاقة (الدرس المستفاد والمصادر) فوق شريط التحكم دائمًا.
+   ارتفاع الشريط يتغيّر حسب عرض الشاشة لأن دوائر المراحل تلتفّ في سطرين
+   على الشاشات الضيقة، فلا تكفي قيمة ثابتة — تُقاس وقت التشغيل. */
+function syncBottomPadding(){
+  const bar = document.querySelector('.control-bar');
+  if(!bar) return;
+  document.body.style.paddingBottom = (bar.offsetHeight + 24) + 'px';
+}
+syncBottomPadding();
+window.addEventListener('resize', syncBottomPadding);
+window.addEventListener('orientationchange', syncBottomPadding);
+window.addEventListener('load', syncBottomPadding);
+/* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
+   الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+</script>
+
+</body>
+</html>
