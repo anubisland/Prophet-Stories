@@ -188,6 +188,17 @@
     display:flex; align-items:center; justify-content:center; cursor:pointer;
   }
   .dot.active{background:var(--gold-soft); color:#1A1405; border:none;}
+
+  /* القصص الطويلة تبلغ أربع عشرة مرحلة، فتلتفّ دوائرها سطرين على الشاشات
+     الضيقة جدًا فيقفز الشريط من ٦٠ إلى ٩٧ بكسل. تُصغَّر الدوائر هناك.
+     ملاحظة: هذا الاستعلام يجب أن يبقى بعد قاعدة .dot الأساسية — @media
+     لا تزيد الأولوية، فالقاعدة الأخيرة ترتيبًا هي التي تفوز. */
+  @media (max-width: 380px){
+    .stage-dots{gap:3px;}
+    .dot{width:15px; height:15px; font-size:8.5px;}
+    .ctrl{padding:5px 10px;}
+    .ctrl.play{padding:6px 14px;}
+  }
 </style>
 </head>
 <body>
