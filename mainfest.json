@@ -1,7 +1,8 @@
 {
   "name": "قصص الأنبياء",
   "short_name": "قصص الأنبياء",
-  "start_url": "./index.html",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0a2618",
   "theme_color": "#0a2618",
@@ -11,6 +12,12 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
+    },
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
