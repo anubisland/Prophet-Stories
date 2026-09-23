@@ -1,8 +1,8 @@
 {
   "name": "قصص الأنبياء",
   "short_name": "قصص الأنبياء",
-  "start_url": "./",
-  "scope": "./",
+  "start_url": "https://anubisland.github.io/Prophet-Stories/",
+  "scope": "https://anubisland.github.io/Prophet-Stories/",
   "display": "standalone",
   "background_color": "#0a2618",
   "theme_color": "#0a2618",
