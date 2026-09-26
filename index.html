@@ -23,7 +23,7 @@
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:'Cairo', sans-serif; background:var(--bg); color:var(--text); line-height:1.8; padding-bottom:40px;}
   .topbar{display:flex; align-items:center; justify-content:space-between; padding:12px 18px; border-bottom:1px solid var(--panel-border);}
-  .pill{font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel);}
+  .pill{font-size:12px; font-weight:700; padding:7px 14px; border-radius:999px; border:1px solid var(--panel-border); color:var(--gold-soft); background:var(--panel); cursor:pointer;}
   .pill.gold{background:var(--gold-soft); color:#1A1405; border:none;}
 
   .hero{text-align:center; padding:30px 20px 10px;}
@@ -62,209 +62,223 @@
 <body>
 
 <div class="topbar">
-  <span class="pill gold">English</span>
-  <span class="pill">قصص الأنبياء 📖</span>
+  <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
+  <span class="pill" data-en="Stories of the Prophets 📖">قصص الأنبياء 📖</span>
 </div>
 
 <div class="hero">
-  <h1>قصص الأنبياء</h1>
-  <p>اختر القصة التي تريد استكشافها</p>
+  <h1 data-en="Stories of the Prophets">قصص الأنبياء</h1>
+  <p data-en="Choose the story you'd like to explore">اختر القصة التي تريد استكشافها</p>
 </div>
 
 <main>
   <div class="grid">
     <a class="card intro" href="intro.html">
       <div class="icon">📖</div>
-      <h3>المقدمة</h3>
-      <p>لماذا هذا التطبيق، ومنهجنا في التوثيق</p>
-      <span class="btn">ابدأ من هنا</span>
+      <h3 data-en="Introduction">المقدمة</h3>
+      <p data-en="Why this app, and our approach to documentation">لماذا هذا التطبيق، ومنهجنا في التوثيق</p>
+      <span class="btn" data-en="Start Here">ابدأ من هنا</span>
     </a>
 
     <a class="card half" href="adam.html">
       <div class="icon">🌱</div>
-      <h3>آدم عليه السلام</h3>
-      <p>أبو البشر — التكريم والتوبة والاستخلاف</p>
-      <div class="stats"><span class="stat">٨ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Adam, peace be upon him">آدم عليه السلام</h3>
+      <p data-en="Father of humanity — honor, repentance, and stewardship">أبو البشر — التكريم والتوبة والاستخلاف</p>
+      <div class="stats"><span class="stat" data-en="8 Stages">٨ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="idris.html">
       <div class="icon">📜</div>
-      <h3>إدريس عليه السلام</h3>
-      <p>صدّيق نبي — رُفع مكانًا عليًا</p>
-      <div class="stats"><span class="stat">٣ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Idris, peace be upon him">إدريس عليه السلام</h3>
+      <p data-en="A truthful prophet — raised to a lofty station">صدّيق نبي — رُفع مكانًا عليًا</p>
+      <div class="stats"><span class="stat" data-en="3 Stages">٣ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="nuh.html">
       <div class="icon">🌊</div>
-      <h3>نوح عليه السلام</h3>
-      <p>٩٥٠ عامًا من الدعوة والصبر</p>
-      <div class="stats"><span class="stat">٨ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Noah, peace be upon him">نوح عليه السلام</h3>
+      <p data-en="950 years of preaching and patience">٩٥٠ عامًا من الدعوة والصبر</p>
+      <div class="stats"><span class="stat" data-en="8 Stages">٨ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="hud.html">
       <div class="icon">🏛️</div>
-      <h3>هود عليه السلام</h3>
-      <p>عاد وإرم ذات العماد</p>
-      <div class="stats"><span class="stat">٦ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Hud, peace be upon him">هود عليه السلام</h3>
+      <p data-en="'Aad and Iram of the Pillars">عاد وإرم ذات العماد</p>
+      <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="saleh.html">
       <div class="icon">🐫</div>
-      <h3>صالح عليه السلام</h3>
-      <p>ثمود وآية الناقة</p>
-      <div class="stats"><span class="stat">٦ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Salih, peace be upon him">صالح عليه السلام</h3>
+      <p data-en="Thamud and the sign of the she-camel">ثمود وآية الناقة</p>
+      <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="ibrahim.html">
       <div class="icon">🔥</div>
-      <h3>إبراهيم عليه السلام</h3>
-      <p>خليل الله — من بابل إلى مكة</p>
-      <div class="stats"><span class="stat">٨ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Abraham, peace be upon him">إبراهيم عليه السلام</h3>
+      <p data-en="Friend of God — from Babylon to Makkah">خليل الله — من بابل إلى مكة</p>
+      <div class="stats"><span class="stat" data-en="8 Stages">٨ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="lut.html">
       <div class="icon">🏚️</div>
-      <h3>لوط عليه السلام</h3>
-      <p>سدوم والفاحشة العلنية</p>
-      <div class="stats"><span class="stat">٦ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Lot, peace be upon him">لوط عليه السلام</h3>
+      <p data-en="Sodom and open indecency">سدوم والفاحشة العلنية</p>
+      <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="ismail.html">
       <div class="icon">🕋</div>
-      <h3>إسماعيل عليه السلام</h3>
-      <p>صادق الوعد — زمزم والفداء ورفع القواعد</p>
-      <div class="stats"><span class="stat">٨ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Ishmael, peace be upon him">إسماعيل عليه السلام</h3>
+      <p data-en="True to his word — Zamzam, the ransom, and raising the foundations">صادق الوعد — زمزم والفداء ورفع القواعد</p>
+      <div class="stats"><span class="stat" data-en="8 Stages">٨ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="ishaq-yaqub.html">
       <div class="icon">⭐</div>
-      <h3>إسحاق ويعقوب</h3>
-      <p>بشارة وبركة — ووصية عند الموت</p>
-      <div class="stats"><span class="stat">٨ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Isaac and Jacob">إسحاق ويعقوب</h3>
+      <p data-en="Glad tidings and blessing — and a final testament">بشارة وبركة — ووصية عند الموت</p>
+      <div class="stats"><span class="stat" data-en="8 Stages">٨ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="yusuf.html">
       <div class="icon">👑</div>
-      <h3>يوسف عليه السلام</h3>
-      <p>أحسن القصص — من الجُبّ إلى خزائن الأرض</p>
-      <div class="stats"><span class="stat">٩ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Joseph, peace be upon him">يوسف عليه السلام</h3>
+      <p data-en="The best of stories — from the well to the treasuries of the land">أحسن القصص — من الجُبّ إلى خزائن الأرض</p>
+      <div class="stats"><span class="stat" data-en="9 Stages">٩ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="ayyub.html">
       <div class="icon">🕊️</div>
-      <h3>أيوب عليه السلام</h3>
-      <p>نِعْمَ العبد إنه أوّاب — صبرٌ صار ذكرى</p>
-      <div class="stats"><span class="stat">٦ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Job, peace be upon him">أيوب عليه السلام</h3>
+      <p data-en="&quot;An excellent servant, ever turning to God&quot; — patience that became legend">نِعْمَ العبد إنه أوّاب — صبرٌ صار ذكرى</p>
+      <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="shuayb.html">
       <div class="icon">⚖️</div>
-      <h3>شعيب عليه السلام</h3>
-      <p>خطيب الأنبياء — حين يكون الميزان عبادة</p>
-      <div class="stats"><span class="stat">٦ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Shu'ayb, peace be upon him">شعيب عليه السلام</h3>
+      <p data-en="The orator of the prophets — when the scale itself is worship">خطيب الأنبياء — حين يكون الميزان عبادة</p>
+      <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="musa-harun.html">
       <div class="icon">🌊</div>
-      <h3>موسى وهارون</h3>
-      <p>من اليمّ إلى الطور — ووزيرٌ من أهلي</p>
-      <div class="stats"><span class="stat">١٤ مرحلة</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Moses and Aaron">موسى وهارون</h3>
+      <p data-en="From the river to Mount Tur — &quot;a helper from my family&quot;">من اليمّ إلى الطور — ووزيرٌ من أهلي</p>
+      <div class="stats"><span class="stat" data-en="14 Stages">١٤ مرحلة</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
     <a class="card half" href="musa-khidr.html">
       <div class="icon">🌿</div>
-      <h3>موسى والخضر</h3>
-      <p>العبد الصالح — فوق كل ذي علمٍ عليم</p>
-      <div class="stats"><span class="stat">٦ مراحل</span></div>
-      <span class="btn">استكشف القصة</span>
+      <h3 data-en="Moses and al-Khidr">موسى والخضر</h3>
+      <p data-en="The righteous servant — &quot;above every possessor of knowledge is one more knowing&quot;">العبد الصالح — فوق كل ذي علمٍ عليم</p>
+      <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+      <span class="btn" data-en="Explore the Story">استكشف القصة</span>
     </a>
 
   <a class="card half" href="dhul-kifl.html">
     <div class="icon">📜</div>
-    <h3>ذو الكفل عليه السلام</h3>
-    <p>من الصابرين ومن الأخيار</p>
-    <div class="stats"><span class="stat">٣ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Dhul-Kifl, peace be upon him">ذو الكفل عليه السلام</h3>
+    <p data-en="Among the patient and the righteous">من الصابرين ومن الأخيار</p>
+    <div class="stats"><span class="stat" data-en="3 Stages">٣ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="dawud.html">
      <div class="icon">👑</div>
-     <h3>داود عليه السلام</h3>
-     <p>من قاتل جالوت إلى النبي الملك</p>
-     <div class="stats"><span class="stat">٧ مراحل</span></div>
-     <span class="btn">استكشف القصة</span>
+     <h3 data-en="David, peace be upon him">داود عليه السلام</h3>
+     <p data-en="From slayer of Goliath to the prophet-king">من قاتل جالوت إلى النبي الملك</p>
+     <div class="stats"><span class="stat" data-en="7 Stages">٧ مراحل</span></div>
+     <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="sulaiman.html">
     <div class="icon">🐜</div>
-    <h3>سليمان عليه السلام</h3>
-    <p>مُلك لم يُعطَ لأحد من بعده</p>
-    <div class="stats"><span class="stat">٨ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Solomon, peace be upon him">سليمان عليه السلام</h3>
+    <p data-en="A kingdom granted to none after him">مُلك لم يُعطَ لأحد من بعده</p>
+    <div class="stats"><span class="stat" data-en="8 Stages">٨ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="ilyas.html">
     <div class="icon">🌩️</div>
-    <h3>إلياس عليه السلام</h3>
-    <p>مواجهة عبادة "بعل"</p>
-    <div class="stats"><span class="stat">٤ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Elijah, peace be upon him">إلياس عليه السلام</h3>
+    <p data-en="Confronting the worship of &quot;Ba'l&quot;">مواجهة عبادة "بعل"</p>
+    <div class="stats"><span class="stat" data-en="4 Stages">٤ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="al-yasa.html">
     <div class="icon">📜</div>
-    <h3>اليسع عليه السلام</h3>
-    <p>من المفضّلين على العالمين</p>
-    <div class="stats"><span class="stat">٣ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Elisha, peace be upon him">اليسع عليه السلام</h3>
+    <p data-en="Among those favored above all peoples">من المفضّلين على العالمين</p>
+    <div class="stats"><span class="stat" data-en="3 Stages">٣ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="yunus.html">
     <div class="icon">🐋</div>
-    <h3>يونس عليه السلام</h3>
-    <p>من بطن الحوت إلى إيمان قومه</p>
-    <div class="stats"><span class="stat">٦ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Jonah, peace be upon him">يونس عليه السلام</h3>
+    <p data-en="From the belly of the whale to his people's faith">من بطن الحوت إلى إيمان قومه</p>
+    <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="zakariya-yahya.html">
     <div class="icon">🕊️</div>
-    <h3>زكريا ويحيى عليهما السلام</h3>
-    <p>دعاء في الكبر يُستجاب</p>
-    <div class="stats"><span class="stat">٥ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Zechariah and John, peace be upon them">زكريا ويحيى عليهما السلام</h3>
+    <p data-en="A prayer in old age, answered">دعاء في الكبر يُستجاب</p>
+    <div class="stats"><span class="stat" data-en="5 Stages">٥ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
   <a class="card half" href="isa.html">
     <div class="icon">🕯️</div>
-    <h3>عيسى عليه السلام</h3>
-    <p>عبد الله ورسوله — رُفع ولم يُصلب</p>
-    <div class="stats"><span class="stat">٦ مراحل</span></div>
-    <span class="btn">استكشف القصة</span>
+    <h3 data-en="Jesus, peace be upon him">عيسى عليه السلام</h3>
+    <p data-en="Servant and messenger of God — raised, not crucified">عبد الله ورسوله — رُفع ولم يُصلب</p>
+    <div class="stats"><span class="stat" data-en="6 Stages">٦ مراحل</span></div>
+    <span class="btn" data-en="Explore the Story">استكشف القصة</span>
   </a>
 
 <a class="card intro" href="muhammad.html">
     <div class="icon">🕌</div>
-    <h3>محمد صلى الله عليه وسلم</h3>
-    <p>خاتم الأنبياء والمرسلين — نبذة موجزة تختم السلسلة، مع إحالة للسيرة والخلافة بالتفصيل</p>
-    <span class="btn">استكشف السيرة</span>
+    <h3 data-en="Muhammad, peace be upon him">محمد صلى الله عليه وسلم</h3>
+    <p data-en="Seal of the prophets and messengers — a brief closing summary, with a link to the detailed Seerah and Caliphate app">خاتم الأنبياء والمرسلين — نبذة موجزة تختم السلسلة، مع إحالة للسيرة والخلافة بالتفصيل</p>
+    <span class="btn" data-en="Explore the Seerah">استكشف السيرة</span>
   </a>
   </div>
 
 </main>
+
+<script>
+let currentLang='ar';
+function toggleLang(){
+  currentLang = currentLang==='ar' ? 'en' : 'ar';
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    if(!el.dataset.arCache) el.dataset.arCache = el.innerHTML;
+    el.innerHTML = currentLang==='en' ? el.getAttribute('data-en') : el.dataset.arCache;
+  });
+  document.documentElement.lang = currentLang==='en' ? 'en' : 'ar';
+  document.documentElement.dir = currentLang==='en' ? 'ltr' : 'rtl';
+  document.getElementById('langBtn').textContent = currentLang==='en' ? 'العربية' : 'English';
+}
+</script>
 
 <script>
   if ('serviceWorker' in navigator) {
