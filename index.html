@@ -268,16 +268,33 @@
 
 <script>
 let currentLang='ar';
-function toggleLang(){
-  currentLang = currentLang==='ar' ? 'en' : 'ar';
+
+function applyLang(lang){
+  currentLang = lang;
+  try{ localStorage.setItem('lang', lang); }catch(e){}
   document.querySelectorAll('[data-en]').forEach(el=>{
     if(!el.dataset.arCache) el.dataset.arCache = el.innerHTML;
-    el.innerHTML = currentLang==='en' ? el.getAttribute('data-en') : el.dataset.arCache;
+    el.innerHTML = lang==='en' ? el.getAttribute('data-en') : el.dataset.arCache;
   });
-  document.documentElement.lang = currentLang==='en' ? 'en' : 'ar';
-  document.documentElement.dir = currentLang==='en' ? 'ltr' : 'rtl';
-  document.getElementById('langBtn').textContent = currentLang==='en' ? 'العربية' : 'English';
+  document.documentElement.lang = lang==='en' ? 'en' : 'ar';
+  document.documentElement.dir = lang==='en' ? 'ltr' : 'rtl';
+  document.getElementById('langBtn').textContent = lang==='en' ? 'العربية' : 'English';
 }
+
+function toggleLang(){
+  applyLang(currentLang==='ar' ? 'en' : 'ar');
+}
+
+function getSavedLang(){
+  try{ return localStorage.getItem('lang') || 'ar'; }catch(e){ return 'ar'; }
+}
+(function initLang(){
+  if(getSavedLang()==='en') applyLang('en');
+})();
+window.addEventListener('pageshow', function(){
+  const s = getSavedLang();
+  if(s !== currentLang) applyLang(s);
+});
 </script>
 
 <script>

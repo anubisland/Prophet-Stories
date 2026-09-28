@@ -411,6 +411,7 @@ function toggleSpeak(){
 
 function applyLang(lang){
   currentLang = lang;
+  try{ localStorage.setItem('lang', lang); }catch(e){}
   document.querySelectorAll('[data-en]').forEach(el=>{
     if(!el.dataset.arCache) el.dataset.arCache = el.innerHTML;
     el.innerHTML = lang==='en' ? el.getAttribute('data-en') : el.dataset.arCache;
@@ -429,6 +430,17 @@ function toggleLang(){
 }
 
 setCurrent(1);
+
+function getSavedLang(){
+  try{ return localStorage.getItem('lang') || 'ar'; }catch(e){ return 'ar'; }
+}
+(function initLang(){
+  if(getSavedLang()==='en') applyLang('en');
+})();
+window.addEventListener('pageshow', function(){
+  const s = getSavedLang();
+  if(s !== currentLang) applyLang(s);
+});
 </script>
 
 </body>
