@@ -101,6 +101,8 @@
   }
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{
     position:absolute; top:8px; left:10px;
     background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
@@ -193,7 +195,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ إسحاق ويعقوب عليهما السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -268,6 +270,7 @@
       <div class="ayah-box" data-surah="11" data-ayah-start="71" data-ayah-end="71">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَامْرَأَتُهُ قَائِمَةٌ فَضَحِكَتْ فَبَشَّرْنَاهَا بِإِسْحَاقَ وَمِن وَرَاءِ إِسْحَاقَ يَعْقُوبَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And his Wife was standing, and she smiled. Then We gave her good tidings of Isaac and after Isaac, Jacob.</div>
         <div class="ref">سورة هود — الآية ٧١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>عَطَاءُ اللَّهِ يَفُوقُ السُّؤَالَ؛ سُئِلَ الْوَلَدُ فَأُعْطِيَ الْوَلَدَ وَوَلَدَ الْوَلَدِ، فَلَا تُصَغِّرْ رَجَاءَكَ عِنْدَ بَابِ كَرِيمٍ</p></div>
@@ -285,6 +288,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="49" data-ayah-end="49">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَلَمَّا اعْتَزَلَهُمْ وَمَا يَعْبُدُونَ مِن دُونِ اللَّهِ وَهَبْنَا لَهُ إِسْحَاقَ وَيَعْقُوبَ ۖ وَكُلًّا جَعَلْنَا نَبِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">So when he had left them and those they worshipped other than Allah, We gave him Isaac and Jacob, and each [of them] We made a prophet.</div>
         <div class="ref">سورة مريم — الآية ٤٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مَنْ تَرَكَ شَيْئًا لِلَّهِ عَوَّضَهُ خَيْرًا مِنْهُ؛ فَارَقَ إِبْرَاهِيمُ أَهْلَهُ عَلَى الشِّرْكِ فَأُعْطِيَ ذُرِّيَّةً كُلُّهُمْ أَنْبِيَاءُ</p></div>
@@ -302,6 +306,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="72" data-ayah-end="73">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَوَهَبْنَا لَهُ إِسْحَاقَ وَيَعْقُوبَ نَافِلَةً ۖ وَكُلًّا جَعَلْنَا صَالِحِينَ ۝ وَجَعَلْنَاهُمْ أَئِمَّةً يَهْدُونَ بِأَمْرِنَا وَأَوْحَيْنَا إِلَيْهِمْ فِعْلَ الْخَيْرَاتِ وَإِقَامَ الصَّلَاةِ وَإِيتَاءَ الزَّكَاةِ ۖ وَكَانُوا لَنَا عَابِدِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We gave him Isaac and Jacob in addition, and all [of them] We made righteous. And We made them leaders guiding by Our command. And We inspired to them the doing of good deeds, establishment of prayer, and giving of zakah; and they were worshippers of Us.</div>
         <div class="ref">سورة الأنبياء — الآيتان ٧٢-٧٣</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْإِمَامَةُ تُبْنَى عَلَى أَمْرِ اللَّهِ لَا عَلَى رَأْيِ الْإِمَامِ؛ فَمَنْ أَرَادَ أَنْ يُقْتَدَى بِهِ فَلْيَكُنْ أَوَّلَ الْمُتَّبِعِينَ</p></div>
@@ -319,6 +324,7 @@
       <div class="ayah-box" data-surah="38" data-ayah-start="45" data-ayah-end="47">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَاذْكُرْ عِبَادَنَا إِبْرَاهِيمَ وَإِسْحَاقَ وَيَعْقُوبَ أُولِي الْأَيْدِي وَالْأَبْصَارِ ۝ إِنَّا أَخْلَصْنَاهُم بِخَالِصَةٍ ذِكْرَى الدَّارِ ۝ وَإِنَّهُمْ عِندَنَا لَمِنَ الْمُصْطَفَيْنَ الْأَخْيَارِ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And remember Our servants, Abraham, Isaac and Jacob - those of strength and [religious] vision. Indeed, We chose them for an exclusive quality: remembrance of the home [of the Hereafter]. And indeed they are, to Us, among the chosen and outstanding.</div>
         <div class="ref">سورة ص — الآيات ٤٥-٤٧</div>
       </div>
       <div class="chars-line">👥 <b>إبراهيم</b> — الأب والخليل · <b>إسحاق</b> — الابن النبي · <b>يعقوب</b> — ابن الابن، وهو إسرائيل</div>
@@ -342,6 +348,7 @@
       <div class="ayah-box" data-surah="2" data-ayah-start="132" data-ayah-end="133">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَوَصَّىٰ بِهَا إِبْرَاهِيمُ بَنِيهِ وَيَعْقُوبُ يَا بَنِيَّ إِنَّ اللَّهَ اصْطَفَىٰ لَكُمُ الدِّينَ فَلَا تَمُوتُنَّ إِلَّا وَأَنتُم مُّسْلِمُونَ ۝ أَمْ كُنتُمْ شُهَدَاءَ إِذْ حَضَرَ يَعْقُوبَ الْمَوْتُ إِذْ قَالَ لِبَنِيهِ مَا تَعْبُدُونَ مِن بَعْدِي قَالُوا نَعْبُدُ إِلَٰهَكَ وَإِلَٰهَ آبَائِكَ إِبْرَاهِيمَ وَإِسْمَاعِيلَ وَإِسْحَاقَ إِلَٰهًا وَاحِدًا وَنَحْنُ لَهُ مُسْلِمُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And Abraham instructed his sons [to do the same] and [so did] Jacob, [saying], &quot;O my sons, indeed Allah has chosen for you this religion, so do not die except while you are Muslims.&quot; Or were you witnesses when death approached Jacob, when he said to his sons, &quot;What will you worship after me?&quot; They said, &quot;We will worship your God and the God of your fathers, Abraham and Ishmael and Isaac - one God. And we are Muslims [in submission] to Him.&quot;</div>
         <div class="ref">سورة البقرة — الآيتان ١٣٢-١٣٣</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَوَّلُ مَا يَنْبَغِي أَنْ تَخَافَ عَلَيْهِ فِي أَوْلَادِكَ دِينُهُمْ لَا رِزْقُهُمْ؛ فَاجْعَلْ آخِرَ مَا تُوصِيهِمْ بِهِ أَوَّلَ مَا يَهُمُّكَ مِنْهُمْ</p></div>
@@ -359,6 +366,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="18" data-ayah-end="18">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَجَاءُوا عَلَىٰ قَمِيصِهِ بِدَمٍ كَذِبٍ ۚ قَالَ بَلْ سَوَّلَتْ لَكُمْ أَنفُسُكُمْ أَمْرًا ۖ فَصَبْرٌ جَمِيلٌ ۖ وَاللَّهُ الْمُسْتَعَانُ عَلَىٰ مَا تَصِفُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And they brought upon his shirt false blood. [Jacob] said, &quot;Rather, your souls have enticed you to something, so patience is most fitting. And Allah is the one sought for help against that which you describe.&quot;</div>
         <div class="ref">سورة يوسف — الآية ١٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصَّبْرُ الْجَمِيلُ أَنْ تَشْكُوَ إِلَى اللَّهِ لَا أَنْ تَشْكُوَ اللَّهَ إِلَى النَّاسِ؛ وَالْحُزْنُ لَا يُنَافِي الصَّبْرَ مَا دَامَ اللِّسَانُ لَمْ يَعْتَرِضْ</p></div>
@@ -376,6 +384,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="87" data-ayah-end="87">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">يَا بَنِيَّ اذْهَبُوا فَتَحَسَّسُوا مِن يُوسُفَ وَأَخِيهِ وَلَا تَيْأَسُوا مِن رَّوْحِ اللَّهِ ۖ إِنَّهُ لَا يَيْأَسُ مِن رَّوْحِ اللَّهِ إِلَّا الْقَوْمُ الْكَافِرُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">O my sons, go and find out about Joseph and his brother and despair not of relief from Allah. Indeed, no one despairs of relief from Allah except the disbelieving people.&quot;</div>
         <div class="ref">سورة يوسف — الآية ٨٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>ابْحَثْ وَلَا تَيْأَسْ؛ أَمَرَهُمْ بِالسَّعْيِ وَنَهَاهُمْ عَنِ الْيَأْسِ فِي آيَةٍ وَاحِدَةٍ، فَالرَّجَاءُ عَمَلٌ لَا انْتِظَارٌ</p></div>
@@ -393,6 +402,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="50" data-ayah-end="50">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَوَهَبْنَا لَهُم مِّن رَّحْمَتِنَا وَجَعَلْنَا لَهُمْ لِسَانَ صِدْقٍ عَلِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We gave them of Our mercy, and we made for them a reputation of high honor.</div>
         <div class="ref">سورة مريم — الآية ٥٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الذِّكْرُ الْحَسَنُ بَعْدَ الْمَوْتِ يُورَثُ بِالْعَمَلِ لَا بِالطَّلَبِ؛ لَمْ يَسْأَلُوا ثَنَاءَ النَّاسِ فَأَعْطَاهُمُ اللَّهُ لِسَانَ صِدْقٍ بَقِيَ أُلُوفَ السِّنِينَ</p></div>
@@ -499,7 +509,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -510,7 +520,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -529,7 +539,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -566,6 +576,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

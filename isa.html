@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -60,7 +62,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ عيسى عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -126,6 +128,7 @@
       <div class="ayah-box" data-surah="3" data-ayah-start="45" data-ayah-end="45">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِذْ قَالَتِ الْمَلَائِكَةُ يَا مَرْيَمُ إِنَّ اللَّهَ يُبَشِّرُكِ بِكَلِمَةٍ مِّنْهُ اسْمُهُ الْمَسِيحُ عِيسَى ابْنُ مَرْيَمَ وَجِيهًا فِي الدُّنْيَا وَالْآخِرَةِ وَمِنَ الْمُقَرَّبِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[And mention] when the angels said, &quot;O Mary, indeed Allah gives you good tidings of a word from Him, whose name will be the Messiah, Jesus, the son of Mary - distinguished in this world and the Hereafter and among those brought near [to Allah].</div>
         <div class="ref">سورة آل عمران — الآية ٤٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>تَسْمِيَةُ عِيسَى "كَلِمَةً مِنَ اللَّهِ" لَا تَعْنِي أُلُوهِيَّتَهُ، بَلْ هِيَ إِشَارَةٌ لِخَلْقِهِ بِكَلِمَةِ "كُنْ" مِنْ غَيْرِ أَبٍ</p></div>
@@ -140,6 +143,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="20" data-ayah-end="21">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَتْ أَنَّىٰ يَكُونُ لِي غُلَامٌ وَلَمْ يَمْسَسْنِي بَشَرٌ وَلَمْ أَكُ بَغِيًّا ۝ قَالَ كَذَٰلِكِ قَالَ رَبُّكِ هُوَ عَلَيَّ هَيِّنٌ ۖ وَلِنَجْعَلَهُ آيَةً لِّلنَّاسِ وَرَحْمَةً مِّنَّا ۚ وَكَانَ أَمْرًا مَّقْضِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">She said, &quot;How can I have a boy while no man has touched me and I have not been unchaste?&quot; He said, &quot;Thus [it will be]; your Lord says, &#39;It is easy for Me, and We will make him a sign to the people and a mercy from Us. And it is a matter [already] decreed.&#39; &quot;</div>
         <div class="ref">سورة مريم — الآيتان ٢٠-٢١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْقُدْرَةُ الْإِلَهِيَّةُ لَا تَحْتَاجُ لِلْأَسْبَابِ الْمُعْتَادَةِ إِذَا أَرَادَ اللَّهُ أَمْرًا</p></div>
@@ -154,6 +158,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="30" data-ayah-end="33">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ إِنِّي عَبْدُ اللَّهِ آتَانِيَ الْكِتَابَ وَجَعَلَنِي نَبِيًّا ۝ وَجَعَلَنِي مُبَارَكًا أَيْنَ مَا كُنتُ وَأَوْصَانِي بِالصَّلَاةِ وَالزَّكَاةِ مَا دُمْتُ حَيًّا ۝ وَبَرًّا بِوَالِدَتِي وَلَمْ يَجْعَلْنِي جَبَّارًا شَقِيًّا ۝ وَالسَّلَامُ عَلَيَّ يَوْمَ وُلِدتُّ وَيَوْمَ أَمُوتُ وَيَوْمَ أُبْعَثُ حَيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[Jesus] said, &quot;Indeed, I am the servant of Allah. He has given me the Scripture and made me a prophet. And He has made me blessed wherever I am and has enjoined upon me prayer and zakah as long as I remain alive And [made me] dutiful to my mother, and He has not made me a wretched tyrant. And peace is on me the day I was born and the day I will die and the day I am raised alive.&quot;</div>
         <div class="ref">سورة مريم — الآيات ٣٠-٣٣</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَوَّلُ كَلِمَاتِ عِيسَى فِي حَيَاتِهِ أَعْلَنَتْ عُبُودِيَّتَهُ لِلَّهِ، فَكَانَتْ رَدًّا مُبَكِّرًا عَلَى مَنْ سَيَدَّعِي أُلُوهِيَّتَهُ لَاحِقًا</p></div>
@@ -168,6 +173,7 @@
       <div class="ayah-box" data-surah="3" data-ayah-start="49" data-ayah-end="49">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَرَسُولًا إِلَىٰ بَنِي إِسْرَائِيلَ أَنِّي قَدْ جِئْتُكُم بِآيَةٍ مِّن رَّبِّكُمْ ۖ أَنِّي أَخْلُقُ لَكُم مِّنَ الطِّينِ كَهَيْئَةِ الطَّيْرِ فَأَنفُخُ فِيهِ فَيَكُونُ طَيْرًا بِإِذْنِ اللَّهِ ۖ وَأُبْرِئُ الْأَكْمَهَ وَالْأَبْرَصَ وَأُحْيِي الْمَوْتَىٰ بِإِذْنِ اللَّهِ ۖ وَأُنَبِّئُكُم بِمَا تَأْكُلُونَ وَمَا تَدَّخِرُونَ فِي بُيُوتِكُمْ ۚ إِنَّ فِي ذَٰلِكَ لَآيَةً لَّكُمْ إِن كُنتُم مُّؤْمِنِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [make him] a messenger to the Children of Israel, [who will say], &#39;Indeed I have come to you with a sign from your Lord in that I design for you from clay [that which is] like the form of a bird, then I breathe into it and it becomes a bird by permission of Allah. And I cure the blind and the leper, and I give life to the dead - by permission of Allah. And I inform you of what you eat and what you store in your houses. Indeed in that is a sign for you, if you are believers.</div>
         <div class="ref">سورة آل عمران — الآية ٤٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>تَكْرَارُ "بِإِذْنِ اللَّهِ" فِي كُلِّ مُعْجِزَةٍ تَأْكِيدٌ صَرِيحٌ أَنَّ عِيسَى عَبْدٌ مَأْذُونٌ لَهُ لَا إِلَهٌ فَاعِلٌ</p></div>
@@ -182,12 +188,14 @@
       <div class="ayah-box" data-surah="5" data-ayah-start="112" data-ayah-end="113">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِذْ قَالَ الْحَوَارِيُّونَ يَا عِيسَى ابْنَ مَرْيَمَ هَلْ يَسْتَطِيعُ رَبُّكَ أَن يُنَزِّلَ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ ۖ قَالَ اتَّقُوا اللَّهَ إِن كُنتُم مُّؤْمِنِينَ ۝ قَالُوا نُرِيدُ أَن نَّأْكُلَ مِنْهَا وَتَطْمَئِنَّ قُلُوبُنَا وَنَعْلَمَ أَن قَدْ صَدَقْتَنَا وَنَكُونَ عَلَيْهَا مِنَ الشَّاهِدِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[And remember] when the disciples said, &quot;O Jesus, Son of Mary, can your Lord send down to us a table [spread with food] from the heaven? [Jesus] said,&quot; Fear Allah, if you should be believers.&quot; They said, &quot;We wish to eat from it and let our hearts be reassured and know that you have been truthful to us and be among its witnesses.&quot;</div>
         <div class="ref">سورة المائدة — الآيتان ١١٢-١١٣</div>
       </div>
       <p class="narrative">فَدَعَا عِيسَى رَبَّهُ أَنْ يُنَزِّلَهَا آيَةً وَعِيدًا يَذْكُرُونَهُ، فَاسْتَجَابَ اللَّهُ لَكِنْ بِشَرْطٍ شَدِيدٍ: مَنْ يَكْفُرْ بَعْدَهَا مِنْهُمْ يُعَذَّبْ عَذَابًا لَمْ يُعَذِّبْهُ أَحَدًا مِنَ الْعَالَمِينَ.</p>
       <div class="ayah-box" data-surah="5" data-ayah-start="114" data-ayah-end="115">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ عِيسَى ابْنُ مَرْيَمَ اللَّهُمَّ رَبَّنَا أَنزِلْ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ تَكُونُ لَنَا عِيدًا لِّأَوَّلِنَا وَآخِرِنَا وَآيَةً مِّنكَ ۖ وَارْزُقْنَا وَأَنتَ خَيْرُ الرَّازِقِينَ ۝ قَالَ اللَّهُ إِنِّي مُنَزِّلُهَا عَلَيْكُمْ ۖ فَمَن يَكْفُرْ بَعْدُ مِنكُمْ فَإِنِّي أُعَذِّبُهُ عَذَابًا لَّا أُعَذِّبُ أَحَدًا مِّنَ الْعَالَمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Said Jesus, the son of Mary, &quot;O Allah, our Lord, send down to us a table [spread with food] from the heaven to be for us a festival for the first of us and the last of us and a sign from You. And provide for us, and You are the best of providers.&quot; Allah said, &quot;Indeed, I will sent it down to you, but whoever disbelieves afterwards from among you - then indeed will I punish him with a punishment by which I have not punished anyone among the worlds.&quot;</div>
         <div class="ref">سورة المائدة — الآيتان ١١٤-١١٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>طَلَبُ الْآيَاتِ الْحِسِّيَّةِ لِلِاطْمِئْنَانِ مَشْرُوعٌ، لَكِنَّهُ يَحْمِلُ مَسْؤُولِيَّةً عَظِيمَةً بَعْدَ تَحَقُّقِهَا — فَالْآيَةُ الْمُتَحَقِّقَةُ تَرْفَعُ الْحُجَّةَ وَتُشَدِّدُ الْمُحَاسَبَةَ</p></div>
@@ -202,6 +210,7 @@
       <div class="ayah-box" data-surah="4" data-ayah-start="157" data-ayah-end="158">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَقَوْلِهِمْ إِنَّا قَتَلْنَا الْمَسِيحَ عِيسَى ابْنَ مَرْيَمَ رَسُولَ اللَّهِ وَمَا قَتَلُوهُ وَمَا صَلَبُوهُ وَلَٰكِن شُبِّهَ لَهُمْ ۚ وَإِنَّ الَّذِينَ اخْتَلَفُوا فِيهِ لَفِي شَكٍّ مِّنْهُ ۚ مَا لَهُم بِهِ مِنْ عِلْمٍ إِلَّا اتِّبَاعَ الظَّنِّ ۚ وَمَا قَتَلُوهُ يَقِينًا ۝ بَل رَّفَعَهُ اللَّهُ إِلَيْهِ ۚ وَكَانَ اللَّهُ عَزِيزًا حَكِيمًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [for] their saying, &quot;Indeed, we have killed the Messiah, Jesus, the son of Mary, the messenger of Allah.&quot; And they did not kill him, nor did they crucify him; but [another] was made to resemble him to them. And indeed, those who differ over it are in doubt about it. They have no knowledge of it except the following of assumption. And they did not kill him, for certain. Rather, Allah raised him to Himself. And ever is Allah Exalted in Might and Wise.</div>
         <div class="ref">سورة النساء — الآيتان ١٥٧-١٥٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>نَجَاةُ رُسُلِ اللَّهِ مِنْ مَكْرِ أَعْدَائِهِمْ دَلِيلٌ عَلَى أَنَّ التَّدْبِيرَ الْأَخِيرَ لِلَّهِ وَحْدَهُ</p></div>
@@ -216,6 +225,7 @@
       <div class="ayah-box" data-surah="4" data-ayah-start="159" data-ayah-end="159">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِن مِّنْ أَهْلِ الْكِتَابِ إِلَّا لَيُؤْمِنَنَّ بِهِ قَبْلَ مَوْتِهِ ۖ وَيَوْمَ الْقِيَامَةِ يَكُونُ عَلَيْهِمْ شَهِيدًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And there is none from the People of the Scripture but that he will surely believe in Jesus before his death. And on the Day of Resurrection he will be against them a witness.</div>
         <div class="ref">سورة النساء — الآية ١٥٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>عَقِيدَتُنَا فِي عِيسَى وَسَطٌ بَيْنَ الْغُلُوِّ فِيهِ (تَأْلِيهِهِ) وَالتَّفْرِيطِ بِهِ (تَكْذِيبِ نُبُوَّتِهِ)، وَهَذَا هُوَ مِيزَانُ الْإِسْلَامِ فِي كُلِّ الْأَنْبِيَاءِ</p></div>
@@ -310,7 +320,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -321,7 +331,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -340,7 +350,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -361,6 +371,11 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

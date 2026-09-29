@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -60,7 +62,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ إلياس عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -103,6 +105,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="123" data-ayah-end="126">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِنَّ إِلْيَاسَ لَمِنَ الْمُرْسَلِينَ ۝ إِذْ قَالَ لِقَوْمِهِ أَلَا تَتَّقُونَ ۝ أَتَدْعُونَ بَعْلًا وَتَذَرُونَ أَحْسَنَ الْخَالِقِينَ ۝ اللَّهَ رَبَّكُمْ وَرَبَّ آبَائِكُمُ الْأَوَّلِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And indeed, Elias was from among the messengers, When he said to his people, &quot;Will you not fear Allah? Do you call upon Ba&#39;l and leave the best of creators - Allah, your Lord and the Lord of your first forefathers?&quot;</div>
         <div class="ref">سورة الصافات — الآيات ١٢٣-١٢٦</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>تَسْمِيَةُ الْأَصْنَامِ بِأَسْمَاءٍ بَرَّاقَةٍ لَا تُغَيِّرُ مِنْ حَقِيقَتِهَا شَيْئًا</p></div>
@@ -117,6 +120,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="127" data-ayah-end="127">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَكَذَّبُوهُ فَإِنَّهُمْ لَمُحْضَرُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And they denied him, so indeed, they will be brought [for punishment],</div>
         <div class="ref">سورة الصافات — الآية ١٢٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>التَّكْذِيبُ لَا يُفْلِتُ صَاحِبَهُ مِنَ الْحِسَابِ، وَلَوْ تَأَخَّرَ إِلَى الْآخِرَةِ</p></div>
@@ -131,6 +135,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="128" data-ayah-end="128">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِلَّا عِبَادَ اللَّهِ الْمُخْلَصِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Except the chosen servants of Allah.</div>
         <div class="ref">سورة الصافات — الآية ١٢٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الثَّبَاتُ عَلَى التَّوْحِيدِ مُمْكِنٌ وَلَوْ كَانَ الْمَرْءُ أَقَلِّيَّةً وَسْطَ قَوْمٍ مُشْرِكِينَ</p></div>
@@ -145,6 +150,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="129" data-ayah-end="132">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَتَرَكْنَا عَلَيْهِ فِي الْآخِرِينَ ۝ سَلَامٌ عَلَىٰ إِلْ يَاسِينَ ۝ إِنَّا كَذَٰلِكَ نَجْزِي الْمُحْسِنِينَ ۝ إِنَّهُ مِنْ عِبَادِنَا الْمُؤْمِنِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We left for him [favorable mention] among later generations: &quot;Peace upon Elias.&quot; Indeed, We thus reward the doers of good. Indeed, he was of Our believing servants.</div>
         <div class="ref">سورة الصافات — الآيات ١٢٩-١٣٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>ذِكْرٌ حَسَنٌ بَاقٍ عِنْدَ اللَّهِ خَيْرٌ مِنْ كُلِّ مَا يَفُوتُ الدَّاعِيَةَ فِي حَيَاتِهِ مِنْ نُصْرَةٍ أَوْ أَتْبَاعٍ</p></div>
@@ -239,7 +245,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -250,7 +256,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -269,7 +275,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -290,6 +296,11 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

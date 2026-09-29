@@ -101,6 +101,8 @@
   }
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{
     position:absolute; top:8px; left:10px;
     background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
@@ -193,7 +195,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ موسى والخضر ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -271,6 +273,7 @@
       <div class="ayah-box" data-surah="18" data-ayah-start="60" data-ayah-end="60">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِذْ قَالَ مُوسَىٰ لِفَتَاهُ لَا أَبْرَحُ حَتَّىٰ أَبْلُغَ مَجْمَعَ الْبَحْرَيْنِ أَوْ أَمْضِيَ حُقُبًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [mention] when Moses said to his servant, &quot;I will not cease [traveling] until I reach the junction of the two seas or continue for a long period.&quot;</div>
         <div class="ref">سورة الكهف — الآية ٦٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>رُدَّ الْعِلْمَ إِلَى اللَّهِ وَلَا تَقُلْ «أَنَا»؛ فَأَعْلَمُ أَهْلِ زَمَانِهِ عُوتِبَ عَلَى كَلِمَةٍ، وَأُمِرَ أَنْ يَرْحَلَ لِيَتَعَلَّمَ</p></div>
@@ -289,6 +292,7 @@
       <div class="ayah-box" data-surah="18" data-ayah-start="63" data-ayah-end="64">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ أَرَأَيْتَ إِذْ أَوَيْنَا إِلَى الصَّخْرَةِ فَإِنِّي نَسِيتُ الْحُوتَ وَمَا أَنسَانِيهُ إِلَّا الشَّيْطَانُ أَنْ أَذْكُرَهُ ۚ وَاتَّخَذَ سَبِيلَهُ فِي الْبَحْرِ عَجَبًا ۝ قَالَ ذَٰلِكَ مَا كُنَّا نَبْغِ ۚ فَارْتَدَّا عَلَىٰ آثَارِهِمَا قَصَصًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">He said, &quot;Did you see when we retired to the rock? Indeed, I forgot [there] the fish. And none made me forget it except Satan - that I should mention it. And it took its course into the sea amazingly&quot;. [Moses] said, &quot;That is what we were seeking.&quot; So they returned, following their footprints.</div>
         <div class="ref">سورة الكهف — الآيتان ٦٣-٦٤</div>
       </div>
       <div class="chars-line">👥 <b>فتى موسى</b> — رافقه في الرحلة، وجاء في الصحيح أنه يوشع بن نون</div>
@@ -313,6 +317,7 @@
       <div class="ayah-box" data-surah="18" data-ayah-start="66" data-ayah-end="70">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ لَهُ مُوسَىٰ هَلْ أَتَّبِعُكَ عَلَىٰ أَن تُعَلِّمَنِ مِمَّا عُلِّمْتَ رُشْدًا ۝ قَالَ إِنَّكَ لَن تَسْتَطِيعَ مَعِيَ صَبْرًا ۝ وَكَيْفَ تَصْبِرُ عَلَىٰ مَا لَمْ تُحِطْ بِهِ خُبْرًا ۝ قَالَ سَتَجِدُنِي إِن شَاءَ اللَّهُ صَابِرًا وَلَا أَعْصِي لَكَ أَمْرًا ۝ قَالَ فَإِنِ اتَّبَعْتَنِي فَلَا تَسْأَلْنِي عَن شَيْءٍ حَتَّىٰ أُحْدِثَ لَكَ مِنْهُ ذِكْرًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Moses said to him, &quot;May I follow you on [the condition] that you teach me from what you have been taught of sound judgement?&quot; He said, &quot;Indeed, with me you will never be able to have patience. And how can you have patience for what you do not encompass in knowledge?&quot; [Moses] said, &quot;You will find me, if Allah wills, patient, and I will not disobey you in [any] order.&quot; He said, &quot;Then if you follow me, do not ask me about anything until I make to you about it mention.&quot;</div>
         <div class="ref">سورة الكهف — الآيات ٦٦-٧٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>تَوَاضَعْ لِمَنْ عِنْدَهُ مَا لَيْسَ عِنْدَكَ وَإِنْ كُنْتَ أَعْلَى مِنْهُ مَنْزِلَةً؛ وَاسْتَثْنِ بِمَشِيئَةِ اللَّهِ إِذَا وَعَدْتَ مِنْ نَفْسِكَ صَبْرًا</p></div>
@@ -328,6 +333,7 @@
       <div class="ayah-box" data-surah="18" data-ayah-start="71" data-ayah-end="71">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَانطَلَقَا حَتَّىٰ إِذَا رَكِبَا فِي السَّفِينَةِ خَرَقَهَا ۖ قَالَ أَخَرَقْتَهَا لِتُغْرِقَ أَهْلَهَا لَقَدْ جِئْتَ شَيْئًا إِمْرًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">So they set out, until when they had embarked on the ship, al-Khidh r tore it open. [Moses] said, &quot;Have you torn it open to drown its people? You have certainly done a grave thing.&quot;</div>
         <div class="ref">سورة الكهف — الآية ٧١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْحُكْمُ عَلَى الظَّاهِرِ وَاجِبٌ، وَالْبَاطِنُ إِلَى اللَّهِ؛ فَإِنْكَارُ مُوسَى لَمْ يَكُنْ خَطَأً فِي ذَاتِهِ، وَإِنَّمَا كَانَ هَذَا الْمَقَامُ اسْتِثْنَاءً بِوَحْيٍ خَاصٍّ لَا قَاعِدَةً تُتَّبَعُ</p></div>
@@ -347,6 +353,7 @@
       <div class="ayah-box" data-surah="18" data-ayah-start="82" data-ayah-end="82">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَأَمَّا الْجِدَارُ فَكَانَ لِغُلَامَيْنِ يَتِيمَيْنِ فِي الْمَدِينَةِ وَكَانَ تَحْتَهُ كَنزٌ لَّهُمَا وَكَانَ أَبُوهُمَا صَالِحًا فَأَرَادَ رَبُّكَ أَن يَبْلُغَا أَشُدَّهُمَا وَيَسْتَخْرِجَا كَنزَهُمَا رَحْمَةً مِّن رَّبِّكَ ۚ وَمَا فَعَلْتُهُ عَنْ أَمْرِي ۚ ذَٰلِكَ تَأْوِيلُ مَا لَمْ تَسْطِع عَّلَيْهِ صَبْرًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And as for the wall, it belonged to two orphan boys in the city, and there was beneath it a treasure for them, and their father had been righteous. So your Lord intended that they reach maturity and extract their treasure, as a mercy from your Lord. And I did it not of my own accord. That is the interpretation of that about which you could not have patience.&quot;</div>
         <div class="ref">سورة الكهف — الآية ٨٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>صَلَاحُ الْأَبِ يُحْفَظُ فِي وَلَدِهِ مِنْ بَعْدِهِ؛ حُفِظَ كَنْزُ الْيَتِيمَيْنِ لِأَنَّ أَبَاهُمَا كَانَ صَالِحًا، وَلَمْ يُذْكَرْ صَلَاحُهُمَا هُمَا</p></div>
@@ -363,6 +370,7 @@
       <div class="ayah-box" data-surah="18" data-ayah-start="65" data-ayah-end="65">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَوَجَدَا عَبْدًا مِّنْ عِبَادِنَا آتَيْنَاهُ رَحْمَةً مِّنْ عِندِنَا وَعَلَّمْنَاهُ مِن لَّدُنَّا عِلْمًا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And they found a servant from among Our servants to whom we had given mercy from us and had taught him from Us a [certain] knowledge.</div>
         <div class="ref">سورة الكهف — الآية ٦٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>فَوْقَ كُلِّ ذِي عِلْمٍ عَلِيمٌ؛ فَلَا تَقِفْ عِنْدَ مَا تَعْلَمُ، وَتَعَلَّمْ مِمَّنْ عِنْدَهُ مَا لَيْسَ عِنْدَكَ وَإِنْ كُنْتَ أَرْفَعَ مِنْهُ قَدْرًا</p></div>
@@ -468,7 +476,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -479,7 +487,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -498,7 +506,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -535,6 +543,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

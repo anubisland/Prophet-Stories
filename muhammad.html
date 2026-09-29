@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -69,7 +71,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ محمد ﷺ ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -120,6 +122,7 @@
       <div class="ayah-box" data-surah="3" data-ayah-start="164" data-ayah-end="164">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">لَقَدْ مَنَّ اللَّهُ عَلَى الْمُؤْمِنِينَ إِذْ بَعَثَ فِيهِمْ رَسُولًا مِّنْ أَنفُسِهِمْ يَتْلُو عَلَيْهِمْ آيَاتِهِ وَيُزَكِّيهِمْ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَ وَإِن كَانُوا مِن قَبْلُ لَفِي ضَلَالٍ مُّبِينٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Certainly did Allah confer [great] favor upon the believers when He sent among them a Messenger from themselves, reciting to them His verses and purifying them and teaching them the Book and wisdom, although they had been before in manifest error.</div>
         <div class="ref">سورة آل عمران — الآية ١٦٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>بَعْثَةُ الرَّسُولِ رَحْمَةٌ تَأْتِي فِي أَشَدِّ أَوْقَاتِ الْأُمَّةِ ضَلَالًا، لَا فِي أَفْضَلِهَا</p></div>
@@ -134,6 +137,7 @@
       <div class="ayah-box" data-surah="68" data-ayah-start="4" data-ayah-end="4">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And indeed, you are of a great moral character.</div>
         <div class="ref">سورة القلم — الآية ٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصِّدْقُ وَالْأَمَانَةُ أَسَاسٌ يُبْنَى عَلَيْهِ قَبُولُ الدَّعْوَةِ، لَا نَتِيجَةٌ لَهَا فَقَطْ</p></div>
@@ -148,6 +152,7 @@
       <div class="ayah-box" data-surah="96" data-ayah-start="1" data-ayah-end="5">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ۝ اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ ۝ عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Recite in the name of your Lord who created - Created man from a clinging substance. Recite, and your Lord is the most Generous - Who taught by the pen - Taught man that which he knew not.</div>
         <div class="ref">سورة العلق — الآيات ١-٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>بِدَايَةُ الْوَحْيِ كَانَتْ أَمْرًا بِالْقِرَاءَةِ وَالْعِلْمِ، لَا بِالسَّيْفِ أَوِ الْمُوَاجَهَةِ</p></div>
@@ -171,6 +176,7 @@
       <div class="ayah-box" data-surah="74" data-ayah-start="1" data-ayah-end="2">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">يَا أَيُّهَا الْمُدَّثِّرُ ۝ قُمْ فَأَنذِرْ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">O you who covers himself [with a garment], Arise and warn</div>
         <div class="ref">سورة المدثر — الآيتان ١-٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصَّبْرُ ثَلَاثَ عَشْرَةَ سَنَةً فِي مَكَّةَ قَبْلَ الْهِجْرَةِ دَرْسٌ فِي طُولِ نَفَسِ الدَّعْوَةِ إِلَى اللَّهِ</p></div>
@@ -185,6 +191,7 @@
       <div class="ayah-box" data-surah="9" data-ayah-start="40" data-ayah-end="40">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا فَأَنزَلَ اللَّهُ سَكِينَتَهُ عَلَيْهِ وَأَيَّدَهُ بِجُنُودٍ لَّمْ تَرَوْهَا وَجَعَلَ كَلِمَةَ الَّذِينَ كَفَرُوا السُّفْلَىٰ ۗ وَكَلِمَةُ اللَّهِ هِيَ الْعُلْيَا ۗ وَاللَّهُ عَزِيزٌ حَكِيمٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">If you do not aid the Prophet - Allah has already aided him when those who disbelieved had driven him out [of Makkah] as one of two, when they were in the cave and he said to his companion, &quot;Do not grieve; indeed Allah is with us.&quot; And Allah sent down his tranquillity upon him and supported him with angels you did not see and made the word of those who disbelieved the lowest, while the word of Allah - that is the highest. And Allah is Exalted in Might and Wise.</div>
         <div class="ref">سورة التوبة — الآية ٤٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>"إِنَّ اللَّهَ مَعَنَا" ثِقَةٌ تَكْفِي الْمُؤْمِنَ وَلَوْ كَانَ فِي أَضْعَفِ حَالَاتِهِ الظَّاهِرِيَّةِ</p></div>
@@ -199,6 +206,7 @@
       <div class="ayah-box" data-surah="22" data-ayah-start="39" data-ayah-end="39">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا ۚ وَإِنَّ اللَّهَ عَلَىٰ نَصْرِهِمْ لَقَدِيرٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Permission [to fight] has been given to those who are being fought, because they were wronged. And indeed, Allah is competent to give them victory.</div>
         <div class="ref">سورة الحج — الآية ٣٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْإِذْنُ بِالْقِتَالِ جَاءَ دِفَاعًا بَعْدَ ظُلْمٍ طَوِيلٍ، لَا ابْتِدَاءً بِالْعُدْوَانِ</p></div>
@@ -213,6 +221,7 @@
       <div class="ayah-box" data-surah="3" data-ayah-start="144" data-ayah-end="144">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ ۚ وَمَن يَنقَلِبْ عَلَىٰ عَقِبَيْهِ فَلَن يَضُرَّ اللَّهَ شَيْئًا ۗ وَسَيَجْزِي اللَّهُ الشَّاكِرِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Muhammad is not but a messenger. [Other] messengers have passed on before him. So if he was to die or be killed, would you turn back on your heels [to unbelief]? And he who turns back on his heels will never harm Allah at all; but Allah will reward the grateful.</div>
         <div class="ref">سورة آل عمران — الآية ١٤٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الثَّبَاتُ عَلَى الدِّينِ لَا يَتَوَقَّفُ عَلَى وُجُودِ الْقَائِدِ، بَلْ عَلَى صِدْقِ الْإِيمَانِ بِهِ</p></div>
@@ -320,7 +329,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -331,7 +340,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -350,7 +359,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -371,6 +380,11 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

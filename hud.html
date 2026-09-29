@@ -60,6 +60,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
 
   .chars-line{font-size:12px; color:var(--text-muted); margin-bottom:14px; line-height:1.7;}
@@ -123,7 +125,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ هود عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -196,6 +198,7 @@
       <div class="ayah-box" data-surah="7" data-ayah-start="65" data-ayah-end="65">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِلَىٰ عَادٍ أَخَاهُمْ هُودًا ۗ قَالَ يَا قَوْمِ اعْبُدُوا اللَّهَ مَا لَكُم مِّنْ إِلَٰهٍ غَيْرُهُ ۖ أَفَلَا تَتَّقُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And to the &#39;Aad [We sent] their brother Hud. He said, &quot;O my people, worship Allah; you have no deity other than Him. Then will you not fear Him?&quot;</div>
         <div class="ref">سورة الأعراف — الآية ٦٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَنْ يَبْعَثَ اللَّهُ الرَّسُولَ مِنْ جِنْسِ قَوْمِهِ لِيَكُونَ أَقْرَبَ لِقُلُوبِهِمْ وَأَدْعَى لِتَصْدِيقِهِ</p></div>
@@ -211,6 +214,7 @@
       <div class="ayah-box" data-surah="89" data-ayah-start="6" data-ayah-end="8">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">أَلَمْ تَرَ كَيْفَ فَعَلَ رَبُّكَ بِعَادٍ ۝ إِرَمَ ذَاتِ الْعِمَادِ ۝ الَّتِي لَمْ يُخْلَقْ مِثْلُهَا فِي الْبِلَادِ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Have you not considered how your Lord dealt with &#39;Aad - [With] Iram - who had lofty pillars, The likes of whom had never been created in the land?</div>
         <div class="ref">سورة الفجر — الآيات ٦-٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْقُوَّةُ وَالْعُمْرَانُ لَا تُغْنِي عَنِ الْحَقِّ شَيْئًا إِذَا صَاحَبَهَا الْكِبْرُ وَالطُّغْيَانُ</p></div>
@@ -226,6 +230,7 @@
       <div class="ayah-box" data-surah="26" data-ayah-start="128" data-ayah-end="130">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">أَتَبْنُونَ بِكُلِّ رِيعٍ آيَةً تَعْبَثُونَ ۝ وَتَتَّخِذُونَ مَصَانِعَ لَعَلَّكُمْ تَخْلُدُونَ ۝ وَإِذَا بَطَشْتُمْ بَطَشْتُمْ جَبَّارِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Do you construct on every elevation a sign, amusing yourselves, And take for yourselves palaces and fortresses that you might abide eternally? And when you strike, you strike as tyrants.</div>
         <div class="ref">سورة الشعراء — الآيات ١٢٨-١٣٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْعُمْرَانُ الْحَقِيقِيُّ عُمْرَانُ الْقُلُوبِ بِالتَّوْحِيدِ، لَا تَشْيِيدُ الْمَبَانِي لِلْخُلُودِ الْوَهْمِيِّ</p></div>
@@ -241,6 +246,7 @@
       <div class="ayah-box" data-surah="7" data-ayah-start="66" data-ayah-end="67">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ الْمَلَأُ الَّذِينَ كَفَرُوا مِن قَوْمِهِ إِنَّا لَنَرَاكَ فِي سَفَاهَةٍ وَإِنَّا لَنَظُنُّكَ مِنَ الْكَاذِبِينَ ۝ قَالَ يَا قَوْمِ لَيْسَ بِي سَفَاهَةٌ وَلَٰكِنِّي رَسُولٌ مِّن رَّبِّ الْعَالَمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Said the eminent ones who disbelieved among his people, &quot;Indeed, we see you in foolishness, and indeed, we think you are of the liars.&quot; [Hud] said, &quot;O my people, there is not foolishness in me, but I am a messenger from the Lord of the worlds.&quot;</div>
         <div class="ref">سورة الأعراف — الآيتان ٦٦-٦٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اتِّهَامُ الدُّعَاةِ بِالسَّفَاهَةِ سِلَاحٌ قَدِيمٌ لِلْمُكَذِّبِينَ، لَا يَقْدَحُ فِي صِدْقِ الْحَقِّ الَّذِي يَحْمِلُونَهُ</p></div>
@@ -256,6 +262,7 @@
       <div class="ayah-box" data-surah="46" data-ayah-start="22" data-ayah-end="22">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالُوا أَجِئْتَنَا لِتَأْفِكَنَا عَنْ آلِهَتِنَا فَأْتِنَا بِمَا تَعِدُنَا إِن كُنتَ مِنَ الصَّادِقِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">They said, &quot;Have you come to delude us away from our gods? Then bring us what you promise us, if you should be of the truthful.&quot;</div>
         <div class="ref">سورة الأحقاف — الآية ٢٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اسْتِعْجَالُ الْعَذَابِ دَلِيلُ غُرُورٍ بِالنَّفْسِ وَجَهْلٍ بِعَظَمَةِ عِقَابِ اللَّهِ</p></div>
@@ -271,12 +278,14 @@
       <div class="ayah-box" data-surah="69" data-ayah-start="6" data-ayah-end="7">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَأَمَّا عَادٌ فَأُهْلِكُوا بِرِيحٍ صَرْصَرٍ عَاتِيَةٍ ۝ سَخَّرَهَا عَلَيْهِمْ سَبْعَ لَيَالٍ وَثَمَانِيَةَ أَيَّامٍ حُسُومًا فَتَرَى الْقَوْمَ فِيهَا صَرْعَىٰ كَأَنَّهُمْ أَعْجَازُ نَخْلٍ خَاوِيَةٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And as for &#39;Aad, they were destroyed by a screaming, violent wind Which Allah imposed upon them for seven nights and eight days in succession, so you would see the people therein fallen as if they were hollow trunks of palm trees.</div>
         <div class="ref">سورة الحاقة — الآيتان ٦-٧</div>
       </div>
       <p class="narrative">وَنَجَّى اللَّهُ هُودًا وَمَنْ آمَنَ مَعَهُ بِرَحْمَتِهِ مِنْ ذَلِكَ الْعَذَابِ الْغَلِيظِ.</p>
       <div class="ayah-box" data-surah="11" data-ayah-start="58" data-ayah-end="58">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَلَمَّا جَاءَ أَمْرُنَا نَجَّيْنَا هُودًا وَالَّذِينَ آمَنُوا مَعَهُ بِرَحْمَةٍ مِّنَّا وَنَجَّيْنَاهُم مِّنْ عَذَابٍ غَلِيظٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And when Our command came, We saved Hud and those who believed with him, by mercy from Us; and We saved them from a harsh punishment.</div>
         <div class="ref">سورة هود — الآية ٥٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>نَجَاةُ الْمُؤْمِنِينَ دَائِمًا مُقْتَرِنَةٌ بِرَحْمَةِ اللَّهِ، لَا بِقُوَّتِهِمْ أَوْ حِيلَتِهِمْ</p></div>
@@ -370,7 +379,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -381,7 +390,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -400,7 +409,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -437,6 +446,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

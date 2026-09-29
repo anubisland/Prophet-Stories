@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -60,7 +62,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ سليمان عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -119,6 +121,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="16" data-ayah-end="16">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَوَرِثَ سُلَيْمَانُ دَاوُودَ وَقَالَ يَا أَيُّهَا النَّاسُ عُلِّمْنَا مَنطِقَ الطَّيْرِ وَأُوتِينَا مِن كُلِّ شَيْءٍ ۖ إِنَّ هَٰذَا لَهُوَ الْفَضْلُ الْمُبِينُ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And Solomon inherited David. He said, &quot;O people, we have been taught the language of birds, and we have been given from all things. Indeed, this is evident bounty.&quot;</div>
         <div class="ref">سورة النمل — الآية ١٦</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>إِعْلَانُ النِّعْمَةِ شُكْرًا لِلَّهِ لَا فَخْرًا عَلَى النَّاسِ أَدَبُ الْأَنْبِيَاءِ فِي التَّحَدُّثِ بِالنِّعَمِ</p></div>
@@ -133,6 +136,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="81" data-ayah-end="82">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَلِسُلَيْمَانَ الرِّيحَ عَاصِفَةً تَجْرِي بِأَمْرِهِ إِلَىٰ الْأَرْضِ الَّتِي بَارَكْنَا فِيهَا ۚ وَكُنَّا بِكُلِّ شَيْءٍ عَالِمِينَ ۝ وَمِنَ الشَّيَاطِينِ مَن يَغُوصُونَ لَهُ وَيَعْمَلُونَ عَمَلًا دُونَ ذَٰلِكَ ۖ وَكُنَّا لَهُمْ حَافِظِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And to Solomon [We subjected] the wind, blowing forcefully, proceeding by his command toward the land which We had blessed. And We are ever, of all things, Knowing. And of the devils were those who dived for him and did work other than that. And We were of them a guardian.</div>
         <div class="ref">سورة الأنبياء — الآيتان ٨١-٨٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>التَّمْكِينُ مَهْمَا اتَّسَعَ يَبْقَى تَحْتَ حِفْظِ اللَّهِ وَرَقَابَتِهِ، لَا يُفْلِتُ مِنْهُ أَحَدٌ</p></div>
@@ -147,6 +151,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="18" data-ayah-end="19">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">حَتَّىٰ إِذَا أَتَوْا عَلَىٰ وَادِ النَّمْلِ قَالَتْ نَمْلَةٌ يَا أَيُّهَا النَّمْلُ ادْخُلُوا مَسَاكِنَكُمْ لَا يَحْطِمَنَّكُمْ سُلَيْمَانُ وَجُنُودُهُ وَهُمْ لَا يَشْعُرُونَ ۝ فَتَبَسَّمَ ضَاحِكًا مِّن قَوْلِهَا وَقَالَ رَبِّ أَوْزِعْنِي أَنْ أَشْكُرَ نِعْمَتَكَ الَّتِي أَنْعَمْتَ عَلَيَّ وَعَلَىٰ وَالِدَيَّ وَأَنْ أَعْمَلَ صَالِحًا تَرْضَاهُ وَأَدْخِلْنِي بِرَحْمَتِكَ فِي عِبَادِكَ الصَّالِحِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Until, when they came upon the valley of the ants, an ant said, &quot;O ants, enter your dwellings that you not be crushed by Solomon and his soldiers while they perceive not.&quot; So [Solomon] smiled, amused at her speech, and said, &quot;My Lord, enable me to be grateful for Your favor which You have bestowed upon me and upon my parents and to do righteousness of which You approve. And admit me by Your mercy into [the ranks of] Your righteous servants.&quot;</div>
         <div class="ref">سورة النمل — الآيتان ١٨-١٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>التَّوَاضُعُ مَعَ أَضْعَفِ الْمَخْلُوقَاتِ وَشُكْرُ أَدَقِّ النِّعَمِ مِنْ صِفَاتِ الْمُتَمَكِّنِينَ الصَّالِحِينَ</p></div>
@@ -161,6 +166,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="22" data-ayah-end="22">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَمَكَثَ غَيْرَ بَعِيدٍ فَقَالَ أَحَطتُ بِمَا لَمْ تُحِطْ بِهِ وَجِئْتُكَ مِن سَبَإٍ بِنَبَإٍ يَقِينٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">But the hoopoe stayed not long and said, &quot;I have encompassed [in knowledge] that which you have not encompassed, and I have come to you from Sheba with certain news.</div>
         <div class="ref">سورة النمل — الآية ٢٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>صِغَرُ الرَّسُولِ لَا يُقَلِّلُ مِنْ قِيمَةِ الْخَبَرِ الصَّادِقِ الَّذِي يَحْمِلُهُ</p></div>
@@ -175,6 +181,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="29" data-ayah-end="31">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَتْ يَا أَيُّهَا الْمَلَأُ إِنِّي أُلْقِيَ إِلَيَّ كِتَابٌ كَرِيمٌ ۝ إِنَّهُ مِن سُلَيْمَانَ وَإِنَّهُ بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ أَلَّا تَعْلُوا عَلَيَّ وَأْتُونِي مُسْلِمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">She said, &quot;O eminent ones, indeed, to me has been delivered a noble letter. Indeed, it is from Solomon, and indeed, it reads: &#39;In the name of Allah, the Entirely Merciful, the Especially Merciful, Be not haughty with me but come to me in submission [as Muslims].&#39; &quot;</div>
         <div class="ref">سورة النمل — الآيات ٢٩-٣١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الدَّعْوَةُ إِلَى الْحَقِّ تَبْدَأُ بِالْكَلِمَةِ الطَّيِّبَةِ قَبْلَ الْقُوَّةِ وَالسُّلْطَانِ</p></div>
@@ -189,6 +196,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="40" data-ayah-end="40">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ الَّذِي عِندَهُ عِلْمٌ مِّنَ الْكِتَابِ أَنَا آتِيكَ بِهِ قَبْلَ أَن يَرْتَدَّ إِلَيْكَ طَرْفُكَ ۚ فَلَمَّا رَآهُ مُسْتَقِرًّا عِندَهُ قَالَ هَٰذَا مِن فَضْلِ رَبِّي لِيَبْلُوَنِي أَأَشْكُرُ أَمْ أَكْفُرُ ۖ وَمَن شَكَرَ فَإِنَّمَا يَشْكُرُ لِنَفْسِهِ ۖ وَمَن كَفَرَ فَإِنَّ رَبِّي غَنِيٌّ كَرِيمٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Said one who had knowledge from the Scripture, &quot;I will bring it to you before your glance returns to you.&quot; And when [Solomon] saw it placed before him, he said, &quot;This is from the favor of my Lord to test me whether I will be grateful or ungrateful. And whoever is grateful - his gratitude is only for [the benefit of] himself. And whoever is ungrateful - then indeed, my Lord is Free of need and Generous.&quot;</div>
         <div class="ref">سورة النمل — الآية ٤٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>كُلُّ مُعْجِزَةٍ أَوْ نِعْمَةٍ ابْتِلَاءٌ بِالشُّكْرِ، لَا مُجَرَّدُ تَكْرِيمٍ يُتَبَاهَى بِهِ</p></div>
@@ -203,6 +211,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="44" data-ayah-end="44">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قِيلَ لَهَا ادْخُلِي الصَّرْحَ ۖ فَلَمَّا رَأَتْهُ حَسِبَتْهُ لُجَّةً وَكَشَفَتْ عَن سَاقَيْهَا ۚ قَالَ إِنَّهُ صَرْحٌ مُّمَرَّدٌ مِّن قَوَارِيرَ ۗ قَالَتْ رَبِّ إِنِّي ظَلَمْتُ نَفْسِي وَأَسْلَمْتُ مَعَ سُلَيْمَانَ لِلَّهِ رَبِّ الْعَالَمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">She was told, &quot;Enter the palace.&quot; But when she saw it, she thought it was a body of water and uncovered her shins [to wade through]. He said, &quot;Indeed, it is a palace [whose floor is] made smooth with glass.&quot; She said, &quot;My Lord, indeed I have wronged myself, and I submit with Solomon to Allah, Lord of the worlds.&quot;</div>
         <div class="ref">سورة النمل — الآية ٤٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>قُوَّةُ الْحُجَّةِ قَدْ تَقُودُ مَلِكَةً إِلَى الْإِسْلَامِ أَسْرَعَ مِنْ قُوَّةِ الْجُيُوشِ</p></div>
@@ -217,6 +226,7 @@
       <div class="ayah-box" data-surah="34" data-ayah-start="14" data-ayah-end="14">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَلَمَّا قَضَيْنَا عَلَيْهِ الْمَوْتَ مَا دَلَّهُمْ عَلَىٰ مَوْتِهِ إِلَّا دَابَّةُ الْأَرْضِ تَأْكُلُ مِنسَأَتَهُ ۖ فَلَمَّا خَرَّ تَبَيَّنَتِ الْجِنُّ أَن لَّوْ كَانُوا يَعْلَمُونَ الْغَيْبَ مَا لَبِثُوا فِي الْعَذَابِ الْمُهِينِ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And when We decreed for Solomon death, nothing indicated to the jinn his death except a creature of the earth eating his staff. But when he fell, it became clear to the jinn that if they had known the unseen, they would not have remained in humiliating punishment.</div>
         <div class="ref">سورة سبأ — الآية ١٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>عِلْمُ الْغَيْبِ خَاصٌّ بِاللَّهِ وَحْدَهُ، وَمَا يُشَاعُ مِنِ ادِّعَائِهِ لِغَيْرِهِ بَاطِلٌ مَهْمَا طَالَ الظَّنُّ</p></div>
@@ -311,7 +321,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -322,7 +332,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -341,7 +351,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -362,6 +372,11 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

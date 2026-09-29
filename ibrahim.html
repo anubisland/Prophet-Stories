@@ -60,6 +60,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
 
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
@@ -120,7 +122,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ إبراهيم عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -194,6 +196,7 @@
       <div class="ayah-box" data-surah="6" data-ayah-start="74" data-ayah-end="74">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِذْ قَالَ إِبْرَاهِيمُ لِأَبِيهِ آزَرَ أَتَتَّخِذُ أَصْنَامًا آلِهَةً إِنِّي أَرَاكَ وَقَوْمَكَ فِي ضَلَالٍ مُّبِينٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [mention, O Muhammad], when Abraham said to his father Azar, &quot;Do you take idols as deities? Indeed, I see you and your people to be in manifest error.&quot;</div>
         <div class="ref">سورة الأنعام — الآية ٧٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مُجَادَلَةُ الْحَقِّ مَعَ أَقْرَبِ النَّاسِ وَاجِبُ الدَّاعِيَةِ وَلَوْ خَالَفَ مَوْرُوثَ الْآبَاءِ</p></div>
@@ -209,6 +212,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="58" data-ayah-end="58">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَجَعَلَهُمْ جُذَاذًا إِلَّا كَبِيرًا لَّهُمْ لَعَلَّهُمْ إِلَيْهِ يَرْجِعُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">So he made them into fragments, except a large one among them, that they might return to it [and question].</div>
         <div class="ref">سورة الأنبياء — الآية ٥٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مُوَاجَهَةُ الْبَاطِلِ بِالْفِعْلِ أَحْيَانًا أَبْلَغُ مِنْ مُجَرَّدِ الْقَوْلِ</p></div>
@@ -224,6 +228,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="69" data-ayah-end="69">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قُلْنَا يَا نَارُ كُونِي بَرْدًا وَسَلَامًا عَلَىٰ إِبْرَاهِيمَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Allah said, &quot;O fire, be coolness and safety upon Abraham.&quot;</div>
         <div class="ref">سورة الأنبياء — الآية ٦٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>نَصْرُ اللَّهِ لِأَوْلِيَائِهِ قَدْ يَأْتِي بِتَعْطِيلِ أَسْبَابٍ كَوْنِيَّةٍ مُعْتَادَةٍ</p></div>
@@ -239,6 +244,7 @@
       <div class="ayah-box" data-surah="2" data-ayah-start="258" data-ayah-end="258">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">أَلَمْ تَرَ إِلَى الَّذِي حَاجَّ إِبْرَاهِيمَ فِي رَبِّهِ أَنْ آتَاهُ اللَّهُ الْمُلْكَ إِذْ قَالَ إِبْرَاهِيمُ رَبِّيَ الَّذِي يُحْيِي وَيُمِيتُ قَالَ أَنَا أُحْيِي وَأُمِيتُ قَالَ إِبْرَاهِيمُ فَإِنَّ اللَّهَ يَأْتِي بِالشَّمْسِ مِنَ الْمَشْرِقِ فَأْتِ بِهَا مِنَ الْمَغْرِبِ فَبُهِتَ الَّذِي كَفَرَ ۗ وَاللَّهُ لَا يَهْدِي الْقَوْمَ الظَّالِمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Have you not considered the one who argued with Abraham about his Lord [merely] because Allah had given him kingship? When Abraham said, &quot;My Lord is the one who gives life and causes death,&quot; he said, &quot;I give life and cause death.&quot; Abraham said, &quot;Indeed, Allah brings up the sun from the east, so bring it up from the west.&quot; So the disbeliever was overwhelmed [by astonishment], and Allah does not guide the wrongdoing people.</div>
         <div class="ref">سورة البقرة — الآية ٢٥٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْبُرْهَانُ الْعَقْلِيُّ الْقَاطِعُ أَنْجَعُ فِي إِفْحَامِ الْمُكَابِرِ مِنْ طُولِ الْجِدَالِ</p></div>
@@ -254,6 +260,7 @@
       <div class="ayah-box" data-surah="11" data-ayah-start="71" data-ayah-end="71">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَامْرَأَتُهُ قَائِمَةٌ فَضَحِكَتْ فَبَشَّرْنَاهَا بِإِسْحَاقَ وَمِن وَرَاءِ إِسْحَاقَ يَعْقُوبَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And his Wife was standing, and she smiled. Then We gave her good tidings of Isaac and after Isaac, Jacob.</div>
         <div class="ref">سورة هود — الآية ٧١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>بِشَارَاتُ اللَّهِ تَأْتِي أَحْيَانًا فِي أَعْقَابِ مَوَاقِفِ الِابْتِلَاءِ وَالضِّيَافَةِ الصَّادِقَةِ</p></div>
@@ -269,6 +276,7 @@
       <div class="ayah-box" data-surah="2" data-ayah-start="127" data-ayah-end="127">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِذْ يَرْفَعُ إِبْرَاهِيمُ الْقَوَاعِدَ مِنَ الْبَيْتِ وَإِسْمَاعِيلُ رَبَّنَا تَقَبَّلْ مِنَّا ۖ إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [mention] when Abraham was raising the foundations of the House and [with him] Ishmael, [saying], &quot;Our Lord, accept [this] from us. Indeed You are the Hearing, the Knowing.</div>
         <div class="ref">سورة البقرة — الآية ١٢٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْعَمَلُ الصَّالِحُ الْعَظِيمُ يَسْتَوْجِبُ مَعَ بَذْلِهِ دُعَاءَ الْقَبُولِ لَا الِاغْتِرَارَ بِهِ</p></div>
@@ -284,12 +292,14 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="102" data-ayah-end="102">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَلَمَّا بَلَغَ مَعَهُ السَّعْيَ قَالَ يَا بُنَيَّ إِنِّي أَرَىٰ فِي الْمَنَامِ أَنِّي أَذْبَحُكَ فَانظُرْ مَاذَا تَرَىٰ ۚ قَالَ يَا أَبَتِ افْعَلْ مَا تُؤْمَرُ ۖ سَتَجِدُنِي إِن شَاءَ اللَّهُ مِنَ الصَّابِرِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And when he reached with him [the age of] exertion, he said, &quot;O my son, indeed I have seen in a dream that I [must] sacrifice you, so see what you think.&quot; He said, &quot;O my father, do as you are commanded. You will find me, if Allah wills, of the steadfast.&quot;</div>
         <div class="ref">سورة الصافات — الآية ١٠٢</div>
       </div>
       <p class="narrative">فَلَمَّا أَسْلَمَا وَنَفَّذَا الْعَزْمَ فَدَى اللَّهُ الِابْنَ بِذِبْحٍ عَظِيمٍ رَحْمَةً مِنْهُ.</p>
       <div class="ayah-box" data-surah="37" data-ayah-start="107" data-ayah-end="107">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَفَدَيْنَاهُ بِذِبْحٍ عَظِيمٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We ransomed him with a great sacrifice,</div>
         <div class="ref">سورة الصافات — الآية ١٠٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>التَّسْلِيمُ لِأَمْرِ اللَّهِ أَعْظَمُ دَرَجَاتِ الْيَقِينِ، وَلَوْ كَانَ الِابْتِلَاءُ بِأَعَزِّ النَّاسِ</p></div>
@@ -305,6 +315,7 @@
       <div class="ayah-box" data-surah="16" data-ayah-start="120" data-ayah-end="120">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِنَّ إِبْرَاهِيمَ كَانَ أُمَّةً قَانِتًا لِلَّهِ حَنِيفًا وَلَمْ يَكُ مِنَ الْمُشْرِكِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Indeed, Abraham was a [comprehensive] leader, devoutly obedient to Allah, inclining toward truth, and he was not of those who associate others with Allah.</div>
         <div class="ref">سورة النحل — الآية ١٢٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>طُولُ الِابْتِلَاءِ طَرِيقُ الْإِمَامَةِ فِي الدِّينِ، لَا عَائِقٌ دُونَهَا</p></div>
@@ -398,7 +409,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -409,7 +420,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -428,7 +439,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -465,6 +476,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

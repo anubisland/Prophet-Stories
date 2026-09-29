@@ -289,11 +289,10 @@ function getSavedLang(){
   try{ return localStorage.getItem('lang') || 'ar'; }catch(e){ return 'ar'; }
 }
 (function initLang(){
-  if(getSavedLang()==='en') applyLang('en');
+  applyLang(getSavedLang());
 })();
 window.addEventListener('pageshow', function(){
-  const s = getSavedLang();
-  if(s !== currentLang) applyLang(s);
+  applyLang(getSavedLang());
 });
 </script>
 

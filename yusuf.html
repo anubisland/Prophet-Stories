@@ -101,6 +101,8 @@
   }
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{
     position:absolute; top:8px; left:10px;
     background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
@@ -193,7 +195,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ يوسف عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -284,6 +286,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="4" data-ayah-end="5">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِذْ قَالَ يُوسُفُ لِأَبِيهِ يَا أَبَتِ إِنِّي رَأَيْتُ أَحَدَ عَشَرَ كَوْكَبًا وَالشَّمْسَ وَالْقَمَرَ رَأَيْتُهُمْ لِي سَاجِدِينَ ۝ قَالَ يَا بُنَيَّ لَا تَقْصُصْ رُؤْيَاكَ عَلَىٰ إِخْوَتِكَ فَيَكِيدُوا لَكَ كَيْدًا ۖ إِنَّ الشَّيْطَانَ لِلْإِنسَانِ عَدُوٌّ مُّبِينٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[Of these stories mention] when Joseph said to his father, &quot;O my father, indeed I have seen [in a dream] eleven stars and the sun and the moon; I saw them prostrating to me.&quot; He said, &quot;O my son, do not relate your vision to your brothers or they will contrive against you a plan. Indeed Satan, to man, is a manifest enemy.</div>
         <div class="ref">سورة يوسف — الآيتان ٤-٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا تَعْرِضْ نِعْمَةَ اللَّهِ عَلَيْكَ أَمَامَ مَنْ تَخَافُ حَسَدَهُ؛ وَكِتْمَانُ الْخَيْرِ حَتَّى يَتِمَّ بَابٌ مِنْ أَبْوَابِ حِفْظِهِ</p></div>
@@ -299,6 +302,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="15" data-ayah-end="15">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَلَمَّا ذَهَبُوا بِهِ وَأَجْمَعُوا أَن يَجْعَلُوهُ فِي غَيَابَتِ الْجُبِّ ۚ وَأَوْحَيْنَا إِلَيْهِ لَتُنَبِّئَنَّهُم بِأَمْرِهِمْ هَٰذَا وَهُمْ لَا يَشْعُرُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">So when they took him [out] and agreed to put him into the bottom of the well... But We inspired to him, &quot;You will surely inform them [someday] about this affair of theirs while they do not perceive [your identity].&quot;</div>
         <div class="ref">سورة يوسف — الآية ١٥</div>
       </div>
       <div class="chars-line">👥 <b>إخوة يوسف</b> — حملهم الحسد على الكيد ثم ندموا وتابوا · <b>السيّارة</b> — قافلة أخرجته من البئر</div>
@@ -315,6 +319,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="21" data-ayah-end="21">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَقَالَ الَّذِي اشْتَرَاهُ مِن مِّصْرَ لِامْرَأَتِهِ أَكْرِمِي مَثْوَاهُ عَسَىٰ أَن يَنفَعَنَا أَوْ نَتَّخِذَهُ وَلَدًا ۚ وَكَذَٰلِكَ مَكَّنَّا لِيُوسُفَ فِي الْأَرْضِ وَلِنُعَلِّمَهُ مِن تَأْوِيلِ الْأَحَادِيثِ ۚ وَاللَّهُ غَالِبٌ عَلَىٰ أَمْرِهِ وَلَٰكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And the one from Egypt who bought him said to his wife, &quot;Make his residence comfortable. Perhaps he will benefit us, or we will adopt him as a son.&quot; And thus, We established Joseph in the land that We might teach him the interpretation of events. And Allah is predominant over His affair, but most of the people do not know.</div>
         <div class="ref">سورة يوسف — الآية ٢١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مَا يَبْدُو نُزُولًا فِي الظَّاهِرِ قَدْ يَكُونُ رَفْعًا فِي الْحَقِيقَةِ؛ فَاللَّهُ غَالِبٌ عَلَى أَمْرِهِ وَإِنْ خَفِيَ التَّدْبِيرُ عَلَى النَّاسِ</p></div>
@@ -338,6 +343,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="23" data-ayah-end="23">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَرَاوَدَتْهُ الَّتِي هُوَ فِي بَيْتِهَا عَن نَّفْسِهِ وَغَلَّقَتِ الْأَبْوَابَ وَقَالَتْ هَيْتَ لَكَ ۚ قَالَ مَعَاذَ اللَّهِ ۖ إِنَّهُ رَبِّي أَحْسَنَ مَثْوَايَ ۖ إِنَّهُ لَا يُفْلِحُ الظَّالِمُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And she, in whose house he was, sought to seduce him. She closed the doors and said, &quot;Come, you.&quot; He said, &quot;[I seek] the refuge of Allah. Indeed, he is my master, who has made good my residence. Indeed, wrongdoers will not succeed.&quot;</div>
         <div class="ref">سورة يوسف — الآية ٢٣</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَوَّلُ سِلَاحِكَ عِنْدَ الْفِتْنَةِ الِالْتِجَاءُ إِلَى اللَّهِ لَا قُوَّةُ نَفْسِكَ؛ قَالَ مَعَاذَ اللَّهِ قَبْلَ أَنْ يَذْكُرَ أَيَّ سَبَبٍ آخَرَ</p></div>
@@ -356,6 +362,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="33" data-ayah-end="33">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ رَبِّ السِّجْنُ أَحَبُّ إِلَيَّ مِمَّا يَدْعُونَنِي إِلَيْهِ ۖ وَإِلَّا تَصْرِفْ عَنِّي كَيْدَهُنَّ أَصْبُ إِلَيْهِنَّ وَأَكُن مِّنَ الْجَاهِلِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">He said, &quot;My Lord, prison is more to my liking than that to which they invite me. And if You do not avert from me their plan, I might incline toward them and [thus] be of the ignorant.&quot;</div>
         <div class="ref">سورة يوسف — الآية ٣٣</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اخْتَرِ الضَّرَرَ الْأَدْنَى عَلَى الْمَعْصِيَةِ، ثُمَّ لَا تَثِقْ بِعَزْمِكَ وَحْدَهُ؛ فَبَعْدَ أَنِ اخْتَارَ السِّجْنَ سَأَلَ اللَّهَ أَنْ يَصْرِفَ عَنْهُ لَا أَنْ يُقَوِّيَهُ</p></div>
@@ -371,6 +378,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="39" data-ayah-end="40">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">يَا صَاحِبَيِ السِّجْنِ أَأَرْبَابٌ مُّتَفَرِّقُونَ خَيْرٌ أَمِ اللَّهُ الْوَاحِدُ الْقَهَّارُ ۝ مَا تَعْبُدُونَ مِن دُونِهِ إِلَّا أَسْمَاءً سَمَّيْتُمُوهَا أَنتُمْ وَآبَاؤُكُم مَّا أَنزَلَ اللَّهُ بِهَا مِن سُلْطَانٍ ۚ إِنِ الْحُكْمُ إِلَّا لِلَّهِ ۚ أَمَرَ أَلَّا تَعْبُدُوا إِلَّا إِيَّاهُ ۚ ذَٰلِكَ الدِّينُ الْقَيِّمُ وَلَٰكِنَّ أَكْثَرَ النَّاسِ لَا يَعْلَمُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">O [my] two companions of prison, are separate lords better or Allah, the One, the Prevailing? You worship not besides Him except [mere] names you have named them, you and your fathers, for which Allah has sent down no authority. Legislation is not but for Allah. He has commanded that you worship not except Him. That is the correct religion, but most of the people do not know.</div>
         <div class="ref">سورة يوسف — الآيتان ٣٩-٤٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا يَمْنَعُكَ ضِيقُ حَالِكَ أَنْ تَنْفَعَ مَنْ حَوْلَكَ؛ دَعَا إِلَى اللَّهِ وَهُوَ سَجِينٌ، وَاغْتَنَمَ حَاجَةَ النَّاسِ إِلَيْهِ لِهِدَايَتِهِمْ لَا لِمَنْفَعَتِهِ</p></div>
@@ -386,6 +394,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="55" data-ayah-end="55">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ اجْعَلْنِي عَلَىٰ خَزَائِنِ الْأَرْضِ ۖ إِنِّي حَفِيظٌ عَلِيمٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[Joseph] said, &quot;Appoint me over the storehouses of the land. Indeed, I will be a knowing guardian.&quot;</div>
         <div class="ref">سورة يوسف — الآية ٥٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَا تَطْلُبِ الْمَنْصِبَ لِنَفْسِكَ، وَلَا تَقْعُدْ عَنْهُ وَأَنْتَ أَهْلُهُ وَالنَّاسُ مُحْتَاجُونَ؛ فَالْمِعْيَارُ أَمَانَةٌ وَعِلْمٌ لَا رَغْبَةٌ وَلَا زُهْدٌ فِي غَيْرِ مَوْضِعِهِ</p></div>
@@ -404,6 +413,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="100" data-ayah-end="100">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَرَفَعَ أَبَوَيْهِ عَلَى الْعَرْشِ وَخَرُّوا لَهُ سُجَّدًا ۖ وَقَالَ يَا أَبَتِ هَٰذَا تَأْوِيلُ رُؤْيَايَ مِن قَبْلُ قَدْ جَعَلَهَا رَبِّي حَقًّا ۖ وَقَدْ أَحْسَنَ بِي إِذْ أَخْرَجَنِي مِنَ السِّجْنِ وَجَاءَ بِكُم مِّنَ الْبَدْوِ مِن بَعْدِ أَن نَّزَغَ الشَّيْطَانُ بَيْنِي وَبَيْنَ إِخْوَتِي ۚ إِنَّ رَبِّي لَطِيفٌ لِّمَا يَشَاءُ ۚ إِنَّهُ هُوَ الْعَلِيمُ الْحَكِيمُ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And he raised his parents upon the throne, and they bowed to him in prostration. And he said, &quot;O my father, this is the explanation of my vision of before. My Lord has made it reality. And He was certainly good to me when He took me out of prison and brought you [here] from bedouin life after Satan had induced [estrangement] between me and my brothers. Indeed, my Lord is Subtle in what He wills. Indeed, it is He who is the Knowing, the Wise.</div>
         <div class="ref">سورة يوسف — الآية ١٠٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَجْمَلُ مَا تَصْنَعُهُ بِقُدْرَتِكَ أَنْ تَعْفُوَ وَأَنْتَ قَادِرٌ؛ وَالْعَفْوُ عِنْدَ الْمَقْدِرَةِ أَثْقَلُ فِي الْمِيزَانِ مِنَ الِانْتِصَافِ</p></div>
@@ -424,6 +434,7 @@
       <div class="ayah-box" data-surah="12" data-ayah-start="111" data-ayah-end="111">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">لَقَدْ كَانَ فِي قَصَصِهِمْ عِبْرَةٌ لِّأُولِي الْأَلْبَابِ ۗ مَا كَانَ حَدِيثًا يُفْتَرَىٰ وَلَٰكِن تَصْدِيقَ الَّذِي بَيْنَ يَدَيْهِ وَتَفْصِيلَ كُلِّ شَيْءٍ وَهُدًى وَرَحْمَةً لِّقَوْمٍ يُؤْمِنُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">There was certainly in their stories a lesson for those of understanding. Never was the Qur&#39;an a narration invented, but a confirmation of what was before it and a detailed explanation of all things and guidance and mercy for a people who believe.</div>
         <div class="ref">سورة يوسف — الآية ١١١</div>
       </div>
       <div class="chars-line">🔑 <b>عبرة لأولي الألباب</b> — لا لمن يقرأ ليتسلّى · <b>ما كان حديثًا يُفترى</b> — نفي صريح لأن يكون حكاية مصنوعة · <b>هدى ورحمة</b> — لمن آمن</div>
@@ -531,7 +542,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -542,7 +553,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -561,7 +572,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -598,6 +609,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

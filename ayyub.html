@@ -101,6 +101,8 @@
   }
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{
     position:absolute; top:8px; left:10px;
     background:none; border:1px solid var(--panel-border); color:var(--gold-soft);
@@ -193,7 +195,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ أيوب عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -277,6 +279,7 @@
       <div class="ayah-box" data-surah="6" data-ayah-start="84" data-ayah-end="84">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَوَهَبْنَا لَهُ إِسْحَاقَ وَيَعْقُوبَ ۚ كُلًّا هَدَيْنَا ۚ وَنُوحًا هَدَيْنَا مِن قَبْلُ ۖ وَمِن ذُرِّيَّتِهِ دَاوُودَ وَسُلَيْمَانَ وَأَيُّوبَ وَيُوسُفَ وَمُوسَىٰ وَهَارُونَ ۚ وَكَذَٰلِكَ نَجْزِي الْمُحْسِنِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We gave to Abraham, Isaac and Jacob - all [of them] We guided. And Noah, We guided before; and among his descendants, David and Solomon and Job and Joseph and Moses and Aaron. Thus do We reward the doers of good.</div>
         <div class="ref">سورة الأنعام — الآية ٨٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>لَيْسَ كُلُّ بَلَاءٍ عُقُوبَةً؛ فَأَشَدُّ النَّاسِ بَلَاءً الْأَنْبِيَاءُ، وَالِابْتِلَاءُ قَدْ يَكُونُ رَفْعَ دَرَجَةٍ لَا خَفْضَ مَنْزِلَةٍ</p></div>
@@ -292,6 +295,7 @@
       <div class="ayah-box" data-surah="38" data-ayah-start="41" data-ayah-end="41">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَاذْكُرْ عَبْدَنَا أَيُّوبَ إِذْ نَادَىٰ رَبَّهُ أَنِّي مَسَّنِيَ الشَّيْطَانُ بِنُصْبٍ وَعَذَابٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And remember Our servant Job, when he called to his Lord, &quot;Indeed, Satan has touched me with hardship and torment.&quot;</div>
         <div class="ref">سورة ص — الآية ٤١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَدَبُ الْعَبْدِ أَنْ يَنْسُبَ الْخَيْرَ إِلَى اللَّهِ وَيَتَأَدَّبَ فِي نِسْبَةِ الضُّرِّ؛ فَذِكْرُ السَّبَبِ لَا يَنْقُضُ الْإِيمَانَ بِالْقَدَرِ</p></div>
@@ -310,6 +314,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="83" data-ayah-end="83">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَأَيُّوبَ إِذْ نَادَىٰ رَبَّهُ أَنِّي مَسَّنِيَ الضُّرُّ وَأَنتَ أَرْحَمُ الرَّاحِمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [mention] Job, when he called to his Lord, &quot;Indeed, adversity has touched me, and you are the Most Merciful of the merciful.&quot;</div>
         <div class="ref">سورة الأنبياء — الآية ٨٣</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اعْرِضْ حَاجَتَكَ وَلَا تُمْلِ عَلَى رَبِّكَ؛ فَذِكْرُ الْحَالِ مَعَ الثَّنَاءِ عَلَى اللَّهِ أَبْلَغُ مِنْ إِلْحَاحٍ فِيهِ اعْتِرَاضٌ</p></div>
@@ -325,6 +330,7 @@
       <div class="ayah-box" data-surah="38" data-ayah-start="42" data-ayah-end="42">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">ارْكُضْ بِرِجْلِكَ ۖ هَٰذَا مُغْتَسَلٌ بَارِدٌ وَشَرَابٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[So he was told], &quot;Strike [the ground] with your foot; this is a [spring for] a cool bath and drink.&quot;</div>
         <div class="ref">سورة ص — الآية ٤٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>خُذْ بِالسَّبَبِ الَّذِي تَقْدِرُ عَلَيْهِ وَإِنْ صَغُرَ، وَاتْرُكِ النَّتِيجَةَ لِلَّهِ؛ فَالشِّفَاءُ جَاءَ بَعْدَ رَكْضَةٍ لَا بَعْدَ قُعُودٍ</p></div>
@@ -340,6 +346,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="84" data-ayah-end="84">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَاسْتَجَبْنَا لَهُ فَكَشَفْنَا مَا بِهِ مِن ضُرٍّ ۖ وَآتَيْنَاهُ أَهْلَهُ وَمِثْلَهُم مَّعَهُمْ رَحْمَةً مِّنْ عِندِنَا وَذِكْرَىٰ لِلْعَابِدِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">So We responded to him and removed what afflicted him of adversity. And We gave him [back] his family and the like thereof with them as mercy from Us and a reminder for the worshippers [of Allah].</div>
         <div class="ref">سورة الأنبياء — الآية ٨٤</div>
       </div>
       <div class="chars-line">👥 <b>امرأة أيوب</b> — ثبتت معه في بلائه وخدمته، ولم يرد اسمها في نص صحيح</div>
@@ -356,6 +363,7 @@
       <div class="ayah-box" data-surah="38" data-ayah-start="43" data-ayah-end="44">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَوَهَبْنَا لَهُ أَهْلَهُ وَمِثْلَهُم مَّعَهُمْ رَحْمَةً مِّنَّا وَذِكْرَىٰ لِأُولِي الْأَلْبَابِ ۝ وَخُذْ بِيَدِكَ ضِغْثًا فَاضْرِب بِّهِ وَلَا تَحْنَثْ ۗ إِنَّا وَجَدْنَاهُ صَابِرًا ۚ نِّعْمَ الْعَبْدُ ۖ إِنَّهُ أَوَّابٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We granted him his family and a like [number] with them as mercy from Us and a reminder for those of understanding. [We said], &quot;And take in your hand a bunch [of grass] and strike with it and do not break your oath.&quot; Indeed, We found him patient, an excellent servant. Indeed, he was one repeatedly turning back [to Allah].</div>
         <div class="ref">سورة ص — الآيتان ٤٣-٤٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصَّبْرُ لَيْسَ كَتْمَ الْأَلَمِ بَلْ دَوَامُ الرُّجُوعِ إِلَى اللَّهِ؛ وُصِفَ بِالصَّبْرِ ثُمَّ بِأَنَّهُ أَوَّابٌ، فَالْأَوْبَةُ هِيَ سِرُّ الصَّبْرِ لَا الْجَلَدُ وَحْدَهُ</p></div>
@@ -462,7 +470,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -473,7 +481,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -492,7 +500,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -529,6 +537,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

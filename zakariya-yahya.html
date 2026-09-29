@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -60,7 +62,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ زكريا ويحيى ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -101,6 +103,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="4" data-ayah-end="4">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ رَبِّ إِنِّي وَهَنَ الْعَظْمُ مِنِّي وَاشْتَعَلَ الرَّأْسُ شَيْبًا وَلَمْ أَكُن بِدُعَائِكَ رَبِّ شَقِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">He said, &quot;My Lord, indeed my bones have weakened, and my head has filled with white, and never have I been in my supplication to You, my Lord, unhappy.</div>
         <div class="ref">سورة مريم — الآية ٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الدُّعَاءُ فِي الْكِبَرِ وَعِنْدَ وَهْنِ الْجَسَدِ لَا يَمْنَعُ مِنْ رَجَاءِ الْإِجَابَةِ</p></div>
@@ -115,6 +118,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="7" data-ayah-end="7">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">يَا زَكَرِيَّا إِنَّا نُبَشِّرُكَ بِغُلَامٍ اسْمُهُ يَحْيَىٰ لَمْ نَجْعَل لَّهُ مِن قَبْلُ سَمِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[He was told], &quot;O Zechariah, indeed We give you good tidings of a boy whose name will be John. We have not assigned to any before [this] name.&quot;</div>
         <div class="ref">سورة مريم — الآية ٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اسْتِجَابَةُ الدُّعَاءِ قَدْ تَأْتِي بِصُورَةٍ تَفُوقُ تَصَوُّرَ الدَّاعِي وَتَوَقُّعَهُ</p></div>
@@ -129,6 +133,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="8" data-ayah-end="10">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ رَبِّ أَنَّىٰ يَكُونُ لِي غُلَامٌ وَكَانَتِ امْرَأَتِي عَاقِرًا وَقَدْ بَلَغْتُ مِنَ الْكِبَرِ عِتِيًّا ۝ قَالَ كَذَٰلِكَ قَالَ رَبُّكَ هُوَ عَلَيَّ هَيِّنٌ وَقَدْ خَلَقْتُكَ مِن قَبْلُ وَلَمْ تَكُ شَيْئًا ۝ قَالَ رَبِّ اجْعَل لِّي آيَةً ۚ قَالَ آيَتُكَ أَلَّا تُكَلِّمَ النَّاسَ ثَلَاثَ لَيَالٍ سَوِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">He said, &quot;My Lord, how will I have a boy when my wife has been barren and I have reached extreme old age?&quot; [An angel] said, &quot;Thus [it will be]; your Lord says, &#39;It is easy for Me, for I created you before, while you were nothing.&#39; &quot; [Zechariah] said, &quot;My Lord, make for me a sign.&quot; He said, &quot;Your sign is that you will not speak to the people for three nights, [being] sound.&quot;</div>
         <div class="ref">سورة مريم — الآيات ٨-١٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>طَلَبُ الِاطْمِئْنَانِ الْقَلْبِيِّ بَعْدَ إِجَابَةِ الدُّعَاءِ لَيْسَ شَكًّا، بَلْ هُوَ مِنْ سُنَّةِ الْأَنْبِيَاءِ</p></div>
@@ -143,6 +148,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="12" data-ayah-end="14">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">يَا يَحْيَىٰ خُذِ الْكِتَابَ بِقُوَّةٍ ۖ وَآتَيْنَاهُ الْحُكْمَ صَبِيًّا ۝ وَحَنَانًا مِّن لَّدُنَّا وَزَكَاةً ۖ وَكَانَ تَقِيًّا ۝ وَبَرًّا بِوَالِدَيْهِ وَلَمْ يَكُن جَبَّارًا عَصِيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[Allah] said, &quot;O John, take the Scripture with determination.&quot; And We gave him judgement [while yet] a boy And affection from Us and purity, and he was fearing of Allah And dutiful to his parents, and he was not a disobedient tyrant.</div>
         <div class="ref">سورة مريم — الآيات ١٢-١٤</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>صِغَرُ السِّنِّ لَا يَمْنَعُ مِنْ بُلُوغِ الْحِكْمَةِ وَالتَّقْوَى إِذَا وَفَّقَ اللَّهُ</p></div>
@@ -157,6 +163,7 @@
       <div class="ayah-box" data-surah="19" data-ayah-start="15" data-ayah-end="15">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَسَلَامٌ عَلَيْهِ يَوْمَ وُلِدَ وَيَوْمَ يَمُوتُ وَيَوْمَ يُبْعَثُ حَيًّا</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And peace be upon him the day he was born and the day he dies and the day he is raised alive.</div>
         <div class="ref">سورة مريم — الآية ١٥</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>أَشَدُّ اللَّحَظَاتِ وَحْشَةً عَلَى الْإِنْسَانِ قَدْ يَجْعَلُهَا اللَّهُ لِأَوْلِيَائِهِ أَمَانًا لَا خَوْفًا</p></div>
@@ -251,7 +258,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -262,7 +269,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -281,7 +288,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -302,6 +309,11 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

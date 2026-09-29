@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -98,7 +100,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ لوط عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -168,6 +170,7 @@
       <div class="ayah-box" data-surah="7" data-ayah-start="80" data-ayah-end="80">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَلُوطًا إِذْ قَالَ لِقَوْمِهِ أَتَأْتُونَ الْفَاحِشَةَ مَا سَبَقَكُم بِهَا مِنْ أَحَدٍ مِّنَ الْعَالَمِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [We had sent] Lot when he said to his people, &quot;Do you commit such immorality as no one has preceded you with from among the worlds?</div>
         <div class="ref">سورة الأعراف — الآية ٨٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اِبْتِدَاعُ الْفَاحِشَةِ جَرِيمَةٌ تَحْمِلُ صَاحِبَهَا وِزْرَهَا وَوِزْرَ مَنِ اقْتَدَى بِهِ</p></div>
@@ -182,6 +185,7 @@
       <div class="ayah-box" data-surah="29" data-ayah-start="29" data-ayah-end="29">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">أَئِنَّكُمْ لَتَأْتُونَ الرِّجَالَ وَتَقْطَعُونَ السَّبِيلَ وَتَأْتُونَ فِي نَادِيكُمُ الْمُنكَرَ ۖ فَمَا كَانَ جَوَابَ قَوْمِهِ إِلَّا أَن قَالُوا ائْتِنَا بِعَذَابِ اللَّهِ إِن كُنتَ مِنَ الصَّادِقِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Indeed, you approach men and obstruct the road and commit in your meetings [every] evil.&quot; And the answer of his people was not but they said, &quot;Bring us the punishment of Allah, if you should be of the truthful.&quot;</div>
         <div class="ref">سورة العنكبوت — الآية ٢٩</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>اِسْتِعْجَالُ الْمُكَذِّبِينَ لِلْعَذَابِ دَلِيلٌ عَلَى خَتْمِ قُلُوبِهِمْ لَا عَلَى قُوَّةِ حُجَّتِهِمْ</p></div>
@@ -196,6 +200,7 @@
       <div class="ayah-box" data-surah="27" data-ayah-start="56" data-ayah-end="56">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَمَا كَانَ جَوَابَ قَوْمِهِ إِلَّا أَن قَالُوا أَخْرِجُوا آلَ لُوطٍ مِّن قَرْيَتِكُمْ ۖ إِنَّهُمْ أُنَاسٌ يَتَطَهَّرُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">But the answer of his people was not except that they said, &quot;Expel the family of Lot from your city. Indeed, they are people who keep themselves pure.&quot;</div>
         <div class="ref">سورة النمل — الآية ٥٦</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>قَدْ يُعَيَّرُ أَهْلُ الصَّلَاحِ بِصَلَاحِهِمْ عِنْدَ أَهْلِ الْفَسَادِ، وَهَذَا شَرَفٌ لَا عَارٌ</p></div>
@@ -210,6 +215,7 @@
       <div class="ayah-box" data-surah="11" data-ayah-start="80" data-ayah-end="80">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالَ لَوْ أَنَّ لِي بِكُمْ قُوَّةً أَوْ آوِي إِلَىٰ رُكْنٍ شَدِيدٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">He said, &quot;If only I had against you some power or could take refuge in a strong support.&quot;</div>
         <div class="ref">سورة هود — الآية ٨٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>حِرْصُ الْمُؤْمِنِ عَلَى حِمَايَةِ ضَيْفِهِ وَحُرْمَتِهِ حَتَّى فِي أَضْعَفِ حَالَاتِهِ</p></div>
@@ -224,6 +230,7 @@
       <div class="ayah-box" data-surah="11" data-ayah-start="81" data-ayah-end="81">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">قَالُوا يَا لُوطُ إِنَّا رُسُلُ رَبِّكَ لَن يَصِلُوا إِلَيْكَ ۖ فَأَسْرِ بِأَهْلِكَ بِقِطْعٍ مِّنَ اللَّيْلِ وَلَا يَلْتَفِتْ مِنكُمْ أَحَدٌ إِلَّا امْرَأَتَكَ ۖ إِنَّهُ مُصِيبُهَا مَا أَصَابَهُمْ ۚ إِنَّ مَوْعِدَهُمُ الصُّبْحُ ۚ أَلَيْسَ الصُّبْحُ بِقَرِيبٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">The angels said, &quot;O Lot, indeed we are messengers of your Lord; [therefore], they will never reach you. So set out with your family during a portion of the night and let not any among you look back - except your wife; indeed, she will be struck by that which strikes them. Indeed, their appointment is [for] the morning. Is not the morning near?&quot;</div>
         <div class="ref">سورة هود — الآية ٨١</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>خِيَانَةُ الزَّوْجَةِ أَوِ الزَّوْجِ لِدِينِهِمَا أَشَدُّ خَطَرًا مِنْ خِيَانَتِهِمَا بِالْفَاحِشَةِ نَفْسِهَا</p></div>
@@ -238,6 +245,7 @@
       <div class="ayah-box" data-surah="11" data-ayah-start="82" data-ayah-end="82">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَلَمَّا جَاءَ أَمْرُنَا جَعَلْنَا عَالِيَهَا سَافِلَهَا وَأَمْطَرْنَا عَلَيْهَا حِجَارَةً مِّن سِجِّيلٍ مَّنضُودٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">So when Our command came, We made the highest part [of the city] its lowest and rained upon them stones of layered hard clay, [which were]</div>
         <div class="ref">سورة هود — الآية ٨٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>عُقُوبَةُ الْفَاحِشَةِ الْجَمَاعِيَّةِ قَدْ تَكُونُ عُقُوبَةً جَمَاعِيَّةً شَامِلَةً، لَا فَرْدِيَّةً فَقَطْ</p></div>
@@ -331,7 +339,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -342,7 +350,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -361,7 +369,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -398,6 +406,11 @@ window.addEventListener('load', syncBottomPadding);
 /* خط Cairo يصل من الشبكة بعد تنفيذ السكربت، وعند وصوله يتغيّر ارتفاع
    الشريط — فيلزم إعادة القياس، وإلا بقي الحشو على مقاس الخط الاحتياطي. */
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncBottomPadding);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>

@@ -41,6 +41,8 @@
   .ayah-box{position:relative; background:var(--green-deep); border:1px solid var(--panel-border); border-radius:10px; padding:36px 16px 16px; text-align:center; margin-bottom:14px;}
   .ayah-box .txt{font-size:16.5px; color:var(--gold-soft); font-weight:700; margin-bottom:8px;}
   .ayah-box .ref{font-size:11.5px; color:var(--text-muted);}
+  .ayah-translation{display:none; font-size:14px; line-height:1.7; color:var(--text); margin:8px 0;}
+  html[lang="en"] .ayah-translation{display:block;}
   .ayah-listen{position:absolute; top:8px; left:10px; background:none; border:1px solid var(--panel-border); color:var(--gold-soft); border-radius:999px; padding:4px 10px; font-size:11px; font-weight:700; font-family:inherit; cursor:pointer;}
   .lesson-box{background:rgba(217,167,59,.08); border-inline-start:3px solid var(--gold); border-radius:8px; padding:12px 14px; margin-bottom:12px;}
   .lesson-box .label{font-size:11px; color:var(--gold-soft); font-weight:700; margin-bottom:4px;}
@@ -60,7 +62,7 @@
 
 <div class="sticky-head">
   <div class="topbar">
-    <span class="pill gold">English</span>
+    <button class="pill gold" id="langBtn" onclick="toggleLang()">English</button>
     <a class="pill" href="index.html" style="text-decoration:none;">→ يونس عليه السلام ← الرئيسية</a>
   </div>
   <div class="hero">
@@ -125,6 +127,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="147" data-ayah-end="147">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَأَرْسَلْنَاهُ إِلَىٰ مِائَةِ أَلْفٍ أَوْ يَزِيدُونَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And We sent him to [his people of] a hundred thousand or more.</div>
         <div class="ref">سورة الصافات — الآية ١٤٧</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>كَثْرَةُ الْمَدْعُوِّينَ لَا تَعْنِي سُهُولَةَ الدَّعْوَةِ، بَلْ قَدْ تَزِيدُ التَّحَدِّيَ</p></div>
@@ -139,6 +142,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="140" data-ayah-end="140">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">إِذْ أَبَقَ إِلَى الْفُلْكِ الْمَشْحُونِ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">[Mention] when he ran away to the laden ship.</div>
         <div class="ref">سورة الصافات — الآية ١٤٠</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مُغَادَرَةُ مَوْقِعِ الدَّعْوَةِ دُونَ إِذْنِ اللَّهِ زَلَّةٌ حَتَّى مِنَ الْأَنْبِيَاءِ، تَسْتَوْجِبُ الْمُحَاسَبَةَ</p></div>
@@ -153,6 +157,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="141" data-ayah-end="142">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَسَاهَمَ فَكَانَ مِنَ الْمُدْحَضِينَ ۝ فَالْتَقَمَهُ الْحُوتُ وَهُوَ مُلِيمٌ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And he drew lots and was among the losers. Then the fish swallowed him, while he was blameworthy.</div>
         <div class="ref">سورة الصافات — الآيتان ١٤١-١٤٢</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْأَقْدَارُ قَدْ تُبَاغِتُ الْعَبْدَ سَرِيعًا بَعْدَ زَلَّةٍ يَسِيرَةٍ، فَلَا يَسْتَهِينُ بِمَعْصِيَةٍ وَإِنْ صَغُرَتْ</p></div>
@@ -167,6 +172,7 @@
       <div class="ayah-box" data-surah="21" data-ayah-start="87" data-ayah-end="88">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">وَذَا النُّونِ إِذ ذَّهَبَ مُغَاضِبًا فَظَنَّ أَن لَّن نَّقْدِرَ عَلَيْهِ فَنَادَىٰ فِي الظُّلُمَاتِ أَن لَّا إِلَٰهَ إِلَّا أَنتَ سُبْحَانَكَ إِنِّي كُنتُ مِنَ الظَّالِمِينَ ۝ فَاسْتَجَبْنَا لَهُ وَنَجَّيْنَاهُ مِنَ الْغَمِّ ۚ وَكَذَٰلِكَ نُنجِي الْمُؤْمِنِينَ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">And [mention] the man of the fish, when he went off in anger and thought that We would not decree [anything] upon him. And he called out within the darknesses, &quot;There is no deity except You; exalted are You. Indeed, I have been of the wrongdoers.&quot; So We responded to him and saved him from the distress. And thus do We save the believers.</div>
         <div class="ref">سورة الأنبياء — الآيتان ٨٧-٨٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الِاعْتِرَافُ بِالتَّوْحِيدِ وَالذَّنْبِ مَعًا مِفْتَاحُ الْفَرَجِ مِنْ أَشَدِّ الْكُرُوبِ</p></div>
@@ -181,6 +187,7 @@
       <div class="ayah-box" data-surah="37" data-ayah-start="145" data-ayah-end="146">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَنَبَذْنَاهُ بِالْعَرَاءِ وَهُوَ سَقِيمٌ ۝ وَأَنبَتْنَا عَلَيْهِ شَجَرَةً مِّن يَقْطِينٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">But We threw him onto the open shore while he was ill. And We caused to grow over him a gourd vine.</div>
         <div class="ref">سورة الصافات — الآيتان ١٤٥-١٤٦</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>رَحْمَةُ اللَّهِ تَتْبَعُ عَبْدَهُ حَتَّى فِي أَضْعَفِ لَحَظَاتِهِ، بِأَسْبَابٍ قَدْ تَبْدُو صَغِيرَةً</p></div>
@@ -195,6 +202,7 @@
       <div class="ayah-box" data-surah="10" data-ayah-start="98" data-ayah-end="98">
         <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
         <div class="txt">فَلَوْلَا كَانَتْ قَرْيَةٌ آمَنَتْ فَنَفَعَهَا إِيمَانُهَا إِلَّا قَوْمَ يُونُسَ لَمَّا آمَنُوا كَشَفْنَا عَنْهُمْ عَذَابَ الْخِزْيِ فِي الْحَيَاةِ الدُّنْيَا وَمَتَّعْنَاهُمْ إِلَىٰ حِينٍ</div>
+        <div class="ayah-translation" lang="en" dir="ltr">Then has there not been a [single] city that believed so its faith benefited it except the people of Jonah? When they believed, We removed from them the punishment of disgrace in worldly life and gave them enjoyment for a time.</div>
         <div class="ref">سورة يونس — الآية ٩٨</div>
       </div>
       <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْإِيمَانُ الْجَمَاعِيُّ الصَّادِقُ قَبْلَ فَوَاتِ الْأَوَانِ مُعْجِزَةٌ نَادِرَةٌ، لَكِنَّهَا مُمْكِنَةٌ بِفَضْلِ اللَّهِ</p></div>
@@ -289,7 +297,7 @@ function playAyahBox(btn){
   const s = parseInt(box.dataset.surah);
   const a1 = parseInt(box.dataset.ayahStart);
   const a2 = parseInt(box.dataset.ayahEnd || box.dataset.ayahStart);
-  playAyahRange(s,a1,a2);
+  (async()=>{await playAyahRange(s,a1,a2); if(currentLang==='en') await speakEnglishTranslation(box.querySelector('.ayah-translation')?.innerText);})();
 }
 
 function buildStageSequence(stageEl){
@@ -300,7 +308,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('dialogue')){
       el.querySelectorAll('.line').forEach(line=> items.push({type:'tts', text: line.innerText}));
     } else if(el.classList.contains('ayah-box')){
-      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart)});
+      items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
       items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
     }
@@ -319,7 +327,7 @@ async function playFrom(n){
     for(const item of seq){
       if(stopRequested) break;
       if(item.type==='tts') await speakText(item.text);
-      else await playAyahRange(item.surah,item.start,item.end);
+      else { await playAyahRange(item.surah,item.start,item.end); if(currentLang==='en') await speakEnglishTranslation(item.translation); }
     }
   }
   playing=false;
@@ -340,6 +348,11 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
+let currentLang = localStorage.getItem('lang') || 'ar';
+function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
+function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
+applyStoryLang(currentLang);
 </script>
 
 </body>
