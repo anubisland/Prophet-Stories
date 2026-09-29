@@ -79,7 +79,7 @@
     <p class="sub">خاتم الأنبياء والمرسلين — نبذة موجزة تختم السلسلة</p>
   </div>
   <div class="map-card">
-    <div class="map-top"><span>خريطة السيرة النبوية 🗺️</span></div>
+    <div class="map-top"><span data-en="Map of the Prophet’s biography 🗺️">خريطة السيرة النبوية 🗺️</span></div>
     <span class="stage-overlay-badge" id="stageBadge">المرحلة ١ من ٩</span>
     <svg viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -96,19 +96,19 @@
       <g class="marker" id="mk-mecca">
         <rect x="210" y="115" width="30" height="26" fill="#1A1405" stroke="#D9A73B" stroke-width="1.5"/>
         <rect x="210" y="123" width="30" height="6" fill="#D9A73B"/>
-        <text x="225" y="160" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">مكة المكرمة</text>
-        <text x="225" y="174" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo">المولد والبعثة</text>
+        <text x="225" y="160" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700" data-en="Mecca">مكة المكرمة</text>
+        <text x="225" y="174" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo" data-en="Birth and mission">المولد والبعثة</text>
       </g>
 
       <g class="marker" id="mk-medina">
         <path d="M425 130 L440 108 L455 130 Z" fill="none" stroke="#E8C874" stroke-width="2"/>
         <rect x="435" y="130" width="10" height="10" fill="none" stroke="#E8C874" stroke-width="1.5"/>
-        <text x="440" y="158" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700">المدينة المنورة</text>
-        <text x="440" y="172" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo">الهجرة والدولة</text>
+        <text x="440" y="158" text-anchor="middle" font-size="12.5" fill="#E8C874" font-family="Cairo" font-weight="700" data-en="Medina">المدينة المنورة</text>
+        <text x="440" y="172" text-anchor="middle" font-size="10" fill="#9C9686" font-family="Cairo" data-en="Immigration and state">الهجرة والدولة</text>
       </g>
 
       <circle cx="655" cy="35" r="16" fill="#0F231A" stroke="#D9A73B" stroke-width="1"/>
-      <text x="655" y="40" text-anchor="middle" font-size="11" fill="#E8C874" font-family="Cairo" font-weight="700">ش</text>
+      <text x="655" y="40" text-anchor="middle" font-size="11" fill="#E8C874" font-family="Cairo" font-weight="700" data-en="U">ش</text>
     </svg>
   </div>
 </div>
@@ -118,123 +118,123 @@
   <div class="stage" id="stage-1" data-map="mecca">
     <div class="stage-card">
       <div class="stage-top"><h3>الجزيرة العربية قبل البعثة</h3><span class="stage-badge">١ / ٩</span></div>
-      <p class="narrative">عَاشَتِ الْجَزِيرَةُ الْعَرَبِيَّةُ قَبْلَ بَعْثَةِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي جَاهِلِيَّةٍ عَمَّهَا الشِّرْكُ وَعِبَادَةُ الْأَصْنَامِ، وَوَأْدُ الْبَنَاتِ، وَكَثْرَةُ الْحُرُوبِ وَالثَّارَاتِ الْقَبَلِيَّةِ، وَسْطَ ضَلَالٍ بَيِّنٍ احْتَاجَ إِلَى رِسَالَةٍ تُنْقِذُ النَّاسَ مِنْهُ.</p>
+      <p class="narrative" data-en="The Arabian Peninsula lived before the mission of the Prophet, may God bless him and grant him peace, in A pre-Islamic era that was plagued by polytheism, idolatry, female infanticide, and many wars and tribal retaliations, amidst clear misguidance that required A message that saves people from it.">عَاشَتِ الْجَزِيرَةُ الْعَرَبِيَّةُ قَبْلَ بَعْثَةِ النَّبِيِّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي جَاهِلِيَّةٍ عَمَّهَا الشِّرْكُ وَعِبَادَةُ الْأَصْنَامِ، وَوَأْدُ الْبَنَاتِ، وَكَثْرَةُ الْحُرُوبِ وَالثَّارَاتِ الْقَبَلِيَّةِ، وَسْطَ ضَلَالٍ بَيِّنٍ احْتَاجَ إِلَى رِسَالَةٍ تُنْقِذُ النَّاسَ مِنْهُ.</p>
       <div class="ayah-box" data-surah="3" data-ayah-start="164" data-ayah-end="164">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">لَقَدْ مَنَّ اللَّهُ عَلَى الْمُؤْمِنِينَ إِذْ بَعَثَ فِيهِمْ رَسُولًا مِّنْ أَنفُسِهِمْ يَتْلُو عَلَيْهِمْ آيَاتِهِ وَيُزَكِّيهِمْ وَيُعَلِّمُهُمُ الْكِتَابَ وَالْحِكْمَةَ وَإِن كَانُوا مِن قَبْلُ لَفِي ضَلَالٍ مُّبِينٍ</div>
         <div class="ayah-translation" lang="en" dir="ltr">Certainly did Allah confer [great] favor upon the believers when He sent among them a Messenger from themselves, reciting to them His verses and purifying them and teaching them the Book and wisdom, although they had been before in manifest error.</div>
-        <div class="ref">سورة آل عمران — الآية ١٦٤</div>
+        <div class="ref" data-en="Surat Al Imran — Verse 164">سورة آل عمران — الآية ١٦٤</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>بَعْثَةُ الرَّسُولِ رَحْمَةٌ تَأْتِي فِي أَشَدِّ أَوْقَاتِ الْأُمَّةِ ضَلَالًا، لَا فِي أَفْضَلِهَا</p></div>
-      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة آل عمران</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="The Messenger’s mission is a mercy that comes at the nation’s most misguided times, not at its best.">بَعْثَةُ الرَّسُولِ رَحْمَةٌ تَأْتِي فِي أَشَدِّ أَوْقَاتِ الْأُمَّةِ ضَلَالًا، لَا فِي أَفْضَلِهَا</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Tafsir Ibn Kathir - Surat Al-Imran">📖 تفسير ابن كثير — سورة آل عمران</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-2" data-map="mecca">
     <div class="stage-card">
       <div class="stage-top"><h3>نشأته وتسميته بالصادق الأمين</h3><span class="stage-badge">٢ / ٩</span></div>
-      <p class="narrative">وُلِدَ مُحَمَّدٌ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَتِيمَ الْأَبِ، وَتُوُفِّيَتْ أُمُّهُ وَهُوَ صَغِيرٌ، فَكَفَلَهُ جَدُّهُ ثُمَّ عَمُّهُ أَبُو طَالِبٍ، وَنَشَأَ بَيْنَ قَوْمِهِ مَعْرُوفًا بِالصِّدْقِ وَالْأَمَانَةِ حَتَّى لَقَّبُوهُ <b>"الصَّادِقَ الْأَمِينَ"</b> قَبْلَ أَنْ يُوحَى إِلَيْهِ بِسَنَوَاتٍ.</p>
+      <p class="narrative" data-en="Muhammad, may God bless him and grant him peace, was born an orphan, and his mother died when he was young, so his grandfather took care of him, then his uncle Abu Talib, and he grew up among His people were known for his honesty and trustworthiness, so much so that they called him “the honest and trustworthy” years before he was inspired.">وُلِدَ مُحَمَّدٌ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَتِيمَ الْأَبِ، وَتُوُفِّيَتْ أُمُّهُ وَهُوَ صَغِيرٌ، فَكَفَلَهُ جَدُّهُ ثُمَّ عَمُّهُ أَبُو طَالِبٍ، وَنَشَأَ بَيْنَ قَوْمِهِ مَعْرُوفًا بِالصِّدْقِ وَالْأَمَانَةِ حَتَّى لَقَّبُوهُ <b>"الصَّادِقَ الْأَمِينَ"</b> قَبْلَ أَنْ يُوحَى إِلَيْهِ بِسَنَوَاتٍ.</p>
       <div class="ayah-box" data-surah="68" data-ayah-start="4" data-ayah-end="4">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ</div>
         <div class="ayah-translation" lang="en" dir="ltr">And indeed, you are of a great moral character.</div>
-        <div class="ref">سورة القلم — الآية ٤</div>
+        <div class="ref" data-en="Surat Al-Qalam — Verse 4">سورة القلم — الآية ٤</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصِّدْقُ وَالْأَمَانَةُ أَسَاسٌ يُبْنَى عَلَيْهِ قَبُولُ الدَّعْوَةِ، لَا نَتِيجَةٌ لَهَا فَقَطْ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 الرحيق المختوم — المباركفوري</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="Honesty and trustworthiness are the foundation upon which acceptance of the call is built, not just its result.">الصِّدْقُ وَالْأَمَانَةُ أَسَاسٌ يُبْنَى عَلَيْهِ قَبُولُ الدَّعْوَةِ، لَا نَتِيجَةٌ لَهَا فَقَطْ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Al-Raheeq Al-Makhtum - Al-Mubarakfuri">📖 الرحيق المختوم — المباركفوري</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-3" data-map="mecca">
     <div class="stage-card">
       <div class="stage-top"><h3>غار حراء ولقاء جبريل</h3><span class="stage-badge">٣ / ٩</span></div>
-      <p class="narrative">كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَتَحَنَّثُ وَيَتَعَبَّدُ فِي غَارِ حِرَاءَ بَعِيدًا عَنْ ضَجِيجِ قَوْمِهِ، حَتَّى فَاجَأَهُ جِبْرِيلُ عَلَيْهِ السَّلَامُ بِأَوَّلِ آيَاتِ الْقُرْآنِ، آمِرًا إِيَّاهُ بِالْقِرَاءَةِ بِاسْمِ رَبِّهِ الَّذِي خَلَقَ.</p>
+      <p class="narrative" data-en="The Prophet, may God’s prayers and peace be upon him, was He, peace and blessings be upon him, was bowing his head and worshiping in the cave of Hira, away from the noise of his people, until Gabriel, peace be upon him, surprised him with the first verses of the Qur’an, commanding It is recited in the name of his Lord who created.">كَانَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ يَتَحَنَّثُ وَيَتَعَبَّدُ فِي غَارِ حِرَاءَ بَعِيدًا عَنْ ضَجِيجِ قَوْمِهِ، حَتَّى فَاجَأَهُ جِبْرِيلُ عَلَيْهِ السَّلَامُ بِأَوَّلِ آيَاتِ الْقُرْآنِ، آمِرًا إِيَّاهُ بِالْقِرَاءَةِ بِاسْمِ رَبِّهِ الَّذِي خَلَقَ.</p>
       <div class="ayah-box" data-surah="96" data-ayah-start="1" data-ayah-end="5">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ ۝ اقْرَأْ وَرَبُّكَ الْأَكْرَمُ ۝ الَّذِي عَلَّمَ بِالْقَلَمِ ۝ عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ</div>
         <div class="ayah-translation" lang="en" dir="ltr">Recite in the name of your Lord who created - Created man from a clinging substance. Recite, and your Lord is the most Generous - Who taught by the pen - Taught man that which he knew not.</div>
-        <div class="ref">سورة العلق — الآيات ١-٥</div>
+        <div class="ref" data-en="Surah Al-Alaq — Verses 1-5">سورة العلق — الآيات ١-٥</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>بِدَايَةُ الْوَحْيِ كَانَتْ أَمْرًا بِالْقِرَاءَةِ وَالْعِلْمِ، لَا بِالسَّيْفِ أَوِ الْمُوَاجَهَةِ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة العلق</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="The beginning of the revelation was a command to read and learn, not by the sword or confrontation">بِدَايَةُ الْوَحْيِ كَانَتْ أَمْرًا بِالْقِرَاءَةِ وَالْعِلْمِ، لَا بِالسَّيْفِ أَوِ الْمُوَاجَهَةِ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Tafsir Ibn Kathir - Surat Al-Alaq">📖 تفسير ابن كثير — سورة العلق</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-4" data-map="mecca">
     <div class="stage-card">
       <div class="stage-top"><h3>مساندة خديجة وورقة بن نوفل</h3><span class="stage-badge">٤ / ٩</span></div>
-      <p class="narrative">عَادَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مُرْتَجِفًا مِمَّا رَأَى، فَثَبَّتَتْهُ زَوْجَتُهُ خَدِيجَةُ رَضِيَ اللَّهُ عَنْهَا بِكَلِمَاتِ الْإِيمَانِ بِصِدْقِهِ وَحُسْنِ خُلُقِهِ، ثُمَّ ذَهَبَا إِلَى ابْنِ عَمِّهَا وَرَقَةَ بْنِ نَوْفَلٍ، فَبَشَّرَهُ بِأَنَّهُ النَّبِيُّ الْمُنْتَظَرُ الَّذِي بَشَّرَتْ بِهِ الْكُتُبُ السَّابِقَةُ.</p>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>مُسَانَدَةُ الزَّوْجَةِ الصَّالِحَةِ فِي أَوَّلِ لَحَظَاتِ الدَّعْوَةِ نِعْمَةٌ عَظِيمَةٌ قَدْ تَكُونُ فَارِقَةً</p></div>
-      <div class="sources-row"><span class="source-chip">📖 صحيح البخاري — كتاب بدء الوحي</span></div>
+      <p class="narrative" data-en="The Prophet returned, praying May God bless him and grant him peace, he was trembling at what he saw, so his wife Khadija, may God be pleased with her, steadfasted him with words of faith in his honesty and good behavior, then They went to her cousin Waraqah bin Nawfal, and he gave him the good news that he was the awaited prophet whom previous books had heralded.">عَادَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مُرْتَجِفًا مِمَّا رَأَى، فَثَبَّتَتْهُ زَوْجَتُهُ خَدِيجَةُ رَضِيَ اللَّهُ عَنْهَا بِكَلِمَاتِ الْإِيمَانِ بِصِدْقِهِ وَحُسْنِ خُلُقِهِ، ثُمَّ ذَهَبَا إِلَى ابْنِ عَمِّهَا وَرَقَةَ بْنِ نَوْفَلٍ، فَبَشَّرَهُ بِأَنَّهُ النَّبِيُّ الْمُنْتَظَرُ الَّذِي بَشَّرَتْ بِهِ الْكُتُبُ السَّابِقَةُ.</p>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="Supporting a good wife in the first moments of the vocation is a great blessing that may make a difference.">مُسَانَدَةُ الزَّوْجَةِ الصَّالِحَةِ فِي أَوَّلِ لَحَظَاتِ الدَّعْوَةِ نِعْمَةٌ عَظِيمَةٌ قَدْ تَكُونُ فَارِقَةً</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Sahih Al-Bukhari - The Book of the Beginning of Revelation">📖 صحيح البخاري — كتاب بدء الوحي</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-5" data-map="mecca">
     <div class="stage-card">
       <div class="stage-top"><h3>العهد المكي</h3><span class="stage-badge">٥ / ٩</span></div>
-      <p class="narrative">أَمَرَ اللَّهُ نَبِيَّهُ بِالْإِنْذَارِ الْعَلَنِيِّ بَعْدَ فَتْرَةٍ مِنَ الدَّعْوَةِ السِّرِّيَّةِ، فَوَاجَهَ أَذَى قُرَيْشٍ وَحِصَارَهَا وَمُقَاطَعَتَهَا ثَلَاثَ عَشْرَةَ سَنَةً، صَابِرًا عَلَى الدَّعْوَةِ إِلَى التَّوْحِيدِ وَسْطَ تَكْذِيبٍ وَاسْتِهْزَاءٍ.</p>
+      <p class="narrative" data-en="God commanded His Prophet to give a public warning after a period of secret preaching. He faced the harm of the Quraysh, their siege, and their boycott for thirteen days. Sunnah, patient in the call to monotheism amidst denial and mockery.">أَمَرَ اللَّهُ نَبِيَّهُ بِالْإِنْذَارِ الْعَلَنِيِّ بَعْدَ فَتْرَةٍ مِنَ الدَّعْوَةِ السِّرِّيَّةِ، فَوَاجَهَ أَذَى قُرَيْشٍ وَحِصَارَهَا وَمُقَاطَعَتَهَا ثَلَاثَ عَشْرَةَ سَنَةً، صَابِرًا عَلَى الدَّعْوَةِ إِلَى التَّوْحِيدِ وَسْطَ تَكْذِيبٍ وَاسْتِهْزَاءٍ.</p>
       <div class="ayah-box" data-surah="74" data-ayah-start="1" data-ayah-end="2">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">يَا أَيُّهَا الْمُدَّثِّرُ ۝ قُمْ فَأَنذِرْ</div>
         <div class="ayah-translation" lang="en" dir="ltr">O you who covers himself [with a garment], Arise and warn</div>
-        <div class="ref">سورة المدثر — الآيتان ١-٢</div>
+        <div class="ref" data-en="Surah Al-Muddaththir - Verses 1-2">سورة المدثر — الآيتان ١-٢</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الصَّبْرُ ثَلَاثَ عَشْرَةَ سَنَةً فِي مَكَّةَ قَبْلَ الْهِجْرَةِ دَرْسٌ فِي طُولِ نَفَسِ الدَّعْوَةِ إِلَى اللَّهِ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 الرحيق المختوم — المباركفوري</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="Patience for thirteen years in Mecca before the Hijra is a lesson in the longevity of the soul of the call to God">الصَّبْرُ ثَلَاثَ عَشْرَةَ سَنَةً فِي مَكَّةَ قَبْلَ الْهِجْرَةِ دَرْسٌ فِي طُولِ نَفَسِ الدَّعْوَةِ إِلَى اللَّهِ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Al-Raheeq Al-Makhtum - Al-Mubarakfuri">📖 الرحيق المختوم — المباركفوري</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-6" data-map="medina">
     <div class="stage-card">
       <div class="stage-top"><h3>الهجرة إلى المدينة</h3><span class="stage-badge">٦ / ٩</span></div>
-      <p class="narrative">بَعْدَ اشْتِدَادِ أَذَى قُرَيْشٍ وَتَآمُرِهَا عَلَى قَتْلِهِ، هَاجَرَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مَعَ أَبِي بَكْرٍ الصِّدِّيقِ إِلَى الْمَدِينَةِ الْمُنَوَّرَةِ، وَاخْتَبَآ فِي غَارِ ثَوْرٍ ثَلَاثَةَ أَيَّامٍ، وَقَدْ نَصَرَهُمَا اللَّهُ وَحْدَهُمَا دُونَ جَيْشٍ.</p>
+      <p class="narrative" data-en="after The Quraysh’s harm increased and they conspired to kill him. The Prophet, may God bless him and grant him peace, migrated with Abu Bakr al-Siddiq to Medina and hid. In Cave Thawr for three days, and God alone gave them victory, without an army.">بَعْدَ اشْتِدَادِ أَذَى قُرَيْشٍ وَتَآمُرِهَا عَلَى قَتْلِهِ، هَاجَرَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ مَعَ أَبِي بَكْرٍ الصِّدِّيقِ إِلَى الْمَدِينَةِ الْمُنَوَّرَةِ، وَاخْتَبَآ فِي غَارِ ثَوْرٍ ثَلَاثَةَ أَيَّامٍ، وَقَدْ نَصَرَهُمَا اللَّهُ وَحْدَهُمَا دُونَ جَيْشٍ.</p>
       <div class="ayah-box" data-surah="9" data-ayah-start="40" data-ayah-end="40">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">إِلَّا تَنصُرُوهُ فَقَدْ نَصَرَهُ اللَّهُ إِذْ أَخْرَجَهُ الَّذِينَ كَفَرُوا ثَانِيَ اثْنَيْنِ إِذْ هُمَا فِي الْغَارِ إِذْ يَقُولُ لِصَاحِبِهِ لَا تَحْزَنْ إِنَّ اللَّهَ مَعَنَا فَأَنزَلَ اللَّهُ سَكِينَتَهُ عَلَيْهِ وَأَيَّدَهُ بِجُنُودٍ لَّمْ تَرَوْهَا وَجَعَلَ كَلِمَةَ الَّذِينَ كَفَرُوا السُّفْلَىٰ ۗ وَكَلِمَةُ اللَّهِ هِيَ الْعُلْيَا ۗ وَاللَّهُ عَزِيزٌ حَكِيمٌ</div>
         <div class="ayah-translation" lang="en" dir="ltr">If you do not aid the Prophet - Allah has already aided him when those who disbelieved had driven him out [of Makkah] as one of two, when they were in the cave and he said to his companion, &quot;Do not grieve; indeed Allah is with us.&quot; And Allah sent down his tranquillity upon him and supported him with angels you did not see and made the word of those who disbelieved the lowest, while the word of Allah - that is the highest. And Allah is Exalted in Might and Wise.</div>
-        <div class="ref">سورة التوبة — الآية ٤٠</div>
+        <div class="ref" data-en="Surat Al-Tawbah — Verse 40">سورة التوبة — الآية ٤٠</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>"إِنَّ اللَّهَ مَعَنَا" ثِقَةٌ تَكْفِي الْمُؤْمِنَ وَلَوْ كَانَ فِي أَضْعَفِ حَالَاتِهِ الظَّاهِرِيَّةِ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة التوبة</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="“Indeed, God is with us” is enough trust for the believer, even if he is in his weakest outward state">"إِنَّ اللَّهَ مَعَنَا" ثِقَةٌ تَكْفِي الْمُؤْمِنَ وَلَوْ كَانَ فِي أَضْعَفِ حَالَاتِهِ الظَّاهِرِيَّةِ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Tafsir Ibn Katheer - Surat Al-Tawbah">📖 تفسير ابن كثير — سورة التوبة</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-7" data-map="medina">
     <div class="stage-card">
       <div class="stage-top"><h3>العهد المدني والغزوات</h3><span class="stage-badge">٧ / ٩</span></div>
-      <p class="narrative">بَنَى النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي الْمَدِينَةِ أَوَّلَ دَوْلَةٍ إِسْلَامِيَّةٍ، وَآخَى بَيْنَ الْمُهَاجِرِينَ وَالْأَنْصَارِ، وَأُذِنَ لِلْمُسْلِمِينَ بِالْقِتَالِ دِفَاعًا عَنْ أَنْفُسِهِمْ بَعْدَ أَنْ ظُلِمُوا سَنَوَاتٍ طَوِيلَةً، فَكَانَتْ غَزَوَاتُ بَدْرٍ وَأُحُدٍ وَالْخَنْدَقِ وَغَيْرُهَا مَحَطَّاتٍ فِي تَرْسِيخِ هَذِهِ الدَّوْلَةِ.</p>
+      <p class="narrative" data-en="The Prophet, may God bless him and grant him peace, built Peace be upon him in Medina, the first Islamic state, and he brought brotherhood between the Muhajireen and the Ansar, and he permitted the Muslims to fight in defense of themselves after being oppressed for many years, so the battles of Badr, Uhud, Khandaq, and others were milestones in consolidating this The state.">بَنَى النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي الْمَدِينَةِ أَوَّلَ دَوْلَةٍ إِسْلَامِيَّةٍ، وَآخَى بَيْنَ الْمُهَاجِرِينَ وَالْأَنْصَارِ، وَأُذِنَ لِلْمُسْلِمِينَ بِالْقِتَالِ دِفَاعًا عَنْ أَنْفُسِهِمْ بَعْدَ أَنْ ظُلِمُوا سَنَوَاتٍ طَوِيلَةً، فَكَانَتْ غَزَوَاتُ بَدْرٍ وَأُحُدٍ وَالْخَنْدَقِ وَغَيْرُهَا مَحَطَّاتٍ فِي تَرْسِيخِ هَذِهِ الدَّوْلَةِ.</p>
       <div class="ayah-box" data-surah="22" data-ayah-start="39" data-ayah-end="39">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">أُذِنَ لِلَّذِينَ يُقَاتَلُونَ بِأَنَّهُمْ ظُلِمُوا ۚ وَإِنَّ اللَّهَ عَلَىٰ نَصْرِهِمْ لَقَدِيرٌ</div>
         <div class="ayah-translation" lang="en" dir="ltr">Permission [to fight] has been given to those who are being fought, because they were wronged. And indeed, Allah is competent to give them victory.</div>
-        <div class="ref">سورة الحج — الآية ٣٩</div>
+        <div class="ref" data-en="Surah Al-Hajj — Verse 39">سورة الحج — الآية ٣٩</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الْإِذْنُ بِالْقِتَالِ جَاءَ دِفَاعًا بَعْدَ ظُلْمٍ طَوِيلٍ، لَا ابْتِدَاءً بِالْعُدْوَانِ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة الحج</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="The permission to fight came in defense after a long period of oppression, not as a beginning of aggression">الْإِذْنُ بِالْقِتَالِ جَاءَ دِفَاعًا بَعْدَ ظُلْمٍ طَوِيلٍ، لَا ابْتِدَاءً بِالْعُدْوَانِ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Tafsir Ibn Kathir - Surat Al-Hajj">📖 تفسير ابن كثير — سورة الحج</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-8" data-map="medina">
     <div class="stage-card">
       <div class="stage-top"><h3>وفاته صلى الله عليه وسلم</h3><span class="stage-badge">٨ / ٩</span></div>
-      <p class="narrative">بَعْدَ أَنْ أَكْمَلَ اللَّهُ بِهِ الدِّينَ وَأَتَمَّ النِّعْمَةَ، وَفَتَحَ مَكَّةَ، وَحَجَّ حَجَّةَ الْوَدَاعِ، تُوُفِّيَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي الْمَدِينَةِ، فَحَزِنَ الْمُسْلِمُونَ حُزْنًا شَدِيدًا حَتَّى ذَكَّرَهُمْ أَبُو بَكْرٍ رَضِيَ اللَّهُ عَنْهُ بِأَنَّهُ بَشَرٌ رَسُولٌ يَمُوتُ كَمَا مَاتَ مَنْ قَبْلَهُ مِنَ الرُّسُلِ.</p>
+      <p class="narrative" data-en="after God had perfected the religion through it and completed the blessing. He conquered Mecca and performed the Farewell Hajj. The Prophet, may God bless him and grant him peace, died in Medina. The Muslims were deeply saddened until Abu Bakr, may God be pleased with him, said that he was a messenger who would die as the messengers before him had died.">بَعْدَ أَنْ أَكْمَلَ اللَّهُ بِهِ الدِّينَ وَأَتَمَّ النِّعْمَةَ، وَفَتَحَ مَكَّةَ، وَحَجَّ حَجَّةَ الْوَدَاعِ، تُوُفِّيَ النَّبِيُّ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فِي الْمَدِينَةِ، فَحَزِنَ الْمُسْلِمُونَ حُزْنًا شَدِيدًا حَتَّى ذَكَّرَهُمْ أَبُو بَكْرٍ رَضِيَ اللَّهُ عَنْهُ بِأَنَّهُ بَشَرٌ رَسُولٌ يَمُوتُ كَمَا مَاتَ مَنْ قَبْلَهُ مِنَ الرُّسُلِ.</p>
       <div class="ayah-box" data-surah="3" data-ayah-start="144" data-ayah-end="144">
-        <button class="ayah-listen" onclick="playAyahBox(this)">🎧 تلاوة الحصري</button>
+        <button class="ayah-listen" onclick="playAyahBox(this)" data-en="🎧 Al-Husary Recitation">🎧 تلاوة الحصري</button>
         <div class="txt">وَمَا مُحَمَّدٌ إِلَّا رَسُولٌ قَدْ خَلَتْ مِن قَبْلِهِ الرُّسُلُ أَفَإِن مَّاتَ أَوْ قُتِلَ انقَلَبْتُمْ عَلَىٰ أَعْقَابِكُمْ ۚ وَمَن يَنقَلِبْ عَلَىٰ عَقِبَيْهِ فَلَن يَضُرَّ اللَّهَ شَيْئًا ۗ وَسَيَجْزِي اللَّهُ الشَّاكِرِينَ</div>
         <div class="ayah-translation" lang="en" dir="ltr">Muhammad is not but a messenger. [Other] messengers have passed on before him. So if he was to die or be killed, would you turn back on your heels [to unbelief]? And he who turns back on his heels will never harm Allah at all; but Allah will reward the grateful.</div>
-        <div class="ref">سورة آل عمران — الآية ١٤٤</div>
+        <div class="ref" data-en="Surat Al Imran — Verse 144">سورة آل عمران — الآية ١٤٤</div>
       </div>
-      <div class="lesson-box"><div class="label">💡 الدرس المستفاد</div><p>الثَّبَاتُ عَلَى الدِّينِ لَا يَتَوَقَّفُ عَلَى وُجُودِ الْقَائِدِ، بَلْ عَلَى صِدْقِ الْإِيمَانِ بِهِ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 تفسير ابن كثير — سورة آل عمران</span></div>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 الدرس المستفاد</div><p data-en="Perseverance in religion does not depend on the presence of a leader, but on the sincerity of belief in him">الثَّبَاتُ عَلَى الدِّينِ لَا يَتَوَقَّفُ عَلَى وُجُودِ الْقَائِدِ، بَلْ عَلَى صِدْقِ الْإِيمَانِ بِهِ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 Tafsir Ibn Kathir - Surah Al Imran">📖 تفسير ابن كثير — سورة آل عمران</span></div>
     </div>
   </div>
 
   <div class="stage" id="stage-9" data-map="medina">
     <div class="stage-card">
       <div class="stage-top"><h3>ختام السلسلة</h3><span class="stage-badge">٩ / ٩</span></div>
-      <p class="narrative">هَذِهِ نُبْذَةٌ مُوجَزَةٌ عَنْ سِيرَةِ خَاتَمِ الْأَنْبِيَاءِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فَقَطْ، أَمَّا السِّيرَةُ النَّبَوِيَّةُ بِكَامِلِ تَفَاصِيلِهَا، وَمَعَهَا خَطٌّ زَمَنِيٌّ كَامِلٌ لِعَصْرِ الْخُلَفَاءِ الرَّاشِدِينَ وَقِيَامِ الدَّوْلَةِ الْإِسْلَامِيَّةِ، فَقَدْ أَفْرَدْنَا لَهَا تَطْبِيقًا مُسْتَقِلًّا مُتَخَصِّصًا بِنَفْسِ مَنْهَجِ التَّوْثِيقِ.</p>
-      <div class="lesson-box"><div class="label">💡 خاتمة</div><p>تَمَّ بِحَمْدِ اللَّهِ اسْتِكْمَالُ قِصَصِ الْأَنْبِيَاءِ وَالرُّسُلِ مِنْ آدَمَ إِلَى خَاتِمِهِمْ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ</p></div>
-      <div class="sources-row"><span class="source-chip">📖 السيرة النبوية والخلافة الراشدة — تطبيق منفصل</span></div>
+      <p class="narrative" data-en="This is an overview A summary of the biography of the Seal of the Prophets, may God bless him and grant him peace only, as for the prophetic biography in all its details, and with it a complete timeline. For the era of the Rightly Guided Caliphs and the establishment of the Islamic State, we have dedicated an independent application to it specialized in the same documentation approach.">هَذِهِ نُبْذَةٌ مُوجَزَةٌ عَنْ سِيرَةِ خَاتَمِ الْأَنْبِيَاءِ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ فَقَطْ، أَمَّا السِّيرَةُ النَّبَوِيَّةُ بِكَامِلِ تَفَاصِيلِهَا، وَمَعَهَا خَطٌّ زَمَنِيٌّ كَامِلٌ لِعَصْرِ الْخُلَفَاءِ الرَّاشِدِينَ وَقِيَامِ الدَّوْلَةِ الْإِسْلَامِيَّةِ، فَقَدْ أَفْرَدْنَا لَهَا تَطْبِيقًا مُسْتَقِلًّا مُتَخَصِّصًا بِنَفْسِ مَنْهَجِ التَّوْثِيقِ.</p>
+      <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 خاتمة</div><p data-en="Praise be to God, the stories of the prophets and messengers from Adam to their seal, Muhammad, may God bless him and grant him peace, have been completed.">تَمَّ بِحَمْدِ اللَّهِ اسْتِكْمَالُ قِصَصِ الْأَنْبِيَاءِ وَالرُّسُلِ مِنْ آدَمَ إِلَى خَاتِمِهِمْ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ</p></div>
+      <div class="sources-row"><span class="source-chip" data-en="📖 The Biography of the Prophet and the Rightly Guided Caliphate - a separate application">📖 السيرة النبوية والخلافة الراشدة — تطبيق منفصل</span></div>
       <div class="redirect-box">
         <p>لاستكشاف السيرة النبوية والخلافة الراشدة بالتفصيل الكامل عبر خط زمني تفاعلي</p>
         <a href="https://anubisland.github.io/islamic-timeline/" target="_blank" rel="noopener">الخط الزمني الإسلامي ←</a>
@@ -299,9 +299,9 @@ function speakText(text){
   return new Promise(resolve=>{
     if(!('speechSynthesis' in window)){ resolve(); return; }
     const u = new SpeechSynthesisUtterance(clean);
-    u.lang='ar-SA'; u.rate=0.92;
+    u.lang=currentLang==='en'?'en-US':'ar-SA'; u.rate=0.92;
     const voices = speechSynthesis.getVoices();
-    const v = voices.find(v=> v.lang && v.lang.startsWith('ar'));
+    const v = voices.find(v=> v.lang && v.lang.startsWith(currentLang==='en'?'en':'ar'));
     if(v) u.voice=v;
     u.onend=resolve; u.onerror=resolve;
     speechSynthesis.speak(u);
@@ -342,7 +342,7 @@ function buildStageSequence(stageEl){
     } else if(el.classList.contains('ayah-box')){
       items.push({type:'audio', surah:parseInt(el.dataset.surah), start:parseInt(el.dataset.ayahStart), end:parseInt(el.dataset.ayahEnd||el.dataset.ayahStart), translation:el.querySelector('.ayah-translation')?.innerText || ''});
     } else if(el.classList.contains('lesson-box')){
-      items.push({type:'tts', text: 'الدَّرْسُ الْمُسْتَفَادُ: ' + el.querySelector('p').innerText});
+      items.push({type:'tts', text: (currentLang==='en'?'Lesson: ':'الدَّرْسُ الْمُسْتَفَادُ: ') + el.querySelector('p').innerText});
     }
   });
   return items;
@@ -351,7 +351,7 @@ function buildStageSequence(stageEl){
 async function playFrom(n){
   stopRequested=false;
   playing=true;
-  document.getElementById('playBtn').textContent='⏸ إيقاف';
+  document.getElementById('playBtn').textContent=(currentLang==='en'?'⏸ Stop':'⏸ إيقاف');
   for(let stageNum=n; stageNum<=total; stageNum++){
     if(stopRequested) break;
     setCurrent(stageNum);
@@ -363,7 +363,7 @@ async function playFrom(n){
     }
   }
   playing=false;
-  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+  document.getElementById('playBtn').textContent=(currentLang==='en'?'🔊 Play full narration':'🔊 تشغيل السرد الكامل');
 }
 
 function stopPlayback(){
@@ -371,7 +371,7 @@ function stopPlayback(){
   playing=false;
   speechSynthesis.cancel();
   audioEl.pause();
-  document.getElementById('playBtn').textContent='🔊 تشغيل السرد الكامل';
+  document.getElementById('playBtn').textContent=(currentLang==='en'?'🔊 Play full narration':'🔊 تشغيل السرد الكامل');
 }
 
 function toggleSpeak(){
@@ -380,8 +380,24 @@ function toggleSpeak(){
 }
 
 setCurrent(1);
-let currentLang = localStorage.getItem('lang') || 'ar';
-function applyStoryLang(lang){ currentLang=lang; document.documentElement.lang=lang; document.documentElement.dir=lang==='en'?'ltr':'rtl'; try{localStorage.setItem('lang',lang);}catch(e){} const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English'; }
+let currentLang='ar';
+try{currentLang=localStorage.getItem('lang')||'ar';}catch(e){}
+function applyStoryLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang;
+  document.documentElement.dir=lang==='en'?'ltr':'rtl';
+  try{localStorage.setItem('lang',lang);}catch(e){}
+  if(!window.arabicPageTitle) window.arabicPageTitle=document.title;
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    if(!el.dataset.arCache) el.dataset.arCache=el.innerHTML;
+    el.innerHTML=lang==='en'?el.getAttribute('data-en'):el.dataset.arCache;
+  });
+  const pageHeading=document.querySelector('.hero h1');
+  document.title=lang==='en'&&pageHeading?pageHeading.innerText:window.arabicPageTitle;
+  const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English';
+  const badge=document.getElementById('stageBadge');
+  if(badge && typeof current!=='undefined') badge.textContent=lang==='en'?`Stage ${current} of ${total}`:'المرحلة '+toArabicNum(current)+' من '+toArabicNum(total);
+}
 function toggleLang(){applyStoryLang(currentLang==='ar'?'en':'ar');}
 function speakEnglishTranslation(text){ return new Promise(resolve=>{ if(!text||!('speechSynthesis' in window)){resolve();return;} const u=new SpeechSynthesisUtterance(text); u.lang='en-US'; u.rate=0.92; const v=speechSynthesis.getVoices().find(x=>x.lang&&x.lang.startsWith('en')); if(v)u.voice=v; u.onend=resolve;u.onerror=resolve;speechSynthesis.speak(u); }); }
 applyStoryLang(currentLang);
