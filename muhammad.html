@@ -236,8 +236,8 @@
       <div class="lesson-box"><div class="label" data-en="💡 Lesson">💡 خاتمة</div><p data-en="Praise be to God, the stories of the prophets and messengers from Adam to their seal, Muhammad, may God bless him and grant him peace, have been completed.">تَمَّ بِحَمْدِ اللَّهِ اسْتِكْمَالُ قِصَصِ الْأَنْبِيَاءِ وَالرُّسُلِ مِنْ آدَمَ إِلَى خَاتِمِهِمْ مُحَمَّدٍ صَلَّى اللَّهُ عَلَيْهِ وَسَلَّمَ</p></div>
       <div class="sources-row"><span class="source-chip" data-en="📖 The Biography of the Prophet and the Rightly Guided Caliphate - a separate application">📖 السيرة النبوية والخلافة الراشدة — تطبيق منفصل</span></div>
       <div class="redirect-box">
-        <p>لاستكشاف السيرة النبوية والخلافة الراشدة بالتفصيل الكامل عبر خط زمني تفاعلي</p>
-        <a href="https://anubisland.github.io/islamic-timeline/" target="_blank" rel="noopener">الخط الزمني الإسلامي ←</a>
+        <p data-en="To explore the full Prophet's biography and the Rightly Guided Caliphate in complete detail through an interactive timeline">لاستكشاف السيرة النبوية والخلافة الراشدة بالتفصيل الكامل عبر خط زمني تفاعلي</p>
+        <a id="timelineLink" href="https://anubisland.github.io/islamic-timeline/" target="_blank" rel="noopener" data-en="Islamic Timeline →">الخط الزمني الإسلامي ←</a>
       </div>
     </div>
   </div>
@@ -399,6 +399,11 @@ function applyStoryLang(lang){
   const pageHeading=document.querySelector('.hero h1');
   document.title=lang==='en'&&pageHeading?pageHeading.innerText:window.arabicPageTitle;
   const b=document.getElementById('langBtn'); if(b)b.textContent=lang==='en'?'العربية':'English';
+  const tl=document.getElementById('timelineLink');
+  if(tl){
+    const base='https://anubisland.github.io/islamic-timeline/';
+    tl.href = lang==='en' ? base+'?lang=en' : base;
+  }
   const badge=document.getElementById('stageBadge');
   if(badge && typeof current!=='undefined') badge.textContent=lang==='en'?`Stage ${current} of ${total}`:'المرحلة '+toArabicNum(current)+' من '+toArabicNum(total);
 }
